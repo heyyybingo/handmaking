@@ -1,26 +1,26 @@
 ## 1. 项目基础设施搭建
 
-- [ ] 1.1 编写开发环境配置文档（docs/development.md：启动步骤、环境变量说明、常见问题排查）
+- [x] 1.1 编写开发环境配置文档（docs/development.md：启动步骤、环境变量说明、常见问题排查）
 - [ ] 1.2 编写预发布环境配置文档（docs/staging.md：部署流程、与开发环境配置差异）
 - [ ] 1.3 编写生产环境配置文档（docs/production.md：部署流程、安全配置、监控告警）
-- [ ] 1.4 编写开发环境docker-compose（deploy/docker-compose.dev.yml：PostgreSQL+Redis+MinIO，named volume持久化，healthcheck，minio-init自动建bucket）
-- [ ] 1.5 编写环境变量模板（deploy/.env.example：包含所有配置项+注释说明，提交到Git）
-- [ ] 1.6 配置.gitignore（排除.env.dev/.env.staging/.env.prod、node_modules、dist等）
-- [ ] 1.7 初始化NestJS服务端项目，配置TypeScript、ESLint、Prettier
-- [ ] 1.8 配置Jest测试框架（NestJS内置），设置覆盖率阈值（Service层80%+）
-- [ ] 1.9 配置TypeORM连接PostgreSQL，创建基础数据模型（Craft/Category/Comment/Intent/User/AIConfig）
-- [ ] 1.10 配置Redis连接，封装缓存工具类
-- [ ] 1.11 配置NestJS模块化结构（craft-showcase/content-management/social-interaction/i-want-feature/ai-assistant/user-auth/admin-dashboard）
-- [ ] 1.12 配置@nestjs/swagger，设置全局Swagger插件，生成基础OpenAPI文档（/api/docs）
+- [x] 1.4 编写开发环境docker-compose（deploy/docker-compose.dev.yml：PostgreSQL+Redis+MinIO，named volume持久化，healthcheck，minio-init自动建bucket）
+- [x] 1.5 编写环境变量模板（deploy/.env.example：包含所有配置项+注释说明，提交到Git）
+- [x] 1.6 配置.gitignore（排除.env.dev/.env.staging/.env.prod、node_modules、dist等）
+- [x] 1.7 初始化NestJS服务端项目，配置TypeScript、ESLint、Prettier
+- [x] 1.8 配置Jest测试框架（NestJS内置），设置覆盖率阈值（Service层80%+）
+- [x] 1.9 配置TypeORM连接PostgreSQL（连接配置、autoLoadEntities、synchronize开发模式）
+- [x] 1.10 配置Redis连接，封装缓存工具类
+- [x] 1.11 配置NestJS模块化结构（craft-showcase/content-management/social-interaction/i-want-feature/ai-assistant/user-auth/admin-dashboard）
+- [x] 1.12 配置@nestjs/swagger，设置全局Swagger插件，生成基础OpenAPI文档（/api/docs）
 - [ ] 1.13 初始化微信小程序项目，配置AppID、分包策略（主包+详情分包）、全局样式变量
-- [ ] 1.14 初始化Web管理后台项目，基于Ant Design Pro脚手架，配置主题色为暖铜色#C4956A
-- [ ] 1.15 Web端配置Vitest测试框架 + MSW（Mock Service Worker）
+- [x] 1.14 初始化Web管理后台项目，基于Ant Design Pro脚手架，配置主题色为暖铜色#C4956A
+- [x] 1.15 Web端配置Vitest测试框架 + MSW（Mock Service Worker）
 - [ ] 1.16 Web端配置openapi-typescript，基于服务端OpenAPI JSON生成TypeScript类型
-- [ ] 1.17 配置项目README（项目简介、技术栈、快速启动指南，引用docs/development.md）
-- [ ] 1.18 实现StorageService抽象层（IStorageService接口 + StorageModule + 根据STORAGE_PROVIDER环境变量切换Provider）
-- [ ] 1.19 实现MinIO StorageProvider（预签名URL生成、文件上传确认、文件删除、文件URL获取）
+- [x] 1.17 配置项目README（项目简介、技术栈、快速启动指南，引用docs/development.md）
+- [x] 1.18 实现StorageService抽象层（IStorageService接口 + StorageModule + 根据STORAGE_PROVIDER环境变量切换Provider）
+- [x] 1.19 实现MinIO StorageProvider（预签名URL生成、文件上传确认、文件删除、文件URL获取）
 - [ ] 1.20 实现OSS StorageProvider（阿里云/腾讯云SDK集成，接口与MinIO Provider一致，生产阶段使用）
-- [ ] 1.21 实现ImageProcessorService（Sharp：3种尺寸缩略图生成200x200/400x400/原图，WebP格式转换）
+- [x] 1.21 实现ImageProcessorService（Sharp：3种尺寸缩略图生成200x200/400x400/原图，WebP格式转换）
 - [ ] 1.22 StorageService + ImageProcessorService单元测试
 
 ## 2. 设计系统与基础组件
