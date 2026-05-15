@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>我想要 - 意向提交</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "canvas-bg": "#F5F5F5",
+                        "success": "#52C41A",
+                        "tertiary-container": "#7da4ba",
+                        "error-container": "#ffdad6",
+                        "background": "#fff8f5",
+                        "on-primary-fixed": "#2d1600",
+                        "on-tertiary-fixed-variant": "#234b5e",
+                        "surface-container-high": "#f0e6e1",
+                        "on-error": "#ffffff",
+                        "secondary": "#745a3a",
+                        "secondary-fixed-dim": "#e3c19a",
+                        "inverse-on-surface": "#f9efe9",
+                        "divider": "#E5E5E5",
+                        "copper-warm": "#C4956A",
+                        "surface-container-low": "#fcf2ec",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#3c6377",
+                        "secondary-container": "#fedab2",
+                        "tertiary-fixed": "#c1e8ff",
+                        "primary-fixed-dim": "#f0bd8f",
+                        "surface-dim": "#e2d8d3",
+                        "slate-gray": "#666666",
+                        "primary-fixed": "#ffdcbf",
+                        "on-tertiary-container": "#0d3a4d",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#eae1db",
+                        "surface": "#fff8f5",
+                        "camel-light": "#E8D5C0",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#2a1801",
+                        "on-surface-variant": "#50453b",
+                        "on-background": "#1f1b18",
+                        "warning": "#FAAD14",
+                        "on-primary-container": "#4e2e0c",
+                        "wood-deep": "#8B6F4E",
+                        "primary": "#7d5630",
+                        "on-primary-fixed-variant": "#623f1b",
+                        "secondary-fixed": "#ffddb7",
+                        "surface-tint": "#7d5630",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#5a4225",
+                        "surface-bright": "#fff8f5",
+                        "ink-black": "#2D2D2D",
+                        "outline-variant": "#d4c3b7",
+                        "tertiary-fixed-dim": "#a4cce3",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#785e3e",
+                        "surface-container-highest": "#eae1db",
+                        "primary-container": "#c4956a",
+                        "surface-container": "#f6ece6",
+                        "inverse-primary": "#f0bd8f",
+                        "error": "#FF4D4F",
+                        "inverse-surface": "#342f2c",
+                        "outline": "#82756a",
+                        "on-surface": "#1f1b18",
+                        "on-tertiary-fixed": "#001e2b",
+                        "celadon-green": "#7BA98F",
+                        "mist-gray": "#999999"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "8rpx",
+                        "card-padding": "24rpx",
+                        "xl": "48rpx",
+                        "gutter": "16rpx",
+                        "md": "24rpx",
+                        "base": "8rpx",
+                        "lg": "32rpx",
+                        "page-margin": "32rpx",
+                        "sm": "16rpx"
+                    },
+                    "fontFamily": {
+                        "body": ["inter"],
+                        "h3": ["beVietnamPro"],
+                        "h2": ["beVietnamPro"],
+                        "helper": ["inter"],
+                        "h1": ["beVietnamPro"],
+                        "tag": ["inter"]
+                    },
+                    "fontSize": {
+                        "body": ["28rpx", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h3": ["28rpx", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "h2": ["32rpx", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "helper": ["24rpx", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "h1": ["36rpx", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "tag": ["20rpx", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'inter', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+@keyframes slide-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out forwards;
+}
+</style></head>
+<body class="bg-surface text-on-surface antialiased h-screen w-screen overflow-hidden">
+<!-- Mock Background for Context (Detail Page Content obscured by overlay) -->
+<div class="h-full w-full bg-canvas-bg p-page-margin">
+<div class="h-64 w-full bg-camel-light rounded-lg mb-4" data-alt="A soft, blurred placeholder background showing a glimpse of a wooden craft studio, warm lighting, out of focus, minimalist modern tactile aesthetic."></div>
+<div class="h-8 w-1/2 bg-surface-variant rounded mb-2"></div>
+<div class="h-4 w-3/4 bg-surface-variant rounded mb-6"></div>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 bg-ink-black/40 z-40 flex flex-col justify-end backdrop-blur-sm">
+<!-- Half-Screen Panel -->
+<div class="bg-surface-container-lowest w-full rounded-t-xl p-[32px] pb-[48px] shadow-[0_-8px_24px_rgba(0,0,0,0.12)] animate-slide-up">
+<!-- Header -->
+<div class="flex justify-between items-center mb-[32px]">
+<h2 class="font-h1 text-h1 text-ink-black">我想要</h2>
+<button class="text-mist-gray hover:text-ink-black flex items-center justify-center p-1">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<!-- Intent Type Selection -->
+<div class="mb-[32px]">
+<h3 class="font-h3 text-h3 text-on-surface-variant mb-[16px]">意向类型</h3>
+<div class="grid grid-cols-3 gap-[16px]">
+<!-- Option 1: Selected -->
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="intent" type="radio" value="collect"/>
+<div class="flex flex-col items-center justify-center p-[24px] rounded-lg border-2 border-transparent bg-canvas-bg text-slate-gray peer-checked:bg-surface-container peer-checked:border-copper-warm peer-checked:text-primary transition-colors transition-transform scale-105 text-center">
+<span class="material-symbols-outlined mb-[8px] text-[24px]" data-icon="favorite" data-weight="fill" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-body text-body whitespace-nowrap">喜欢想收藏</span>
+</div>
+</label>
+<!-- Option 2: Unselected -->
+<label class="cursor-pointer">
+<input class="peer sr-only" name="intent" type="radio" value="customize"/>
+<div class="flex flex-col items-center justify-center p-[24px] rounded-lg border-2 border-transparent bg-canvas-bg text-slate-gray peer-checked:bg-surface-container peer-checked:border-copper-warm peer-checked:text-primary transition-colors transition-transform text-center">
+<span class="material-symbols-outlined mb-[8px] text-[24px]" data-icon="palette">palette</span>
+<span class="font-body text-body whitespace-nowrap">想定制</span>
+</div>
+</label>
+<!-- Option 3: Unselected -->
+<label class="cursor-pointer">
+<input class="peer sr-only" name="intent" type="radio" value="learn_more"/>
+<div class="flex flex-col items-center justify-center p-[24px] rounded-lg border-2 border-transparent bg-canvas-bg text-slate-gray peer-checked:bg-surface-container peer-checked:border-copper-warm peer-checked:text-primary transition-colors transition-transform text-center">
+<span class="material-symbols-outlined mb-[8px] text-[24px]" data-icon="info">info</span>
+<span class="font-body text-body whitespace-nowrap">想了解更多</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Message Area -->
+<div class="mb-[48px]">
+<h3 class="font-h3 text-h3 text-on-surface-variant mb-[16px]">留言</h3>
+<textarea class="w-full bg-canvas-bg border border-transparent rounded-lg p-[24px] font-body text-body text-ink-black placeholder-mist-gray focus:border-copper-warm focus:ring-0 resize-none h-32" placeholder="告诉作者你的想法..."></textarea>
+</div>
+<!-- Submit Button -->
+<button class="w-full bg-copper-warm text-on-primary font-h2 text-h2 py-[16px] rounded-lg shadow-sm hover:opacity-90 flex justify-center items-center">
+                提交意向
+            </button>
+</div>
+</div>
+</body></html>

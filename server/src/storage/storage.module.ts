@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { IStorageService } from './storage.interface';
 import { MinioProvider } from './providers/minio.provider';
+import { OssProvider } from './providers/oss.provider';
 import { ImageProcessorService } from './image-processor.service';
 
 /**
@@ -21,8 +22,7 @@ import { ImageProcessorService } from './image-processor.service';
           case 'minio':
             return new MinioProvider(configService);
           case 'oss':
-            // 生产阶段使用OSS Provider，当前预留占位
-            throw new Error('OSS Provider 尚未实现，请使用 minio 作为 STORAGE_PROVIDER');
+            return new OssProvider(configService);
           default:
             throw new Error(`不支持的 STORAGE_PROVIDER: ${provider}`);
         }

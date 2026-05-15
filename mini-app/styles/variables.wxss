@@ -1,0 +1,67 @@
+/* ==================== 色彩系统 ==================== */
+
+/* 主色 */
+@primary: #C4956A;
+@primary-light: #D4AA85;
+@primary-dark: #8B6F4E;
+
+/* 辅助色 */
+@secondary-wood: #8B6F4E;
+@secondary-camel: #E8D5C0;
+@secondary-celadon: #7BA98F;
+
+/* 中性色 */
+@text-heading: #2D2D2D;
+@text-body: #666666;
+@text-secondary: #999999;
+@divider: #E5E5E5;
+@bg-page: #F5F5F5;
+@bg-card: #FFFFFF;
+
+/* 语义色 */
+@color-success: #52C41A;
+@color-warning: #FAAD14;
+@color-error: #FF4D4F;
+
+/* ==================== 字体系统 ==================== */
+
+/* 字号 */
+@font-h1: 36rpx;
+@font-h2: 32rpx;
+@font-h3: 28rpx;
+@font-body: 28rpx;
+@font-secondary: 24rpx;
+@font-tag: 20rpx;
+
+/* 字重 */
+@weight-normal: 400;
+@weight-medium: 500;
+@weight-bold: 600;
+
+/* ==================== 间距系统 ==================== */
+
+/* 基准单位 8rpx */
+@spacing-xs: 8rpx;
+@spacing-sm: 16rpx;
+@spacing-md: 24rpx;
+@spacing-lg: 32rpx;
+@spacing-xl: 48rpx;
+
+/* 页面边距 */
+@page-padding: 32rpx;
+
+/* 卡片内边距 */
+@card-padding: 24rpx;
+
+/* ==================== 圆角系统 ==================== */
+
+@radius-sm: 8rpx;
+@radius-md: 16rpx;
+@radius-lg: 24rpx;
+@radius-full: 50%;
+
+/* ==================== 阴影系统 ==================== */
+
+@shadow-card: 0 2rpx 12rpx rgba(0, 0, 0, 0.08);
+@shadow-popup: 0 8rpx 24rpx rgba(0, 0, 0, 0.12);
+@shadow-float: 0 16rpx 48rpx rgba(0, 0, 0, 0.16);

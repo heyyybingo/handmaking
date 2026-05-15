@@ -1,0 +1,415 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Craft Creation Form</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Be+Vietnam+Pro:wght@600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "mist-gray": "#999999",
+                        "secondary": "#745a3a",
+                        "outline-variant": "#d4c3b7",
+                        "on-tertiary-fixed-variant": "#234b5e",
+                        "success": "#52C41A",
+                        "on-tertiary-container": "#0d3a4d",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#fedab2",
+                        "surface-container-high": "#f0e6e1",
+                        "surface-tint": "#7d5630",
+                        "camel-light": "#E8D5C0",
+                        "surface-container-low": "#fcf2ec",
+                        "primary-container": "#c4956a",
+                        "on-primary-container": "#4e2e0c",
+                        "inverse-surface": "#342f2c",
+                        "tertiary-fixed-dim": "#a4cce3",
+                        "ink-black": "#2D2D2D",
+                        "on-secondary-container": "#785e3e",
+                        "on-surface": "#1f1b18",
+                        "divider": "#E5E5E5",
+                        "surface-container": "#f6ece6",
+                        "on-surface-variant": "#50453b",
+                        "inverse-primary": "#f0bd8f",
+                        "inverse-on-surface": "#f9efe9",
+                        "celadon-green": "#7BA98F",
+                        "surface": "#fff8f5",
+                        "on-primary-fixed-variant": "#623f1b",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#ffdcbf",
+                        "on-error": "#ffffff",
+                        "canvas-bg": "#F5F5F5",
+                        "surface-bright": "#fff8f5",
+                        "error": "#FF4D4F",
+                        "primary": "#7d5630",
+                        "on-tertiary-fixed": "#001e2b",
+                        "secondary-fixed-dim": "#e3c19a",
+                        "wood-deep": "#8B6F4E",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#7da4ba",
+                        "primary-fixed-dim": "#f0bd8f",
+                        "on-primary-fixed": "#2d1600",
+                        "on-secondary-fixed": "#2a1801",
+                        "outline": "#82756a",
+                        "warning": "#FAAD14",
+                        "copper-warm": "#C4956A",
+                        "background": "#fff8f5",
+                        "slate-gray": "#666666",
+                        "surface-container-highest": "#eae1db",
+                        "secondary-fixed": "#ffddb7",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#c1e8ff",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#5a4225",
+                        "tertiary": "#3c6377",
+                        "on-background": "#1f1b18",
+                        "surface-variant": "#eae1db",
+                        "surface-dim": "#e2d8d3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24rpx",
+                        "card-padding": "24rpx",
+                        "page-margin": "32rpx",
+                        "xs": "8rpx",
+                        "lg": "32rpx",
+                        "gutter": "16rpx",
+                        "xl": "48rpx",
+                        "sm": "16rpx",
+                        "base": "8rpx"
+                    },
+                    "fontFamily": {
+                        "helper": ["inter"],
+                        "h3": ["beVietnamPro"],
+                        "h1": ["beVietnamPro"],
+                        "body": ["inter"],
+                        "tag": ["inter"],
+                        "h2": ["beVietnamPro"]
+                    },
+                    "fontSize": {
+                        "helper": ["24rpx", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "h3": ["28rpx", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "h1": ["36rpx", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "body": ["28rpx", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "tag": ["20rpx", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "h2": ["32rpx", { "lineHeight": "1.4", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Floating Preview Styles */
+        .preview-window {
+            transition: height 0.3s ease, width 0.3s ease, transform 0.3s ease;
+        }
+        .preview-collapsed {
+            height: 48px !important;
+            overflow: hidden;
+        }
+        .preview-fullscreen {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            z-index: 9999 !important;
+            border-radius: 0 !important;
+            transform: none !important;
+        }
+        .preview-content {
+            transition: opacity 0.2s ease;
+        }
+        .preview-collapsed .preview-content {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+<script>
+        function togglePreviewCollapse() {
+            const preview = document.getElementById('floating-preview');
+            const icon = document.getElementById('collapse-icon');
+            preview.classList.toggle('preview-collapsed');
+            if (preview.classList.contains('preview-collapsed')) {
+                icon.innerText = 'expand_more';
+            } else {
+                icon.innerText = 'expand_less';
+            }
+        }
+
+        function togglePreviewFullscreen() {
+            const preview = document.getElementById('floating-preview');
+            const icon = document.getElementById('fullscreen-icon');
+            preview.classList.toggle('preview-fullscreen');
+            if (preview.classList.contains('preview-fullscreen')) {
+                icon.innerText = 'fullscreen_exit';
+            } else {
+                icon.innerText = 'fullscreen';
+            }
+        }
+        
+        // Simple drag functionality for demonstration
+        document.addEventListener('DOMContentLoaded', () => {
+            const dragHandle = document.getElementById('drag-handle');
+            const preview = document.getElementById('floating-preview');
+            let isDragging = false;
+            let currentX;
+            let currentY;
+            let initialX;
+            let initialY;
+            let xOffset = 0;
+            let yOffset = 0;
+
+            dragHandle.addEventListener('mousedown', dragStart);
+            document.addEventListener('mouseup', dragEnd);
+            document.addEventListener('mousemove', drag);
+
+            function dragStart(e) {
+                if (preview.classList.contains('preview-fullscreen')) return;
+                initialX = e.clientX - xOffset;
+                initialY = e.clientY - yOffset;
+                if (e.target === dragHandle || dragHandle.contains(e.target)) {
+                    isDragging = true;
+                }
+            }
+
+            function dragEnd(e) {
+                initialX = currentX;
+                initialY = currentY;
+                isDragging = false;
+            }
+
+            function drag(e) {
+                if (isDragging) {
+                    e.preventDefault();
+                    currentX = e.clientX - initialX;
+                    currentY = e.clientY - initialY;
+                    xOffset = currentX;
+                    yOffset = currentY;
+                    setTranslate(currentX, currentY, preview);
+                }
+            }
+
+            function setTranslate(xPos, yPos, el) {
+                el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
+            }
+        });
+    </script>
+<style data-stitch-cursor=""></style><style data-stitch-scroll-lock=""></style></head>
+<body class="bg-background text-on-background font-body min-h-screen">
+<!-- TopAppBar -->
+<header class="docked full-width top-0 bg-surface dark:bg-surface-dim flex justify-between items-center w-full px-page-margin h-12 flat no shadows z-50 fixed border-b border-divider">
+<div class="flex items-center gap-2 text-primary dark:text-primary-fixed hover:opacity-80 transition-opacity cursor-pointer">
+<span class="material-symbols-outlined text-xl">menu</span>
+</div>
+<div class="font-h1 text-h1 text-primary dark:text-primary-fixed">温暖匠心</div>
+<div class="w-6"></div> <!-- Spacer for centering -->
+</header>
+<main class="pt-20 pb-24 px-page-margin max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 h-full relative">
+<!-- Left: Floating Mobile Preview -->
+<section class="md:col-span-4 lg:col-span-3 flex flex-col h-full sticky top-24 self-start hidden md:flex z-40">
+<div class="preview-window fixed top-24 left-8 w-[360px] bg-surface-container-lowest rounded-xl shadow-lg border border-divider flex flex-col h-[700px] overflow-hidden" id="floating-preview" style="z-index: 100;">
+<!-- Window Header -->
+<div class="h-12 bg-surface-container-high border-b border-divider flex items-center justify-between px-3 cursor-move select-none" id="drag-handle">
+<div class="flex items-center gap-2 text-mist-gray">
+<span class="material-symbols-outlined text-[20px]">drag_indicator</span>
+<span class="font-h3 text-[14px] text-on-surface">实时预览</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-variant text-slate-gray transition-colors" onclick="togglePreviewCollapse()" title="折叠/展开" type="button">
+<span class="material-symbols-outlined text-[20px]" id="collapse-icon">expand_less</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-variant text-slate-gray transition-colors" onclick="togglePreviewFullscreen()" title="全屏" type="button">
+<span class="material-symbols-outlined text-[20px]" id="fullscreen-icon">fullscreen</span>
+</button>
+</div>
+</div>
+<!-- Preview Content (Immersive Rich Text Design) -->
+<div class="preview-content flex-1 overflow-y-auto no-scrollbar bg-canvas-bg relative">
+<!-- Header Image -->
+<div class="relative w-full h-64 bg-surface-variant overflow-hidden">
+<img alt="Craft details" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCk5M2HJk8lDIhGzP7E7XoEooaqcwtotvFJ3BMmehkjXAkhThVskPG6GSB3lnaCxwy3oDhf4Kx_CILo3cafw43rDKuBC8PyDxEaVLqc0ObN95YlDqaZUSqyOReVP1FsSeyArMp4UlRU5esE22HqmeEERN0yeco0Vza3y3WBBORx_e9H45Na3gJieP7fLs85ac5f-t1j9fUIGgN5Ya9ZGDHUMPvdaCtLBEBPbtIKV-JKUl5JU997jnwTM0-h0U2YC_-SFtl-xdNrgw">
+<div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/50 to-transparent"></div>
+</div>
+<!-- Content Area -->
+<div class="relative -mt-6 bg-surface-container-lowest rounded-t-[24px] z-10 px-6 pt-8 pb-12 shadow-[0_-4px_16px_rgba(0,0,0,0.08)]">
+<div class="flex flex-col gap-3 mb-6">
+<h1 class="font-h1 text-[28px] font-bold text-ink-black leading-tight">复古皮革手工挎包</h1>
+<div class="flex items-center">
+<span class="bg-surface-container text-copper-warm font-tag text-[12px] px-3 py-1 rounded-full border border-divider">皮具手作</span>
+</div>
+</div>
+<!-- Maker Info -->
+<div class="flex items-center gap-3 mb-6 bg-surface-container-low p-3 rounded-xl border border-surface-variant/50">
+<img alt="Maker" class="w-10 h-10 rounded-full object-cover border-2 border-surface-container-lowest shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPAfw5rSraH-vFG3tQTyUZ1bp4eme2t5HZ9yZLmwIRNNzDbsZLKcPeY8KlzH6E77B1zVSLq2iBStWRVfWd-Azl9q_Pd8KYE-ZAkD9muVlpeVbZlb2Y7F3gLwOZE8mmSY-MWgQwlGjGzIWK5vWW82cwX9aZKDf1IelbmdYZ2khvBsybnJEOFp-k7sVwo7knKkafMGxQZX67ajJu53l6ed4F-5rDd8b5CWwUNzBP9QJzEhFdjUJrdBO3qbsAarJfHpAhgJknGSJWng">
+<div class="flex-1">
+<div class="font-h3 text-[14px] text-on-surface">匠人老李</div>
+<div class="font-helper text-[12px] text-mist-gray">刚刚发布</div>
+</div>
+</div>
+<!-- Rich Text Content -->
+<article class="font-body text-[14px] text-on-surface-variant leading-relaxed space-y-4">
+<p class="">意大利进口植鞣头层牛皮，纯手工裁切、打孔、缝线。保留原始纹理，随时间呈现独特包浆。每一处纹路都是自然的馈赠，记录着光阴的故事。</p>
+<img alt="Tools" class="w-full rounded-xl shadow-sm object-cover my-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzcnGGyHx3ZOXGRA17JtdUV7iigrTtOGeLAK7BQUh_mHUVRrZVz4aawPZmFrXDXJD04UiwMWNDHPXJ2tXPF7eGDLRmmuH8d3QSBJBj0zX7VBgdKr593dde6BDcA6ToRsq2kQxGTXZ4LWKVBA7ARk0EMqJlmOU4kbf5FJI7OI0v8pPARjafqLUOtof983IYhsnfu0_lf0E-1BaVfkHCT1l8w9szyze-IY8r8f9PdY5JRe6uG2dPOlKoxLYX03K27Vkp3X9gC_xbdA">
+<p class="">设计灵感源于60年代老式邮差包，简化冗余装饰，回归核心储物功能。我们选用了高强度蜡线进行手工缝合，确保包身经久耐用，陪伴你走过更多街道。</p>
+<p class="">五金件采用纯铜材质并经过手工做旧处理，带有淡淡的复古光泽。内部设计了多功能夹层，方便收纳日常小物，让优雅与实用并存。</p>
+</article>
+</div>
+<!-- Mock Bottom Action Bar -->
+<div class="sticky bottom-0 left-0 w-full bg-surface-container-lowest border-t border-divider px-6 py-3 flex items-center justify-between shadow-[0_-2px_12px_rgba(0,0,0,0.04)] z-20">
+<div class="flex gap-4 text-mist-gray">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+</div>
+<button class="bg-copper-warm text-white px-6 py-2 rounded-full font-h3 text-[14px] shadow-sm">
+                        我想要
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Right: Form Area -->
+<section class="md:col-span-8 lg:col-span-12 xl:col-span-9 flex flex-col gap-6 ml-auto md:w-full xl:w-[calc(100%-400px)] transition-all">
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-divider p-6 lg:p-8">
+<h1 class="font-h1 text-h1 text-ink-black mb-8 border-b border-divider pb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-copper-warm">edit_document</span>
+                    发布新手作
+                </h1>
+<form class="flex flex-col gap-8">
+<!-- Media Upload -->
+<div class="flex flex-col gap-2">
+<label class="font-h3 text-h3 text-on-surface flex items-center gap-1">
+                            作品图片 <span class="text-error">*</span>
+</label>
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+<!-- Draggable Upload Area -->
+<div class="col-span-2 sm:col-span-3 lg:col-span-4 border-2 border-dashed border-outline-variant bg-surface-container rounded-lg p-8 flex flex-col items-center justify-center text-slate-gray hover:bg-surface-container-high transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-4xl mb-2 text-outline group-hover:text-primary transition-colors">cloud_upload</span>
+<p class="font-body text-body text-center">拖拽图片到此处，或 <span class="text-primary underline">点击上传</span></p>
+<p class="font-helper text-helper text-mist-gray mt-1">支持 JPG, PNG 格式，最多 9 张</p>
+</div>
+</div>
+</div>
+<!-- Title -->
+<div class="flex flex-col gap-2">
+<label class="font-h3 text-h3 text-on-surface flex items-center justify-between">
+<span class="">作品名称 <span class="text-error">*</span></span>
+<button class="text-celadon-green hover:text-success flex items-center gap-1 font-tag text-tag transition-colors h-6" type="button">
+<span class="material-symbols-outlined text-[16px]">magic_button</span> AI 建议标题
+                            </button>
+</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-4 font-body text-body text-on-surface focus:border-copper-warm focus:ring-1 focus:ring-copper-warm outline-none transition-shadow placeholder:text-mist-gray h-10" placeholder="输入能打动人的作品名称..." type="text">
+</div>
+<!-- Description -->
+<div class="flex flex-col gap-2">
+<label class="font-h3 text-h3 text-on-surface flex items-center justify-between">
+<span class="">详细介绍 <span class="text-error">*</span></span>
+<button class="text-celadon-green hover:text-success flex items-center gap-1 font-tag text-tag transition-colors bg-celadon-green/10 px-2 rounded h-6" type="button">
+<span class="material-symbols-outlined text-[16px]">edit_note</span> AI 润色文案
+                            </button>
+</label>
+<div class="w-full bg-surface border border-outline-variant rounded-lg flex flex-col overflow-hidden focus-within:border-copper-warm focus-within:ring-1 focus-within:ring-copper-warm transition-shadow">
+<div class="border-b border-outline-variant p-2 flex gap-1 bg-surface-container-lowest">
+<button class="p-1.5 text-slate-gray hover:bg-surface-container hover:text-ink-black rounded transition-colors" title="加粗" type="button"><span class="material-symbols-outlined text-[18px]">format_bold</span></button>
+<button class="p-1.5 text-slate-gray hover:bg-surface-container hover:text-ink-black rounded transition-colors" title="斜体" type="button"><span class="material-symbols-outlined text-[18px]">format_italic</span></button>
+<div class="w-px h-5 bg-divider my-auto mx-1"></div>
+<button class="p-1.5 text-slate-gray hover:bg-surface-container hover:text-ink-black rounded transition-colors" title="无序列表" type="button"><span class="material-symbols-outlined text-[18px]">format_list_bulleted</span></button>
+<button class="p-1.5 text-slate-gray hover:bg-surface-container hover:text-ink-black rounded transition-colors" title="有序列表" type="button"><span class="material-symbols-outlined text-[18px]">format_list_numbered</span></button>
+<div class="w-px h-5 bg-divider my-auto mx-1"></div>
+<button class="p-1.5 text-slate-gray hover:bg-surface-container hover:text-ink-black rounded transition-colors" title="插入图片" type="button"><span class="material-symbols-outlined text-[18px]">insert_photo</span></button>
+<button class="p-1.5 text-slate-gray hover:bg-surface-container hover:text-ink-black rounded transition-colors" title="插入链接" type="button"><span class="material-symbols-outlined text-[18px]">link</span></button>
+</div>
+<div class="p-4 min-h-[200px] font-body text-body text-on-surface outline-none">
+<p class="mb-4">选用景德镇原矿高白泥，经过1300度高温烧制，手工拉胚，每一根线条都保留了手作的温度...</p>
+<div class="w-full bg-surface-variant h-48 flex flex-col items-center justify-center rounded-lg my-4 text-mist-gray border border-dashed border-outline-variant">
+<span class="material-symbols-outlined text-4xl mb-2">image</span>
+<span class="font-helper text-helper">图片占位 (全宽展示)</span>
+</div>
+<p class="mt-4">底部保留了原始的粗陶质感，与釉面的温润形成鲜明对比。</p>
+</div>
+</div>
+</div>
+<!-- Category & Tags Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Category -->
+<div class="flex flex-col gap-2">
+<label class="font-h3 text-h3 text-on-surface">分类</label>
+<select class="w-full bg-surface border border-outline-variant rounded-lg px-4 font-body text-body text-on-surface focus:border-copper-warm focus:ring-1 focus:ring-copper-warm outline-none transition-shadow appearance-none h-10">
+<option disabled="" selected="" value="">选择分类</option>
+<option value="ceramics">陶瓷</option>
+<option value="woodwork">木作</option>
+<option value="leather">皮具</option>
+<option value="textile">织物</option>
+</select>
+</div>
+<!-- Tags -->
+<div class="flex flex-col gap-2">
+<label class="font-h3 text-h3 text-on-surface flex items-center justify-between">
+                                标签
+                                <button class="text-celadon-green hover:text-success flex items-center gap-1 font-tag text-tag transition-colors h-6" type="button">
+<span class="material-symbols-outlined text-[16px]">lightbulb</span> 智能推荐
+                                </button>
+</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-4 font-body text-body text-on-surface focus:border-copper-warm focus:ring-1 focus:ring-copper-warm outline-none transition-shadow placeholder:text-mist-gray h-10" placeholder="输入标签，按回车添加..." type="text">
+<div class="flex flex-wrap gap-2 mt-1">
+<span class="bg-camel-light/50 text-wood-deep px-3 py-1 rounded-full font-tag text-tag flex items-center gap-1">手工 <span class="material-symbols-outlined text-[14px] cursor-pointer hover:text-error">close</span></span>
+<span class="bg-camel-light/50 text-wood-deep px-3 py-1 rounded-full font-tag text-tag flex items-center gap-1">原创设计 <span class="material-symbols-outlined text-[14px] cursor-pointer hover:text-error">close</span></span>
+</div>
+</div>
+</div>
+<!-- Status Toggle -->
+<div class="flex items-center justify-between py-4 border-t border-divider mt-4">
+<div class="flex flex-col">
+<span class="font-h3 text-h3 text-on-surface">公开可见</span>
+<span class="font-helper text-helper text-mist-gray">关闭后仅自己可见，适合作为草稿存放</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value="">
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-success"></div>
+</label>
+</div>
+<!-- Actions -->
+<div class="flex items-center justify-end gap-4 pt-6 border-t border-divider mt-4">
+<button class="px-6 py-2 rounded-lg font-body text-body text-on-surface-variant hover:bg-surface-container-high transition-colors" type="button">取消</button>
+<button class="px-6 py-2 rounded-lg font-body text-body text-primary border border-primary hover:bg-primary-container/20 transition-colors" type="button">存为草稿</button>
+<button class="px-8 py-2 rounded-lg font-body text-body bg-copper-warm text-white hover:bg-primary transition-colors shadow-sm transform hover:-translate-y-0.5 active:translate-y-0" type="button">发布作品</button>
+</div>
+</form>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="docked full-width bottom-0 rounded-t-xl bg-surface-container-lowest dark:bg-inverse-surface shadow-sm fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-20 md:hidden">
+<a class="flex flex-col items-center justify-center text-slate-gray dark:text-mist-gray px-4 py-1 hover:bg-surface-container-high transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-tag text-tag">首页</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-secondary-container/30 dark:bg-secondary/20 rounded-xl px-4 py-1 scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined fill">edit_document</span>
+<span class="font-tag text-tag">发布</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-gray dark:text-mist-gray px-4 py-1 hover:bg-surface-container-high transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-tag text-tag">我的</span>
+</a>
+</nav>
+
+
+</body></html>

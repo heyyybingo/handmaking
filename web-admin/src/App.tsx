@@ -1,22 +1,26 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
+import AdminLayout from '@/layouts/AdminLayout';
+import LoginPage from '@/pages/login';
+import DashboardPage from '@/pages/dashboard';
+import CraftsPage from '@/pages/crafts';
+import CategoriesPage from '@/pages/categories';
+import CommentsPage from '@/pages/comments';
+import IntentsPage from '@/pages/intents';
+import ConfigPage from '@/pages/config';
 
-/**
- * 根组件
- * 定义路由结构，包含登录页和后台管理布局
- * 后续各业务页面在对应模块中添加
- */
 function App() {
   return (
     <Routes>
-      {/* 登录页 */}
-      <Route path="/login" element={<div>登录页（待实现）</div>} />
-
-      {/* 管理后台布局 */}
-      <Route path="/" element={<div>管理后台布局（待实现）</div>}>
-        {/* 后续添加子路由：仪表盘、作品管理、分类管理等 */}
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/" element={<AdminLayout />}>
+        <Route index element={<Navigate to="/dashboard" replace />} />
+        <Route path="dashboard" element={<DashboardPage />} />
+        <Route path="crafts" element={<CraftsPage />} />
+        <Route path="categories" element={<CategoriesPage />} />
+        <Route path="comments" element={<CommentsPage />} />
+        <Route path="intents" element={<IntentsPage />} />
+        <Route path="config" element={<ConfigPage />} />
       </Route>
-
-      {/* 未匹配路由重定向到首页 */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

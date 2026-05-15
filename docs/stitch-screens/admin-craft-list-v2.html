@@ -1,0 +1,361 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Craft Management List</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Be+Vietnam+Pro:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "mist-gray": "#999999",
+                        "secondary": "#745a3a",
+                        "outline-variant": "#d4c3b7",
+                        "on-tertiary-fixed-variant": "#234b5e",
+                        "success": "#52C41A",
+                        "on-tertiary-container": "#0d3a4d",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#fedab2",
+                        "surface-container-high": "#f0e6e1",
+                        "surface-tint": "#7d5630",
+                        "camel-light": "#E8D5C0",
+                        "surface-container-low": "#fcf2ec",
+                        "primary-container": "#c4956a",
+                        "on-primary-container": "#4e2e0c",
+                        "inverse-surface": "#342f2c",
+                        "tertiary-fixed-dim": "#a4cce3",
+                        "ink-black": "#2D2D2D",
+                        "on-secondary-container": "#785e3e",
+                        "on-surface": "#1f1b18",
+                        "divider": "#E5E5E5",
+                        "surface-container": "#f6ece6",
+                        "on-surface-variant": "#50453b",
+                        "inverse-primary": "#f0bd8f",
+                        "inverse-on-surface": "#f9efe9",
+                        "celadon-green": "#7BA98F",
+                        "surface": "#fff8f5",
+                        "on-primary-fixed-variant": "#623f1b",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#ffdcbf",
+                        "on-error": "#ffffff",
+                        "canvas-bg": "#F5F5F5",
+                        "surface-bright": "#fff8f5",
+                        "error": "#FF4D4F",
+                        "primary": "#7d5630",
+                        "on-tertiary-fixed": "#001e2b",
+                        "secondary-fixed-dim": "#e3c19a",
+                        "wood-deep": "#8B6F4E",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#7da4ba",
+                        "primary-fixed-dim": "#f0bd8f",
+                        "on-primary-fixed": "#2d1600",
+                        "on-secondary-fixed": "#2a1801",
+                        "outline": "#82756a",
+                        "warning": "#FAAD14",
+                        "copper-warm": "#C4956A",
+                        "background": "#fff8f5",
+                        "slate-gray": "#666666",
+                        "surface-container-highest": "#eae1db",
+                        "secondary-fixed": "#ffddb7",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#c1e8ff",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#5a4225",
+                        "tertiary": "#3c6377",
+                        "on-background": "#1f1b18",
+                        "surface-variant": "#eae1db",
+                        "surface-dim": "#e2d8d3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24rpx",
+                        "card-padding": "24rpx",
+                        "page-margin": "32rpx",
+                        "xs": "8rpx",
+                        "lg": "32rpx",
+                        "gutter": "16rpx",
+                        "xl": "48rpx",
+                        "sm": "16rpx",
+                        "base": "8rpx"
+                    },
+                    "fontFamily": {
+                        "helper": ["inter"],
+                        "h3": ["beVietnamPro"],
+                        "h1": ["beVietnamPro"],
+                        "body": ["inter"],
+                        "tag": ["inter"],
+                        "h2": ["beVietnamPro"]
+                    },
+                    "fontSize": {
+                        "helper": ["24rpx", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "h3": ["28rpx", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "h1": ["36rpx", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "body": ["28rpx", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "tag": ["20rpx", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "h2": ["32rpx", {"lineHeight": "1.4", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style data-stitch-cursor=""></style><style data-stitch-scroll-lock=""></style></head>
+<body class="bg-canvas-bg min-h-screen text-on-surface font-body text-body">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation (Mock) -->
+<aside class="w-64 bg-surface-container-lowest border-r border-divider flex flex-col hidden md:flex">
+<div class="h-16 flex items-center px-6 border-b border-divider">
+<span class="font-h1 text-h1 text-primary">温暖匠心 Admin</span>
+</div>
+<nav class="flex-1 overflow-y-auto py-4">
+<a class="flex items-center px-6 py-3 text-primary bg-primary-container/10 border-r-2 border-primary" href="#">
+<span class="material-symbols-outlined mr-3">view_quilt</span>
+<span class="font-h3 text-h3">Craft Management</span>
+</a>
+<a class="flex items-center px-6 py-3 text-slate-gray hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined mr-3">category</span>
+<span class="font-h3 text-h3">Categories</span>
+</a>
+<a class="flex items-center px-6 py-3 text-slate-gray hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined mr-3">group</span>
+<span class="font-h3 text-h3">Users</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-screen overflow-hidden">
+<!-- Top App Bar -->
+<header class="h-16 bg-surface-container-lowest border-b border-divider flex items-center justify-between px-8 z-10 shadow-sm">
+<div class="flex items-center">
+<button class="md:hidden mr-4 text-on-surface">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-h2 text-h2 text-on-surface">Craft Management</h1>
+</div>
+<div class="flex items-center space-x-4">
+<button class="text-slate-gray hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-camel-light flex items-center justify-center text-primary font-h3 text-h3">
+                        A
+                    </div>
+</div>
+</header>
+<!-- Scrollable Canvas -->
+<div class="flex-1 overflow-y-auto p-8">
+<!-- Search & Filter Card -->
+<div class="bg-surface-container-lowest rounded-lg shadow-sm border border-divider p-6 mb-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Search Input -->
+<div class="flex flex-col space-y-2">
+<label class="font-tag text-tag text-slate-gray">Craft Title</label>
+<div class="relative">
+<input class="w-full h-10 pl-3 pr-10 rounded border border-outline-variant bg-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors font-body text-body text-on-surface placeholder:text-mist-gray" placeholder="Search title..." type="text">
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-mist-gray">search</span>
+</div>
+</div>
+<!-- Category Dropdown -->
+<div class="flex flex-col space-y-2">
+<label class="font-tag text-tag text-slate-gray">Category</label>
+<div class="relative">
+<select class="w-full h-10 pl-3 pr-10 rounded border border-outline-variant bg-surface appearance-none focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors font-body text-body text-on-surface">
+<option value="">All Categories</option>
+<option value="ceramics">Ceramics</option>
+<option value="woodwork">Woodwork</option>
+<option value="textiles">Textiles</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-mist-gray pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Status Dropdown -->
+<div class="flex flex-col space-y-2">
+<label class="font-tag text-tag text-slate-gray">Status</label>
+<div class="relative">
+<select class="w-full h-10 pl-3 pr-10 rounded border border-outline-variant bg-surface appearance-none focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors font-body text-body text-on-surface">
+<option value="">All Statuses</option>
+<option value="published">Published</option>
+<option value="draft">Draft</option>
+<option value="archived">Archived</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-mist-gray pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Date Range (Mock) -->
+<div class="flex flex-col space-y-2">
+<label class="font-tag text-tag text-slate-gray">Date Range</label>
+<div class="relative flex items-center">
+<input class="w-1/2 h-10 pl-3 rounded-l border border-outline-variant bg-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors font-body text-body text-on-surface placeholder:text-mist-gray border-r-0" placeholder="Start Date" type="text">
+<div class="h-10 border-t border-b border-outline-variant bg-surface flex items-center px-2 text-mist-gray">~</div>
+<input class="w-1/2 h-10 pl-3 rounded-r border border-outline-variant bg-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors font-body text-body text-on-surface placeholder:text-mist-gray border-l-0" placeholder="End Date" type="text">
+</div>
+</div>
+</div>
+<div class="flex justify-end mt-6 space-x-4">
+<button class="px-6 rounded bg-surface border border-outline-variant text-on-surface hover:bg-surface-container-low transition-colors font-body text-body h-10">
+                            Reset
+                        </button>
+<button class="px-6 rounded bg-primary text-on-primary hover:opacity-90 transition-opacity font-body text-body shadow-[0_2px_12px_rgba(0,0,0,0.08)] h-10">
+                            Search
+                        </button>
+</div>
+</div>
+<!-- Data Table Card -->
+<div class="bg-surface-container-lowest rounded-lg shadow-sm border border-divider">
+<!-- Toolbar -->
+<div class="flex items-center justify-between p-6 border-b border-divider">
+<h2 class="font-h3 text-h3 text-on-surface">Crafts List</h2>
+<div class="flex space-x-4">
+<button class="flex items-center px-4 py-2 rounded border border-outline-variant text-on-surface hover:bg-surface-container-low transition-colors font-body text-body">
+<span class="material-symbols-outlined mr-2 text-[18px]">upload</span>
+                                Bulk Upload
+                            </button>
+<button class="flex items-center px-4 py-2 rounded border border-outline-variant text-on-surface hover:bg-surface-container-low transition-colors font-body text-body">
+<span class="material-symbols-outlined mr-2 text-[18px]">download</span>
+                                Export
+                            </button>
+<button class="flex items-center px-4 py-2 rounded bg-primary text-on-primary hover:opacity-90 transition-opacity font-body text-body shadow-[0_2px_12px_rgba(0,0,0,0.08)]">
+<span class="material-symbols-outlined mr-2 text-[18px]">add</span>
+                                Create New
+                            </button>
+</div>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container border-b border-divider">
+<th class="p-4 font-h3 text-h3 text-slate-gray whitespace-nowrap">Thumbnail</th>
+<th class="p-4 font-h3 text-h3 text-slate-gray whitespace-nowrap">Title</th>
+<th class="p-4 font-h3 text-h3 text-slate-gray whitespace-nowrap">Category</th>
+<th class="p-4 font-h3 text-h3 text-slate-gray whitespace-nowrap">Status</th>
+<th class="p-4 font-h3 text-h3 text-slate-gray whitespace-nowrap">Statistics</th>
+<th class="p-4 font-h3 text-h3 text-slate-gray whitespace-nowrap text-right">Operations</th>
+</tr>
+</thead>
+<tbody>
+<!-- Row 1 -->
+<tr class="border-b border-divider hover:bg-surface-bright transition-colors group">
+<td class="p-4">
+<img alt="A beautifully crafted handmade ceramic bowl resting on a rustic wooden table. The lighting is soft and warm, highlighting the textured, earthy tones of the glaze. The overall aesthetic is minimalist, organic, and grounded in a modern tactile style, emphasizing craftsmanship and warmth." class="w-16 h-16 object-cover rounded border border-divider" data-alt="A beautifully crafted handmade ceramic bowl resting on a rustic wooden table. The lighting is soft and warm, highlighting the textured, earthy tones of the glaze. The overall aesthetic is minimalist, organic, and grounded in a modern tactile style, emphasizing craftsmanship and warmth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnqVcYrhZGMccAYMTEyEg7319_p2hbNRTmiUb2k7aUVXctHCvFM_EyevLeAov1bpyeKnhqQWspWYK2eEdkWC57mqaNvTlIS-CNQUEjff9V-ogxeF1WNadQdFGpTJQb73isqgk5gXQbUj7r2mg8uR8n9ubakOfB0ntb_HkwOQ7DkoF9aHsIID7xv-r0oS6lRJTdj9eV7E1aBGdsyw50LXCtZo_D0ftOfjOULrRDzmR7STEhytAg6I01WnzdadlXmBGo_CXTa5HoNg">
+</td>
+<td class="p-4 font-body text-body text-ink-black font-medium">Rustic Clay Bowl</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-1 rounded bg-camel-light/30 text-secondary font-tag text-tag">Ceramics</span>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-1 rounded bg-success/10 text-success font-tag text-tag">
+<span class="w-1.5 h-1.5 rounded-full bg-success mr-1.5"></span>
+                                            Published
+                                        </span>
+</td>
+<td class="p-4">
+<div class="flex items-center space-x-3 text-slate-gray font-helper text-helper">
+<span class="flex items-center" title="Likes"><span class="material-symbols-outlined text-[16px] mr-1">favorite</span> 124</span>
+<span class="flex items-center" title="Comments"><span class="material-symbols-outlined text-[16px] mr-1">chat_bubble</span> 32</span>
+<span class="flex items-center text-primary" title="Intents"><span class="material-symbols-outlined text-[16px] mr-1">shopping_bag</span> 12</span>
+</div>
+</td>
+<td class="p-4 text-right whitespace-nowrap">
+<button class="text-primary hover:text-wood-deep mx-2 font-body text-body transition-colors">Edit</button>
+<button class="text-secondary hover:text-ink-black mx-2 font-body text-body transition-colors">Preview</button>
+<button class="text-error hover:opacity-80 mx-2 font-body text-body transition-colors">Delete</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-divider hover:bg-surface-bright transition-colors group">
+<td class="p-4">
+<img alt="Hand-carved wooden spoon displayed on a clean, light surface. The wood grain is prominent, showcasing deep, warm tones. The lighting is bright and natural, creating a soft shadow that grounds the object, fitting perfectly into a light-mode, tactile, and minimalist design language." class="w-16 h-16 object-cover rounded border border-divider" data-alt="Hand-carved wooden spoon displayed on a clean, light surface. The wood grain is prominent, showcasing deep, warm tones. The lighting is bright and natural, creating a soft shadow that grounds the object, fitting perfectly into a light-mode, tactile, and minimalist design language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4c_COSE3IOHgPDEv6G4amsgQfYRrqEFp4UygTNvrjFo1nDO4e4Ks_9aFMuAz-mSkx9tG16mUDDNqIw1-zEMwjZMFxIycfa1Vll7q3HtzlWTJbXwzK5K5EYYW923PF0CxWqsicKqGh28V8hdh9Uix9KL1hzv1TkXEZSooZhsR1ajAJNnvgGcHvwXo9oUWYo9yEEZHeIyopf_aRMmL3Z8Uq1xSRPMuJuJLVFtDsvFtV4E7S9g_fkainlhvPCiJX0FQX3jBNoYE6nQ">
+</td>
+<td class="p-4 font-body text-body text-ink-black font-medium">Walnut Serving Spoon</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-1 rounded bg-wood-deep/10 text-wood-deep font-tag text-tag">Woodwork</span>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-1 rounded bg-warning/10 text-warning font-tag text-tag">
+<span class="w-1.5 h-1.5 rounded-full bg-warning mr-1.5"></span>
+                                            Draft
+                                        </span>
+</td>
+<td class="p-4">
+<div class="flex items-center space-x-3 text-slate-gray font-helper text-helper">
+<span class="flex items-center" title="Likes"><span class="material-symbols-outlined text-[16px] mr-1">favorite</span> 0</span>
+<span class="flex items-center" title="Comments"><span class="material-symbols-outlined text-[16px] mr-1">chat_bubble</span> 0</span>
+<span class="flex items-center" title="Intents"><span class="material-symbols-outlined text-[16px] mr-1">shopping_bag</span> 0</span>
+</div>
+</td>
+<td class="p-4 text-right whitespace-nowrap">
+<button class="text-primary hover:text-wood-deep mx-2 font-body text-body transition-colors">Edit</button>
+<button class="text-secondary hover:text-ink-black mx-2 font-body text-body transition-colors">Preview</button>
+<button class="text-error hover:opacity-80 mx-2 font-body text-body transition-colors">Delete</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="p-4">
+<div class="w-16 h-16 bg-surface-container rounded border border-divider flex items-center justify-center text-mist-gray">
+<span class="material-symbols-outlined">image</span>
+</div>
+</td>
+<td class="p-4 font-body text-body text-ink-black font-medium">Linen Throw Blanket</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-1 rounded bg-celadon-green/10 text-celadon-green font-tag text-tag">Textiles</span>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-1 rounded bg-slate-gray/10 text-slate-gray font-tag text-tag">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-gray mr-1.5"></span>
+                                            Archived
+                                        </span>
+</td>
+<td class="p-4">
+<div class="flex items-center space-x-3 text-slate-gray font-helper text-helper">
+<span class="flex items-center" title="Likes"><span class="material-symbols-outlined text-[16px] mr-1">favorite</span> 89</span>
+<span class="flex items-center" title="Comments"><span class="material-symbols-outlined text-[16px] mr-1">chat_bubble</span> 14</span>
+<span class="flex items-center" title="Intents"><span class="material-symbols-outlined text-[16px] mr-1">shopping_bag</span> 2</span>
+</div>
+</td>
+<td class="p-4 text-right whitespace-nowrap">
+<button class="text-primary hover:text-wood-deep mx-2 font-body text-body transition-colors">Edit</button>
+<button class="text-secondary hover:text-ink-black mx-2 font-body text-body transition-colors">Preview</button>
+<button class="text-error hover:opacity-80 mx-2 font-body text-body transition-colors">Delete</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination (Mock) -->
+<div class="flex items-center justify-between p-4 border-t border-divider bg-surface-container-lowest rounded-b-lg">
+<span class="font-helper text-helper text-slate-gray">Showing 1 to 3 of 42 entries</span>
+<div class="flex space-x-1">
+<button class="w-8 h-8 rounded border border-outline-variant flex items-center justify-center text-slate-gray hover:bg-surface-container-low transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded bg-primary text-on-primary flex items-center justify-center font-body text-body">1</button>
+<button class="w-8 h-8 rounded border border-outline-variant flex items-center justify-center text-on-surface hover:bg-surface-container-low transition-colors font-body text-body">2</button>
+<button class="w-8 h-8 rounded border border-outline-variant flex items-center justify-center text-on-surface hover:bg-surface-container-low transition-colors font-body text-body">3</button>
+<span class="w-8 h-8 flex items-center justify-center text-slate-gray">...</span>
+<button class="w-8 h-8 rounded border border-outline-variant flex items-center justify-center text-slate-gray hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+
+</body></html>

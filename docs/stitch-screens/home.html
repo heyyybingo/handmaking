@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>温暖匠心</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Be+Vietnam+Pro:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "canvas-bg": "#F5F5F5",
+                        "success": "#52C41A",
+                        "tertiary-container": "#7da4ba",
+                        "error-container": "#ffdad6",
+                        "background": "#fff8f5",
+                        "on-primary-fixed": "#2d1600",
+                        "on-tertiary-fixed-variant": "#234b5e",
+                        "surface-container-high": "#f0e6e1",
+                        "on-error": "#ffffff",
+                        "secondary": "#745a3a",
+                        "secondary-fixed-dim": "#e3c19a",
+                        "inverse-on-surface": "#f9efe9",
+                        "divider": "#E5E5E5",
+                        "copper-warm": "#C4956A",
+                        "surface-container-low": "#fcf2ec",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#3c6377",
+                        "secondary-container": "#fedab2",
+                        "tertiary-fixed": "#c1e8ff",
+                        "primary-fixed-dim": "#f0bd8f",
+                        "surface-dim": "#e2d8d3",
+                        "slate-gray": "#666666",
+                        "primary-fixed": "#ffdcbf",
+                        "on-tertiary-container": "#0d3a4d",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#eae1db",
+                        "surface": "#fff8f5",
+                        "camel-light": "#E8D5C0",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#2a1801",
+                        "on-surface-variant": "#50453b",
+                        "on-background": "#1f1b18",
+                        "warning": "#FAAD14",
+                        "on-primary-container": "#4e2e0c",
+                        "wood-deep": "#8B6F4E",
+                        "primary": "#7d5630",
+                        "on-primary-fixed-variant": "#623f1b",
+                        "secondary-fixed": "#ffddb7",
+                        "surface-tint": "#7d5630",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#5a4225",
+                        "surface-bright": "#fff8f5",
+                        "ink-black": "#2D2D2D",
+                        "outline-variant": "#d4c3b7",
+                        "tertiary-fixed-dim": "#a4cce3",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#785e3e",
+                        "surface-container-highest": "#eae1db",
+                        "primary-container": "#c4956a",
+                        "surface-container": "#f6ece6",
+                        "inverse-primary": "#f0bd8f",
+                        "error": "#FF4D4F",
+                        "inverse-surface": "#342f2c",
+                        "outline": "#82756a",
+                        "on-surface": "#1f1b18",
+                        "on-tertiary-fixed": "#001e2b",
+                        "celadon-green": "#7BA98F",
+                        "mist-gray": "#999999"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "card-padding": "24px",
+                        "xl": "48px",
+                        "gutter": "16px",
+                        "md": "24px",
+                        "base": "8px",
+                        "lg": "32px",
+                        "page-margin": "32px",
+                        "sm": "16px",
+                        "safe": "env(safe-area-inset-bottom)"
+                    },
+                    "fontFamily": {
+                        "body": ["Inter"],
+                        "h3": ["Be Vietnam Pro"],
+                        "h2": ["Be Vietnam Pro"],
+                        "helper": ["Inter"],
+                        "h1": ["Be Vietnam Pro"],
+                        "tag": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body": ["14px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h3": ["14px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "h2": ["16px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "helper": ["12px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "h1": ["18px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "tag": ["10px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+</style></head>
+<body class="bg-canvas-bg min-h-screen text-on-surface pb-[90px] pt-[48px]">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-40 bg-surface dark:bg-surface-dim flex justify-between items-center px-page-margin h-12 shadow-sm">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="menu">menu</span>
+</div>
+<h1 class="font-h1 text-h1 text-primary dark:text-primary-fixed font-bold tracking-tight">温暖匠心</h1>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="search">search</span>
+</div>
+</header>
+<!-- Main Content: Waterfall Layout -->
+<main class="px-page-margin py-lg max-w-7xl mx-auto">
+<div class="columns-2 gap-gutter space-y-gutter">
+<!-- Card 1 -->
+<article class="break-inside-avoid bg-surface-container-lowest rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.08)] overflow-hidden flex flex-col animate-fade-in-up">
+<div class="relative w-full aspect-[4/5]">
+<img alt="Card Image" class="w-full h-full object-cover" data-alt="A beautifully crafted handmade clay teapot resting on a rustic wooden table. The scene is bathed in warm, soft, natural light coming from a nearby window, emphasizing the raw, organic texture of the pottery. The aesthetic is calm, tactile, and grounded in craftsmanship, utilizing a palette of rich earth tones, deep woods, and soft grays to evoke a sense of quiet artistry and traditional skills." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy1OyXityIwYiuWWZiKa_1mIXUyGZDVo2ttgeEnH9oRQwkgmuasMCcEkl6pRIMyowpAofKYf77hBEpIKuq8qbN8GKB2Dux_qR8h7lVdO_AocQVnvQdI0mztDejsa15eLFqFMTvThXaHfkOg6Pr3xeIr2cnI-uWcd0hqjs7eIOo8qq4cEsLfkGm6Fizz2nfQzKbVicU42JMK2S4WC11wLPi2gq_71sgOam3gXFKs2WxjdwqcwOr2FL3PizLAmwTJXy2aYP_fGTLrQ"/>
+</div>
+<div class="p-3 flex flex-col gap-2">
+<h2 class="font-h3 text-h3 text-ink-black line-clamp-2">手工紫砂壶 - 岁月静好系列</h2>
+<div class="flex items-center justify-between mt-auto pt-1">
+<span class="font-tag text-tag text-mist-gray bg-surface-container px-2 py-1 rounded whitespace-nowrap">陶艺</span>
+<div class="flex items-center gap-1 text-mist-gray inline-flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]" data-icon="favorite" style="font-variation-settings: 'FILL' 0;">favorite</span>
+<span class="font-helper text-helper">342</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="break-inside-avoid bg-surface-container-lowest rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.08)] overflow-hidden flex flex-col animate-fade-in-up">
+<div class="relative w-full aspect-[3/4]">
+<img alt="Card Image" class="w-full h-full object-cover" data-alt="A delicate piece of floral embroidery securely held in a wooden embroidery hoop, resting on a crisp white linen cloth. The embroidery features subtle, pastel-colored threads arranged in an intricate botanical pattern. Soft, diffused overhead lighting creates a gentle, serene atmosphere. The visual style is minimal yet warm, emphasizing the meticulous detail of the handcraft while maintaining a clean, high-key light mode aesthetic with soft whites and warm accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl7UqrfRg_Ghobr4mRN18nvdOx9oEtCbOj4TRbtLMN7N9LqBp3nESH-c-9scxjUT0dS6Q5boTw-YNmEcW3gEXz7vkb2xvLYQlJQu8Mwnwttx7TL9YVoIeoxx6I-Gj8q2kf364nls2XBGbk3ipoRPSpyaSwRDrUuufWOLknkSdAm23f0E9GAgHnDj70X8_EEtOMb-_vJ8UjAhRDjG6xt9T_I6HeL2fOqwpq2-maK_BDuU6EGaeJYefXBrORu4ghV3O6qlZuwxkAzA"/>
+</div>
+<div class="p-3 flex flex-col gap-2">
+<h2 class="font-h3 text-h3 text-ink-black line-clamp-2">法式刺绣 - 春日花卉</h2>
+<div class="flex items-center justify-between mt-auto pt-1">
+<span class="font-tag text-tag text-mist-gray bg-surface-container px-2 py-1 rounded whitespace-nowrap">刺绣</span>
+<div class="flex items-center gap-1 text-mist-gray inline-flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]" data-icon="favorite" style="font-variation-settings: 'FILL' 0;">favorite</span>
+<span class="font-helper text-helper">56</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="break-inside-avoid bg-surface-container-lowest rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.08)] overflow-hidden flex flex-col animate-fade-in-up">
+<div class="relative w-full aspect-square">
+<img alt="Card Image" class="w-full h-full object-cover" data-alt="A close-up shot of a partially finished hand-woven rattan basket sitting on a sunlit workbench. Intricate weaving patterns are clearly visible, highlighting the artisan's skill. The lighting is warm and directional, casting soft shadows that enhance the three-dimensional texture of the natural materials. The overall mood is inspiring and deeply connected to nature, perfectly aligned with a modern tactile design aesthetic using warm copper and woody hues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByktaZxL2ZK18tSdJCGMl3Uwf0i4Nl86-rUf1hJTImz2ddFEVy8ftQNVBJYFPucjhACpKDLF9wlB1EDL7sGMTmR_UYKifLF9iH4gecc4tcJuK2202A-r8f3CfkOFnn4RJTHOo5dy_UyZVfRTR84qdx1ImFdSiVnYV59vsPa9Yr-ZOhkMQlTBYGd9OtwHbQ1G5zonFCktcVImV9OmkF6uHl4sRjPuVP6T5Y-QUWW9Cj6DlvHEOPSCGhLMDlzs0uaP9W9tO7TCJvRg"/>
+</div>
+<div class="p-3 flex flex-col gap-2">
+<h2 class="font-h3 text-h3 text-ink-black line-clamp-2">藤编收纳篮 - 自然的馈赠</h2>
+<div class="flex items-center justify-between mt-auto pt-1">
+<span class="font-tag text-tag text-mist-gray bg-surface-container px-2 py-1 rounded whitespace-nowrap">编织</span>
+<div class="flex items-center gap-1 text-mist-gray inline-flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]" data-icon="favorite" style="font-variation-settings: 'FILL' 0;">favorite</span>
+<span class="font-helper text-helper">128</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="break-inside-avoid bg-surface-container-lowest rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.08)] overflow-hidden flex flex-col animate-fade-in-up">
+<div class="relative w-full aspect-[4/3]">
+<img alt="Card Image" class="w-full h-full object-cover" data-alt="A meticulously crafted handmade leather wallet, rich in a deep, warm copper tone, resting alongside traditional leatherworking tools on a dark oak workbench. The leather shows subtle natural grain and precision hand-stitching. The lighting is moody yet warm, highlighting the polished finish of the leather and the metallic gleam of the tools. The image conveys a profound sense of artisanal heritage and robust, tactile craftsmanship." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7xBJ_aEuj32Vx9evEYOakTqdm5ozNaojYV1CGSshhnxiUhJo7XS3IY3LIas7aQwqeGtw9n3Dq_f-AlQLPeg05lImcbrppScJCpP-g52F5Te626BSQFG0aLs4fdgSpuWExjXkXoeifs6FhuahzAW-Q3EATkOZ0ZBuIKhBILJyHwAikI9a0Ef0efsavCEljnf_SJ8riJQJlEy6Jy6H3nxBd7gOJWIC9oz4shjZ-q23ZDDjtniOI1SdItfwsA0OSKap8zC0pG7byoQ"/>
+</div>
+<div class="p-3 flex flex-col gap-2">
+<h2 class="font-h3 text-h3 text-ink-black line-clamp-2">植鞣革手工钱包 - 经典复古</h2>
+<div class="flex items-center justify-between mt-auto pt-1">
+<span class="font-tag text-tag text-mist-gray bg-surface-container px-2 py-1 rounded whitespace-nowrap">皮具</span>
+<div class="flex items-center gap-1 text-mist-gray inline-flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]" data-icon="favorite" style="font-variation-settings: 'FILL' 0;">favorite</span>
+<span class="font-helper text-helper">892</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-[100px] right-6 z-50 w-14 h-14 bg-copper-warm text-white rounded-full shadow-lg flex items-center justify-center hover:bg-opacity-90 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-copper-warm md:hidden active:scale-95 duration-200 flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl" data-icon="category">category</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-20 bg-surface-container-lowest dark:bg-inverse-surface shadow-sm rounded-t-xl md:hidden">
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-secondary-container/30 dark:bg-secondary/20 rounded-xl px-4 py-1 hover:opacity-80 transition-transform duration-200 scale-95 active:scale-95 transition-all duration-300 transition-all duration-300 ease-in-out">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-tag text-tag mt-1 whitespace-nowrap">首页</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-gray dark:text-mist-gray px-4 py-1 hover:bg-surface-container-high rounded-xl transition-colors active:scale-95 transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="category" style="font-variation-settings: 'FILL' 0;">category</span>
+<span class="font-tag text-tag mt-1 whitespace-nowrap">分类</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-gray dark:text-mist-gray px-4 py-1 hover:bg-surface-container-high rounded-xl transition-colors active:scale-95 transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-tag text-tag mt-1 whitespace-nowrap">我的</span>
+</button>
+</nav>
+</body></html>

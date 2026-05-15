@@ -1,0 +1,304 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>评论管理</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "copper-warm": "#C4956A",
+                    "on-surface": "#1f1b18",
+                    "tertiary-container": "#7da4ba",
+                    "on-secondary-fixed": "#2a1801",
+                    "wood-deep": "#8B6F4E",
+                    "warning": "#FAAD14",
+                    "secondary-fixed-dim": "#e3c19a",
+                    "secondary": "#745a3a",
+                    "surface-container": "#f6ece6",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed": "#c1e8ff",
+                    "secondary-container": "#fedab2",
+                    "surface-bright": "#fff8f5",
+                    "primary-fixed-dim": "#f0bd8f",
+                    "primary": "#7d5630",
+                    "outline": "#82756a",
+                    "inverse-surface": "#342f2c",
+                    "background": "#fff8f5",
+                    "surface-tint": "#7d5630",
+                    "on-primary": "#ffffff",
+                    "error": "#FF4D4F",
+                    "celadon-green": "#7BA98F",
+                    "slate-gray": "#666666",
+                    "primary-fixed": "#ffdcbf",
+                    "on-tertiary-container": "#0d3a4d",
+                    "surface": "#fff8f5",
+                    "on-surface-variant": "#50453b",
+                    "mist-gray": "#999999",
+                    "tertiary": "#3c6377",
+                    "camel-light": "#E8D5C0",
+                    "surface-container-high": "#f0e6e1",
+                    "tertiary-fixed-dim": "#a4cce3",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#623f1b",
+                    "surface-variant": "#eae1db",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-container": "#4e2e0c",
+                    "surface-dim": "#e2d8d3",
+                    "on-tertiary-fixed-variant": "#234b5e",
+                    "on-primary-fixed": "#2d1600",
+                    "success": "#52C41A",
+                    "secondary-fixed": "#ffddb7",
+                    "canvas-bg": "#F5F5F5",
+                    "primary-container": "#c4956a",
+                    "on-tertiary-fixed": "#001e2b",
+                    "divider": "#E5E5E5",
+                    "on-secondary-fixed-variant": "#5a4225",
+                    "on-secondary-container": "#785e3e",
+                    "inverse-on-surface": "#f9efe9",
+                    "on-error": "#ffffff",
+                    "on-background": "#1f1b18",
+                    "surface-container-low": "#fcf2ec",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#f0bd8f",
+                    "surface-container-highest": "#eae1db",
+                    "ink-black": "#2D2D2D",
+                    "outline-variant": "#d4c3b7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "16rpx",
+                    "md": "24rpx",
+                    "page-margin": "32rpx",
+                    "card-padding": "24rpx",
+                    "xs": "8rpx",
+                    "lg": "32rpx",
+                    "base": "8rpx",
+                    "gutter": "16rpx",
+                    "xl": "48rpx"
+            },
+            "fontFamily": {
+                    "h1": ["Be Vietnam Pro", "sans-serif"],
+                    "tag": ["Inter", "sans-serif"],
+                    "body": ["Inter", "sans-serif"],
+                    "helper": ["Inter", "sans-serif"],
+                    "h2": ["Be Vietnam Pro", "sans-serif"],
+                    "h3": ["Be Vietnam Pro", "sans-serif"]
+            },
+            "fontSize": {
+                    "h1": ["2.25rem", { "lineHeight": "1.4", "fontWeight": "600" }],
+                    "tag": ["0.75rem", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                    "body": ["0.875rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                    "helper": ["0.75rem", { "lineHeight": "1.4", "fontWeight": "400" }],
+                    "h2": ["1.5rem", { "lineHeight": "1.4", "fontWeight": "600" }],
+                    "h3": ["1.125rem", { "lineHeight": "1.4", "fontWeight": "600" }]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style data-stitch-cursor=""></style><style data-stitch-scroll-lock=""></style></head>
+<body class="bg-canvas-bg text-on-surface font-body min-h-screen flex">
+<!-- Sidebar Navigation -->
+<nav class="w-64 bg-surface-container-lowest border-r border-divider hidden md:flex flex-col">
+<div class="p-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-copper-warm text-3xl">handyman</span>
+<span class="font-h2 text-h2 text-copper-warm">温暖匠心</span>
+</div>
+<div class="flex-1 px-4 py-2 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-gray hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body text-body">工作台</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-gray hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-body text-body">作品管理</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-secondary-container/30 text-primary font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">forum</span>
+<span class="font-body text-body">评论管理</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-gray hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body text-body">数据分析</span>
+</a>
+</div>
+<div class="p-4 border-t border-divider">
+<div class="flex items-center gap-3 px-4 py-2">
+<img alt="Avatar" class="w-8 h-8 rounded-full object-cover" data-alt="A portrait of a female artisan with a warm, welcoming smile, standing in a brightly lit woodworking studio. The setting features subtle wood textures and copper tools. The lighting is soft and natural, emphasizing a modern tactile aesthetic. The overall mood is approachable, creative, and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOYjNJnO1QpFsTy9LO9ysJq8cOBGq4w_NK3GAbe0l8PpEQ3uq6tf2W24rtUtSUUTygZWT_hwz6SBFOV_TeHTabJGt3QO8GkvpQ-yGVlZsoASOHF-sLy9vhut_Zx2zG3SFz3stXBj_8dfYJ31GNQv44mn_towInW2m3OSJhkbMN0Td_l0ZSD8iO273p8IGFnJRj_p2WZAjMq0_Ljunm6-hP4gzluTJTjzdnxrJzFzSut5GG9RRORUIkQBeHqeO2y1ZH427dcHg7-g">
+<div>
+<div class="font-body text-body font-medium">匠人小林</div>
+<div class="font-helper text-helper text-mist-gray">退出登录</div>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0">
+<!-- Top App Bar (Mobile) -->
+<header class="md:hidden bg-surface flex justify-between items-center w-full px-page-margin h-12 shadow-sm relative z-10">
+<span class="material-symbols-outlined text-primary cursor-pointer">menu</span>
+<span class="font-h2 text-h2 text-primary font-bold">评论管理</span>
+<span class="material-symbols-outlined text-primary cursor-pointer">search</span>
+</header>
+<!-- Page Header -->
+<div class="p-6 md:p-8">
+<div class="flex justify-between items-center mb-6">
+<h1 class="font-h1 text-h1 text-ink-black">评论管理</h1>
+</div>
+<!-- Filter Section -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm mb-6 flex flex-wrap gap-4 items-end">
+<div class="flex-1 min-w-[200px]">
+<label class="block font-helper text-helper text-slate-gray mb-2">作品标题</label>
+<input class="w-full px-4 py-2 rounded-lg border border-outline-variant bg-surface focus:outline-none focus:border-copper-warm focus:ring-1 focus:ring-copper-warm font-body text-body text-on-surface h-\[40px\]" placeholder="请输入作品名称" type="text">
+</div>
+<div class="flex-1 min-w-[200px]">
+<label class="block font-helper text-helper text-slate-gray mb-2">评论时间</label>
+<div class="flex items-center border border-outline-variant rounded-lg bg-surface px-4 h-\[40px\]">
+<input class="bg-transparent border-none outline-none font-body text-body text-on-surface flex-1 w-full text-sm" type="date">
+<span class="mx-2 text-mist-gray">-</span>
+<input class="bg-transparent border-none outline-none font-body text-body text-on-surface flex-1 w-full text-sm" type="date">
+</div>
+</div>
+<div class="flex-1 min-w-[200px]">
+<label class="block font-helper text-helper text-slate-gray mb-2">状态</label>
+<select class="w-full px-4 py-2 rounded-lg border border-outline-variant bg-surface focus:outline-none focus:border-copper-warm focus:ring-1 focus:ring-copper-warm font-body text-body text-on-surface appearance-none h-\[40px\]">
+<option value="">全部状态</option>
+<option value="pending">待回复</option>
+<option value="replied">已回复</option>
+</select>
+</div>
+<div class="flex gap-3">
+<button class="px-6 rounded-lg border border-outline-variant bg-surface text-on-surface font-body text-body hover:bg-surface-variant transition-colors h-\[40px\]">重置</button>
+<button class="px-6 rounded-lg bg-copper-warm text-on-primary font-body text-body hover:opacity-90 transition-opacity h-\[40px\]">查询</button>
+</div>
+</div>
+<!-- Table/List Section -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<!-- Table Header -->
+<div class="grid grid-cols-12 gap-4 px-6 py-4 bg-surface-container-low border-b border-divider font-body text-body font-semibold text-slate-gray hidden md:grid">
+<div class="col-span-3">评论人及内容</div>
+<div class="col-span-3">关联作品</div>
+<div class="col-span-2">评论时间</div>
+<div class="col-span-2">状态</div>
+<div class="col-span-2 text-right">操作</div>
+</div>
+<!-- List Items -->
+<div class="divide-y divide-divider">
+<!-- Item 1: Pending -->
+<div class="p-6 md:p-0 md:grid md:grid-cols-12 md:gap-4 md:items-start md:px-6 md:py-5 hover:bg-surface-container-low/50 transition-colors">
+<!-- Comment Info -->
+<div class="col-span-3 flex gap-3 mb-4 md:mb-0">
+<img alt="User" class="w-10 h-10 rounded-full object-cover flex-shrink-0" data-alt="A portrait of a young woman with a thoughtful expression, set against a soft, blurred background. The lighting is warm and natural, highlighting a cozy, modern tactile aesthetic. The color palette features subtle earth tones and soft beige." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKlftHEVBCEKI6yGvZGknKdggejZ5PSeEhr-Xa_lc-kPXgKa8xet2Wa2obb55pcBB0QBVkOSGqKp3rcOaNl1OKP6r3JVbGK9pHrXPTlbByS5gV7CZAb7tea9yFrmy1soK8G4zwgTtgBqiaMq7tkh3u0gvP6NvY1MtaNBR_uexL4Vbawwn8gi9hGM3uFtsaf7KbXsxNklhmpur6x5xaBzI-Yux1EJ8p-4MUge0iVMt8YScEPW5mVt6cHWTpECv03MdzoiB4edmxzQ">
+<div>
+<div class="font-body text-body font-medium text-ink-black">手作爱好者小芳</div>
+<div class="font-body text-body text-on-surface-variant mt-1 line-clamp-2">这个木质果盘的纹理太漂亮了！请问有上漆吗？还是纯天然的木蜡油处理的？非常想入手一个。</div>
+</div>
+</div>
+<!-- Product Info -->
+<div class="col-span-3 flex gap-3 items-center mb-4 md:mb-0 bg-surface-variant/30 p-2 rounded-lg md:bg-transparent md:p-0">
+<img alt="Product" class="w-12 h-12 rounded object-cover flex-shrink-0" data-alt="A beautifully crafted wooden fruit bowl resting on a clean, light-colored surface. The wood grain is clearly visible, showing deep warm copper and brown tones. The lighting is soft and directional, creating a gentle shadow that grounds the object. The overall aesthetic is minimalist, warm, and highly tactile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAG0mwDSC5nH1eeB_6Rq6cHlVNLyB7YgK41psZ9r54wzbABx9Y8gILo32Y_p86Qp8bqq-kUugn6ILRuBOIs8Zwq1ZUMwdqB-EwEeEQDMQuA53rqODQ6KVB1_PB353cb9Va-gtdBINdLkddxDQBwQk1_Vd-NFVku5dB4iRIAXQveruQtHhzRE6A93de5U4ztolPLIOC27UikcpdFgF5vVEMVS7_x8MLz9rTjcYN18BxeoA0WQ3RgHqshYkCFoV2gt1FYqcPUnUvdvw">
+<div class="font-body text-body text-slate-gray line-clamp-2">黑胡桃木手工雕琢果盘 限量款</div>
+</div>
+<!-- Time -->
+<div class="col-span-2 font-helper text-helper text-mist-gray mb-4 md:mb-0 md:pt-2">
+                            2023-10-24 14:30
+                        </div>
+<!-- Status -->
+<div class="col-span-2 mb-4 md:mb-0 md:pt-2">
+<span class="inline-flex items-center px-2 py-1 rounded bg-camel-light/30 text-wood-deep font-tag text-tag">待回复</span>
+</div>
+<!-- Actions -->
+<div class="col-span-2 flex gap-3 md:justify-end md:pt-1">
+<button class="text-copper-warm font-body text-body hover:opacity-80 transition-opacity">回复</button>
+<button class="text-error font-body text-body hover:opacity-80 transition-opacity">删除</button>
+</div>
+<!-- Inline Reply Box (Expanded for Item 1) -->
+<div class="col-span-12 mt-4 bg-surface-variant/30 rounded-lg p-4 border border-outline-variant/30">
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-3 font-body text-body text-on-surface focus:outline-none focus:border-copper-warm focus:ring-1 focus:ring-copper-warm resize-none h-24 mb-3" placeholder="输入回复内容..."></textarea>
+<div class="flex justify-end gap-3">
+<button class="px-4 py-1.5 rounded-lg border border-outline-variant bg-surface text-slate-gray font-body text-body hover:bg-surface-variant transition-colors text-sm h-\[36px\]">取消</button>
+<button class="px-4 py-1.5 rounded-lg bg-copper-warm text-on-primary font-body text-body hover:opacity-90 transition-opacity text-sm h-\[36px\]">发送回复</button>
+</div>
+</div>
+</div>
+<!-- Item 2: Replied -->
+<div class="p-6 md:p-0 md:grid md:grid-cols-12 md:gap-4 md:items-start md:px-6 md:py-5 hover:bg-surface-container-low/50 transition-colors">
+<!-- Comment Info -->
+<div class="col-span-3 flex gap-3 mb-4 md:mb-0">
+<img alt="User" class="w-10 h-10 rounded-full object-cover flex-shrink-0" data-alt="A portrait of a male craft enthusiast in a casual setting. The background is slightly out of focus, showing subtle hints of a creative workspace with warm wood tones and soft, natural lighting. The overall mood is relaxed and appreciative." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3xnaedHKs_42mNozbslLSLNTVi0CvHzqLDmMB2gVErIPwpPAm6ahaoga7Hi57lcqRNMB04o8T_Uo1H5mqZm4umR_6SjHcwPv6lGQj61NGXzVbjAdgVeTRYUe7ls5TRwhhNrl9otN0vFKdLD9dUzLudFmX9r8cvWn-0hVz-MVYWuiritAvrj5jXGYd87Ct8wU2rFdcAjx_pEjf9zcf0EiUqjpDf9tk-_uVcPKnsbK9fEDDN8PCPGpavu9J-Xaf7bzgizKKD7f4XQ">
+<div>
+<div class="font-body text-body font-medium text-ink-black">老李匠造</div>
+<div class="font-body text-body text-on-surface-variant mt-1 line-clamp-2">做工很扎实，边缘倒角处理得很圆润，是个用心之作。</div>
+<!-- Author Reply Bubble -->
+<div class="mt-3 bg-wood-deep/10 rounded-lg p-3 relative">
+<div class="absolute -top-2 left-4 w-4 h-4 bg-wood-deep/10 rotate-45"></div>
+<div class="flex items-center gap-2 mb-1">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded bg-wood-deep text-on-primary font-tag text-[10px]">我的回复</span>
+<span class="font-helper text-helper text-mist-gray">2023-10-23 09:15</span>
+</div>
+<div class="font-body text-body text-on-surface-variant text-sm">
+                                        感谢老李的认可！边缘确实花了很大力气打磨，希望能给使用者最温润的触感。
+                                    </div>
+</div>
+</div>
+</div>
+<!-- Product Info -->
+<div class="col-span-3 flex gap-3 items-center mb-4 md:mb-0 bg-surface-variant/30 p-2 rounded-lg md:bg-transparent md:p-0">
+<img alt="Product" class="w-12 h-12 rounded object-cover flex-shrink-0" data-alt="A close-up shot of a hand-stitched leather wallet resting on a piece of raw canvas. The leather is a rich, warm copper color, and the stitching details are crisp and artisanal. The lighting highlights the texture of the materials, conveying a sense of quality and craftsmanship." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP8_A1_UuiDAiXHxt914lJfkGxuCeKi-e4PKb6dLRPnqUSSE9DqqTtxDgVX1W9hWYdx0Qm4l5An_KPegtA8_zBIPmmmw4MvFQmgqX-R6zja-KDpuRysMdgTvCat9zCETk6aRhEkPxkXivazC11CF8m2VaBmLK-ACUkyoWJ8KV7TCYgStM1ruVFJD0pS3jiK5IH7VeFOZgBM28pe0OXeTUIq0iBFPM91ihsCeWrTxJ2w_BtUOzvUuW4Q2aAJ6gDUjpCDavZYtN-Zw">
+<div class="font-body text-body text-slate-gray line-clamp-2">植鞣革手工短款钱包 暖铜色</div>
+</div>
+<!-- Time -->
+<div class="col-span-2 font-helper text-helper text-mist-gray mb-4 md:mb-0 md:pt-2">
+                            2023-10-22 18:45
+                        </div>
+<!-- Status -->
+<div class="col-span-2 mb-4 md:mb-0 md:pt-2">
+<span class="inline-flex items-center px-2 py-1 rounded bg-celadon-green/20 text-celadon-green font-tag text-tag">已回复</span>
+</div>
+<!-- Actions -->
+<div class="col-span-2 flex gap-3 md:justify-end md:pt-1">
+<button class="text-copper-warm font-body text-body hover:opacity-80 transition-opacity">补充回复</button>
+<button class="text-error font-body text-body hover:opacity-80 transition-opacity">删除</button>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 border-t border-divider flex justify-between items-center bg-surface-container-lowest">
+<span class="font-helper text-helper text-mist-gray">共 42 条记录</span>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-slate-gray hover:border-copper-warm hover:text-copper-warm disabled:opacity-50 disabled:hover:border-outline-variant disabled:hover:text-slate-gray" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded bg-copper-warm text-on-primary font-body text-body">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-slate-gray hover:border-copper-warm hover:text-copper-warm font-body text-body">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-slate-gray hover:border-copper-warm hover:text-copper-warm font-body text-body">3</button>
+<span class="text-slate-gray">...</span>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-slate-gray hover:border-copper-warm hover:text-copper-warm font-body text-body">5</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-slate-gray hover:border-copper-warm hover:text-copper-warm">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+
+</body></html>

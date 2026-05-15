@@ -1,0 +1,56 @@
+@import './styles/variables.wxss';
+
+/* 全局样式 */
+page {
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Source Han Sans SC', 'Microsoft YaHei', sans-serif;
+  font-size: @font-body;
+  color: @text-body;
+  background-color: @bg-page;
+  line-height: 1.6;
+}
+
+/* 通用类 */
+.container {
+  padding: @page-padding;
+}
+
+.card {
+  background-color: @bg-card;
+  border-radius: @radius-md;
+  box-shadow: @shadow-card;
+  padding: @card-padding;
+}
+
+.text-heading {
+  color: @text-heading;
+  font-weight: @weight-bold;
+}
+
+.text-secondary {
+  color: @text-secondary;
+  font-size: @font-secondary;
+}
+
+.text-primary {
+  color: @primary;
+}
+
+.divider {
+  height: 1rpx;
+  background-color: @divider;
+  margin: @spacing-md 0;
+}
+
+/* 省略号 */
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ellipsis-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
