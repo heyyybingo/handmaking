@@ -1,0 +1,47 @@
+@import '../../styles/variables.wxss';
+
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.nav-bar-content {
+  display: flex;
+  align-items: center;
+  padding: 0 @spacing-md;
+  position: relative;
+}
+
+.nav-back {
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -16rpx;
+}
+
+.back-icon {
+  font-size: 48rpx;
+  font-weight: @weight-bold;
+}
+
+.nav-title {
+  flex: 1;
+  text-align: center;
+}
+
+.title-text {
+  font-size: @font-h3;
+  font-weight: @weight-bold;
+}
+
+.nav-right {
+  width: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}

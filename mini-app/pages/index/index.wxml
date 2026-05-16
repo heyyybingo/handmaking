@@ -1,3 +1,79 @@
-<view class="container">
-  <text class="text-heading">首页</text>
+<view class="page">
+  <!-- 分类横向滚动 -->
+  <scroll-view class="category-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+    <view class="category-list">
+      <view
+        wx:for="{{categories}}"
+        wx:key="id"
+        class="category-item {{activeCategory === item.id ? 'active' : ''}}"
+        data-id="{{item.id}}"
+        bindtap="onCategoryTap"
+      >
+        <text class="category-icon">{{item.icon}}</text>
+        <text class="category-name">{{item.name}}</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 瀑布流 -->
+  <view wx:if="{{loading}}" class="loading-container">
+    <skeleton image rows="{{3}}" />
+    <skeleton image rows="{{3}}" />
+  </view>
+
+  <view wx:elif="{{crafts.length === 0}}" class="empty-container">
+    <empty-state icon="📭" text="还没有作品哦" subtext="敬请期待" />
+  </view>
+
+  <view wx:else class="waterfall">
+    <view class="waterfall-column">
+      <view
+        wx:for="{{crafts}}"
+        wx:key="id"
+        wx:if="{{index % 2 === 0}}"
+        class="waterfall-item"
+        data-id="{{item.id}}"
+        bindtap="onCraftTap"
+      >
+        <card hover>
+          <image class="craft-image" src="{{item.images[0].thumbnailUrl}}" mode="widthFix" lazy-load />
+          <view class="craft-info">
+            <text class="craft-title">{{item.title}}</text>
+            <view class="craft-meta">
+              <tag type="primary" size="small">{{item.category.name}}</tag>
+              <text class="craft-likes">❤️ {{item.like_count}}</text>
+            </view>
+          </view>
+        </card>
+      </view>
+    </view>
+
+    <view class="waterfall-column">
+      <view
+        wx:for="{{crafts}}"
+        wx:key="id"
+        wx:if="{{index % 2 === 1}}"
+        class="waterfall-item"
+        data-id="{{item.id}}"
+        bindtap="onCraftTap"
+      >
+        <card hover>
+          <image class="craft-image" src="{{item.images[0].thumbnailUrl}}" mode="widthFix" lazy-load />
+          <view class="craft-info">
+            <text class="craft-title">{{item.title}}</text>
+            <view class="craft-meta">
+              <tag type="primary" size="small">{{item.category.name}}</tag>
+              <text class="craft-likes">❤️ {{item.like_count}}</text>
+            </view>
+          </view>
+        </card>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载更多 -->
+  <load-more
+    wx:if="{{crafts.length > 0}}"
+    status="{{hasMore ? (loadingMore ? 'loading' : 'noMore') : 'noMore'}}"
+  />
 </view>

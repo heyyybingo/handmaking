@@ -1,0 +1,14 @@
+<view class="nav-bar" style="background-color: {{bgColor}}; padding-top: {{statusBarHeight}}px;">
+  <view class="nav-bar-content" style="height: {{navBarHeight}}px;">
+    <view wx:if="{{back}}" class="nav-back" bindtap="onBack">
+      <text class="back-icon" style="color: {{textColor}}">‹</text>
+    </view>
+    <view class="nav-title">
+      <text class="title-text" style="color: {{textColor}}">{{title}}</text>
+    </view>
+    <view class="nav-right">
+      <slot name="right" />
+    </view>
+  </view>
+</view>
+<view style="height: {{statusBarHeight + navBarHeight}}px;"></view>

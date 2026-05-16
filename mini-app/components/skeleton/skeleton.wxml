@@ -1,0 +1,14 @@
+<view class="skeleton">
+  <view wx:if="{{image}}" class="skeleton-image skeleton-pulse"></view>
+  <view class="skeleton-content">
+    <view wx:if="{{avatar}}" class="skeleton-avatar skeleton-pulse"></view>
+    <view class="skeleton-lines">
+      <view
+        wx:for="{{rows}}"
+        wx:key="index"
+        class="skeleton-line skeleton-pulse"
+        style="width: {{index === rows - 1 ? '60%' : '100%'}}"
+      ></view>
+    </view>
+  </view>
+</view>

@@ -1,4 +1,11 @@
 {
   "navigationBarTitleText": "手作展示",
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "card": "../../components/card/card",
+    "tag": "../../components/tag/tag",
+    "empty-state": "../../components/empty-state/empty-state",
+    "skeleton": "../../components/skeleton/skeleton",
+    "load-more": "../../components/load-more/load-more"
+  }
 }

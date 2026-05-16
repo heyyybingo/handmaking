@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>我的 - 个人中心</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Be+Vietnam+Pro:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "canvas-bg": "#F5F5F5",
+                        "success": "#52C41A",
+                        "tertiary-container": "#7da4ba",
+                        "error-container": "#ffdad6",
+                        "background": "#fff8f5",
+                        "on-primary-fixed": "#2d1600",
+                        "on-tertiary-fixed-variant": "#234b5e",
+                        "surface-container-high": "#f0e6e1",
+                        "on-error": "#ffffff",
+                        "secondary": "#745a3a",
+                        "secondary-fixed-dim": "#e3c19a",
+                        "inverse-on-surface": "#f9efe9",
+                        "divider": "#E5E5E5",
+                        "copper-warm": "#C4956A",
+                        "surface-container-low": "#fcf2ec",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#3c6377",
+                        "secondary-container": "#fedab2",
+                        "tertiary-fixed": "#c1e8ff",
+                        "primary-fixed-dim": "#f0bd8f",
+                        "surface-dim": "#e2d8d3",
+                        "slate-gray": "#666666",
+                        "primary-fixed": "#ffdcbf",
+                        "on-tertiary-container": "#0d3a4d",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#eae1db",
+                        "surface": "#fff8f5",
+                        "camel-light": "#E8D5C0",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#2a1801",
+                        "on-surface-variant": "#50453b",
+                        "on-background": "#1f1b18",
+                        "warning": "#FAAD14",
+                        "on-primary-container": "#4e2e0c",
+                        "wood-deep": "#8B6F4E",
+                        "primary": "#7d5630",
+                        "on-primary-fixed-variant": "#623f1b",
+                        "secondary-fixed": "#ffddb7",
+                        "surface-tint": "#7d5630",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#5a4225",
+                        "surface-bright": "#fff8f5",
+                        "ink-black": "#2D2D2D",
+                        "outline-variant": "#d4c3b7",
+                        "tertiary-fixed-dim": "#a4cce3",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#785e3e",
+                        "surface-container-highest": "#eae1db",
+                        "primary-container": "#c4956a",
+                        "surface-container": "#f6ece6",
+                        "inverse-primary": "#f0bd8f",
+                        "error": "#FF4D4F",
+                        "inverse-surface": "#342f2c",
+                        "outline": "#82756a",
+                        "on-surface": "#1f1b18",
+                        "on-tertiary-fixed": "#001e2b",
+                        "celadon-green": "#7BA98F",
+                        "mist-gray": "#999999"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "card-padding": "24px",
+                        "xl": "48px",
+                        "gutter": "16px",
+                        "md": "24px",
+                        "base": "8px",
+                        "lg": "32px",
+                        "page-margin": "32px",
+                        "sm": "16px"
+                    },
+                    "fontFamily": {
+                        "body": ["Inter", "sans-serif"],
+                        "h3": ["Be Vietnam Pro", "sans-serif"],
+                        "h2": ["Be Vietnam Pro", "sans-serif"],
+                        "helper": ["Inter", "sans-serif"],
+                        "h1": ["Be Vietnam Pro", "sans-serif"],
+                        "tag": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "body": ["14px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h3": ["14px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "h2": ["16px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "helper": ["12px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "h1": ["18px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "tag": ["10px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom, 20px); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+</style></head>
+<body class="bg-canvas-bg font-body text-on-surface min-h-screen flex flex-col antialiased pb-24">
+<!-- Shared Component: TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim flex justify-between items-center w-full px-page-margin h-12 sticky top-0 z-40 full-width">
+<button class="hover:opacity-80 active:opacity-70 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed text-[24px]" data-icon="menu">menu</span>
+</button>
+<h1 class="font-h1 text-h1 text-primary dark:text-primary-fixed font-bold tracking-tight">温暖匠心</h1>
+<div class="w-[24px]"></div> <!-- Spacer for center alignment -->
+</header>
+<main class="flex-1 flex flex-col px-page-margin pt-sm gap-md">
+<!-- User Profile Hero Section -->
+<section class="bg-surface rounded-xl p-card-padding shadow-sm relative overflow-hidden flex flex-col gap-sm animate-fade-in">
+<!-- Decorative subtle background element -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-camel-light/20 rounded-full -translate-y-1/2 translate-x-1/3 blur-2xl pointer-events-none"></div>
+<div class="flex items-center gap-md z-10">
+<div class="w-20 h-20 rounded-full border-2 border-surface-container-high overflow-hidden shrink-0 shadow-sm">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="A close-up, warm-toned portrait functioning as a user profile avatar. The subject is partially visible, bathed in soft, natural light that evokes a cozy, handmade aesthetic. The color palette features rich earthy tones, subtle copper highlights, and a soft beige background, perfectly aligning with the 'Modern Tactile' design system of a boutique craft application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxr3FT2-9YndAGFWO-dJidqAjqJ87cFt-KC7nTjU9Ph_QV2ohrE3Go3DEeJ1vfqqUmZCK5FrgUfWksMTkqznhiKg5aeKbi9RpEhkwfIdTgRXJ8veSepzSxMss2t2tYNH_uvJCT9jZiDY3gbXAC9CAVuTNtN_JdQEAP5JVOwMoJRgbO9R9pPVouaHLnvpa6EjedQiobVw95BwlYVPgS8PP8y3-UyYqME5zqgQKhZauwhLgt4U6nXhZT2uF3Ieb6DXyLh69SkwZ0IQ"/>
+</div>
+<div class="flex flex-col justify-center">
+<h2 class="font-h2 text-h2 text-ink-black mb-1">手作爱好者</h2>
+<button class="flex items-center gap-1 text-copper-warm hover:text-primary transition-colors text-left group whitespace-nowrap flex-nowrap">
+<span class="font-helper text-helper">点击完善个人信息</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-0.5 transition-transform" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="bg-surface rounded-xl py-sm px-card-padding shadow-sm flex justify-between items-center text-center items-stretch">
+<div class="flex flex-col items-center gap-1 flex-1 hover:bg-surface-container-low transition-colors rounded-lg py-2 cursor-pointer">
+<span class="font-h2 text-h2 text-wood-deep">128</span>
+<span class="font-helper text-helper text-slate-gray">我的点赞</span>
+</div>
+<div class="w-px h-8 bg-divider"></div>
+<div class="flex flex-col items-center gap-1 flex-1 hover:bg-surface-container-low transition-colors rounded-lg py-2 cursor-pointer">
+<span class="font-h2 text-h2 text-wood-deep">45</span>
+<span class="font-helper text-helper text-slate-gray">我的关注</span>
+</div>
+<div class="w-px h-8 bg-divider"></div>
+<div class="flex flex-col items-center gap-1 flex-1 hover:bg-surface-container-low transition-colors rounded-lg py-2 cursor-pointer">
+<span class="font-h2 text-h2 text-wood-deep">12</span>
+<span class="font-helper text-helper text-slate-gray">我的留言</span>
+</div>
+</section>
+<!-- Function List -->
+<section class="bg-surface rounded-xl shadow-sm overflow-hidden flex flex-col">
+<button class="flex items-center justify-between w-full p-card-padding hover:bg-surface-container-low transition-colors border-b border-divider/50 group active:bg-surface-container-high">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-container/30 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+</div>
+<span class="font-body text-body text-ink-black">收藏的作品</span>
+</div>
+<span class="material-symbols-outlined text-mist-gray text-[20px] group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="flex items-center justify-between w-full p-card-padding hover:bg-surface-container-low transition-colors border-b border-divider/50 group active:bg-surface-container-high">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-container/30 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+</div>
+<span class="font-body text-body text-ink-black">设置</span>
+</div>
+<span class="material-symbols-outlined text-mist-gray text-[20px] group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="flex items-center justify-between w-full p-card-padding hover:bg-surface-container-low transition-colors group active:bg-surface-container-high">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-container/30 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="info">info</span>
+</div>
+<span class="font-body text-body text-ink-black">关于平台</span>
+</div>
+<span class="material-symbols-outlined text-mist-gray text-[20px] group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</button>
+</section>
+</main>
+<!-- Shared Component: BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-20 shadow-sm bg-surface-container-lowest dark:bg-inverse-surface rounded-t-xl docked">
+<!-- Tab 1: Inactive -->
+<button class="flex flex-col items-center justify-center text-slate-gray dark:text-mist-gray px-4 py-1 hover:bg-surface-container-high transition-colors rounded-xl group w-16">
+<span class="material-symbols-outlined text-[24px] mb-1 group-hover:scale-110 transition-transform" data-icon="home">home</span>
+<span class="font-tag text-tag">首页</span>
+</button>
+<!-- Tab 2: Inactive -->
+<button class="flex flex-col items-center justify-center text-slate-gray dark:text-mist-gray px-4 py-1 hover:bg-surface-container-high transition-colors rounded-xl group w-16">
+<span class="material-symbols-outlined text-[24px] mb-1 group-hover:scale-110 transition-transform" data-icon="category">category</span>
+<span class="font-tag text-tag">分类</span>
+</button>
+<!-- Tab 3: Active (Profile Page) -->
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-secondary-container/30 dark:bg-secondary/20 rounded-xl px-4 py-1 hover:bg-surface-container-high scale-95 transition-transform duration-200 w-16">
+<span class="material-symbols-outlined text-[24px] mb-1" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-tag text-tag font-bold">我的</span>
+</button>
+</nav>
+</body></html>

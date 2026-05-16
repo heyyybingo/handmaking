@@ -1,3 +1,105 @@
-<view class="container">
-  <text class="text-heading">我的</text>
+<view class="page">
+  <!-- 页面标题 -->
+  <view class="page-header">
+    <text class="page-title">温暖匠心</text>
+  </view>
+
+  <!-- 未登录状态 -->
+  <view wx:if="{{!userInfo}}" class="login-section">
+    <view class="avatar-placeholder">👤</view>
+    <text class="login-tip">登录后查看个人信息</text>
+    <button class="login-btn" bindtap="onLogin">去逛逛</button>
+  </view>
+
+  <!-- 已登录 -->
+  <view wx:else class="profile-section">
+    <!-- 用户信息卡片 -->
+    <view class="user-card" bindtap="onTapProfile">
+      <image
+        class="user-avatar"
+        src="{{userInfo.avatar_url || '/images/default-avatar.png'}}"
+        mode="aspectFill"
+        lazy-load
+      />
+      <view class="user-info">
+        <text class="user-nickname">{{userInfo.nickname || '手作爱好者'}}</text>
+        <text class="user-desc" wx:if="{{!hasProfile}}">点击完善个人信息 ></text>
+        <text class="user-desc" wx:else>用心记录每一件手作</text>
+      </view>
+    </view>
+
+    <!-- 统计数据 -->
+    <view class="stats-section">
+      <view class="stat-item">
+        <text class="stat-num">{{stats.likeCount || 0}}</text>
+        <text class="stat-label">我的点赞</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <text class="stat-num">{{stats.followCount || 0}}</text>
+        <text class="stat-label">我的关注</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <text class="stat-num">{{stats.commentCount || 0}}</text>
+        <text class="stat-label">我的留言</text>
+      </view>
+    </view>
+
+    <!-- 功能列表 -->
+    <view class="menu-section">
+      <view class="menu-item">
+        <text class="menu-icon">♡</text>
+        <text class="menu-text">收藏的作品</text>
+        <text class="menu-arrow">></text>
+      </view>
+      <view class="menu-item">
+        <text class="menu-icon">⚙</text>
+        <text class="menu-text">设置</text>
+        <text class="menu-arrow">></text>
+      </view>
+      <view class="menu-item">
+        <text class="menu-icon">ℹ</text>
+        <text class="menu-text">关于平台</text>
+        <text class="menu-arrow">></text>
+      </view>
+    </view>
+
+    <!-- 我的作品 -->
+    <view class="section-header">
+      <text class="section-title">我的作品</text>
+    </view>
+
+    <view wx:if="{{myCrafts.length === 0 && !craftsLoading}}" class="empty-section">
+      <text class="empty-icon">🎨</text>
+      <text class="empty-text">还没有作品</text>
+    </view>
+
+    <view wx:else class="craft-grid">
+      <view
+        wx:for="{{myCrafts}}"
+        wx:key="id"
+        class="craft-item"
+        data-id="{{item.id}}"
+        bindtap="onCraftTap"
+      >
+        <image class="craft-image" src="{{item.images[0].thumbnailUrl}}" mode="aspectFill" lazy-load />
+        <view class="craft-info">
+          <text class="craft-title">{{item.title}}</text>
+          <text class="craft-likes">❤️ {{item.like_count}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{craftsLoading}}" class="loading-more">
+      <text class="loading-text">加载中...</text>
+    </view>
+  </view>
+
+  <!-- 完善信息半屏面板 -->
+  <profile-panel
+    visible="{{showProfilePanel}}"
+    bind:close="onProfilePanelClose"
+    bind:success="onProfilePanelSuccess"
+  />
 </view>

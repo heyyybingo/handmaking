@@ -1,0 +1,3 @@
+<view class="tag tag-{{type}} tag-{{size}}">
+  <slot />
+</view>

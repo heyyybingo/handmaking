@@ -17,14 +17,24 @@ const queryClient = new QueryClient({
   },
 });
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <ConfigProvider locale={zhCN} theme={themeConfig}>
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </QueryClientProvider>
-    </ConfigProvider>
-  </StrictMode>,
-);
+async function bootstrap() {
+  // 开发环境启用 MSW Mock
+  if (import.meta.env.DEV) {
+    const { worker } = await import('./mocks/browser');
+    await worker.start({ onUnhandledRequest: 'bypass' });
+  }
+
+  createRoot(document.getElementById('root')!).render(
+    <StrictMode>
+      <ConfigProvider locale={zhCN} theme={themeConfig}>
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </QueryClientProvider>
+      </ConfigProvider>
+    </StrictMode>,
+  );
+}
+
+bootstrap();

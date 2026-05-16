@@ -1,0 +1,107 @@
+@import '../../styles/variables.wxss';
+
+.poster-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.poster-content {
+  width: 80%;
+  max-width: 680rpx;
+  background-color: @bg-card;
+  border-radius: @radius-lg;
+  overflow: hidden;
+}
+
+.poster-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: @spacing-md;
+  border-bottom: 1rpx solid @divider;
+}
+
+.poster-title {
+  font-size: @font-h3;
+  font-weight: @weight-bold;
+  color: @text-heading;
+}
+
+.poster-close {
+  font-size: 32rpx;
+  color: @text-secondary;
+  padding: @spacing-xs;
+}
+
+.poster-preview {
+  padding: @spacing-md;
+  display: flex;
+  justify-content: center;
+}
+
+.poster-image {
+  width: 100%;
+  max-height: 600rpx;
+  border-radius: @radius-md;
+}
+
+.poster-placeholder {
+  width: 100%;
+  height: 400rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: @bg-page;
+  border-radius: @radius-md;
+}
+
+.placeholder-icon {
+  font-size: 60rpx;
+  margin-bottom: @spacing-sm;
+}
+
+.placeholder-text {
+  font-size: @font-secondary;
+  color: @text-secondary;
+}
+
+.poster-actions {
+  padding: @spacing-md;
+  display: flex;
+  gap: @spacing-sm;
+}
+
+.generate-btn,
+.save-btn {
+  flex: 1;
+  height: 80rpx;
+  border-radius: @radius-md;
+  font-size: @font-body;
+  font-weight: @weight-medium;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.generate-btn {
+  background-color: @primary;
+  color: #FFFFFF;
+}
+
+.generate-btn[disabled] {
+  opacity: 0.6;
+}
+
+.save-btn {
+  background-color: @bg-page;
+  color: @text-heading;
+}

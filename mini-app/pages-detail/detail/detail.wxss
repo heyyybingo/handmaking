@@ -1,0 +1,317 @@
+@import '../../styles/variables.wxss';
+
+.page {
+  min-height: 100vh;
+  background-color: @bg-page;
+  padding-bottom: 120rpx;
+}
+
+.loading-container {
+  padding: @spacing-md;
+}
+
+/* 图片轮播 - 沉浸式 */
+.swiper-wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.image-swiper {
+  width: 100%;
+  height: 400rpx;
+  transition: opacity 0.1s linear;
+}
+
+.craft-image {
+  width: 100%;
+  height: 100%;
+}
+
+/* 作品信息 */
+.craft-info {
+  background-color: @bg-card;
+  padding: @spacing-lg;
+  margin-bottom: @spacing-sm;
+}
+
+.craft-title {
+  font-size: @font-h2;
+  font-weight: @weight-bold;
+  color: @text-heading;
+  display: block;
+  margin-bottom: @spacing-sm;
+}
+
+.craft-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: @spacing-xs;
+  margin-bottom: @spacing-md;
+}
+
+.craft-desc {
+  font-size: @font-body;
+  color: @text-body;
+  line-height: 1.8;
+  margin-bottom: @spacing-md;
+}
+
+/* 富文本排版样式 */
+.craft-desc p {
+  margin-bottom: 24rpx;
+}
+
+.craft-desc img {
+  border-radius: @radius-md;
+  margin: @spacing-md 0;
+  max-width: 100%;
+}
+
+.craft-desc blockquote {
+  border-left: 4rpx solid @primary;
+  padding: @spacing-sm @spacing-md;
+  margin: @spacing-md 0;
+  background-color: rgba(196, 149, 106, 0.05);
+  border-radius: 0 @radius-sm @radius-sm 0;
+  color: @text-body;
+  font-style: italic;
+}
+
+.craft-desc h1,
+.craft-desc h2,
+.craft-desc h3 {
+  color: @text-heading;
+  font-weight: @weight-bold;
+  margin: @spacing-md 0 @spacing-sm;
+}
+
+.craft-desc h1 { font-size: @font-h1; }
+.craft-desc h2 { font-size: @font-h2; }
+.craft-desc h3 { font-size: @font-h3; }
+
+/* 作者信息 */
+.author-info {
+  display: flex;
+  align-items: center;
+  padding: @spacing-md 0;
+  border-top: 1rpx solid @divider;
+}
+
+.author-avatar {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: @radius-full;
+  margin-right: @spacing-sm;
+  flex-shrink: 0;
+}
+
+.author-name {
+  flex: 1;
+  font-size: @font-body;
+  font-weight: @weight-medium;
+  color: @text-heading;
+}
+
+.follow-btn {
+  padding: @spacing-xs @spacing-md;
+  border: 2rpx solid @primary;
+  border-radius: @radius-lg;
+}
+
+.follow-text {
+  font-size: @font-secondary;
+  color: @primary;
+}
+
+.craft-time {
+  font-size: @font-secondary;
+  color: @text-secondary;
+}
+
+/* 评论区 */
+.comment-section {
+  background-color: @bg-card;
+  padding: @spacing-lg;
+}
+
+.section-header {
+  margin-bottom: @spacing-md;
+}
+
+.section-title {
+  font-size: @font-h3;
+  font-weight: @weight-bold;
+  color: @text-heading;
+}
+
+.empty-comments {
+  text-align: center;
+  padding: @spacing-xl;
+  color: @text-secondary;
+  font-size: @font-body;
+}
+
+.comment-item {
+  display: flex;
+  gap: @spacing-sm;
+  padding: @spacing-md 0;
+  border-bottom: 1rpx solid @divider;
+}
+
+.comment-item:last-child {
+  border-bottom: none;
+}
+
+.comment-content {
+  flex: 1;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: @spacing-xs;
+  margin-bottom: @spacing-xs;
+}
+
+.comment-author {
+  font-size: @font-body;
+  font-weight: @weight-medium;
+  color: @text-heading;
+}
+
+.comment-text {
+  font-size: @font-body;
+  color: @text-body;
+  line-height: 1.6;
+  display: block;
+  margin-bottom: @spacing-xs;
+}
+
+.comment-footer {
+  display: flex;
+  align-items: center;
+  gap: @spacing-md;
+}
+
+.comment-time {
+  font-size: @font-tag;
+  color: @text-secondary;
+}
+
+.comment-reply-btn {
+  font-size: @font-tag;
+  color: @primary;
+}
+
+/* 底部操作栏 */
+.action-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  background-color: @bg-card;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48rpx;
+  border-top: 1rpx solid @divider;
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 100;
+}
+
+.action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 100rpx;
+  padding: @spacing-xs 0;
+}
+
+.action-item.liked .action-icon {
+  animation: likeAnim 0.3s ease;
+}
+
+.action-icon {
+  font-size: 40rpx;
+  margin-bottom: 4rpx;
+}
+
+.action-text {
+  font-size: @font-tag;
+  color: @text-secondary;
+}
+
+.share-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  line-height: normal;
+}
+
+.share-btn::after {
+  border: none;
+}
+
+.intent-btn {
+  background-color: @primary;
+  border-radius: @radius-lg;
+  padding: @spacing-xs @spacing-md;
+}
+
+.intent-btn .action-icon,
+.intent-btn .action-text {
+  color: #FFFFFF;
+}
+
+@keyframes likeAnim {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+/* 评论输入框 */
+.comment-input-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-end;
+}
+
+.comment-input-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: @spacing-sm;
+  background-color: @bg-card;
+  gap: @spacing-xs;
+}
+
+.reply-hint {
+  font-size: @font-secondary;
+  color: @primary;
+  padding: 0 @spacing-xs;
+}
+
+.comment-input {
+  width: 100%;
+  height: 72rpx;
+  background-color: @bg-page;
+  border-radius: @radius-md;
+  padding: 0 @spacing-md;
+  font-size: @font-body;
+}
+
+.comment-submit {
+  color: @primary;
+  font-size: @font-body;
+  font-weight: @weight-medium;
+  padding: 0 @spacing-sm;
+  align-self: flex-end;
+}

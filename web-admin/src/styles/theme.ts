@@ -37,6 +37,10 @@ export const themeConfig = {
       siderBg: '#FFFFFF',
       /** 头部背景色 */
       headerBg: '#FFFFFF',
+      /** 侧边栏收起触发器背景色 */
+      triggerBg: '#C4956A',
+      /** 侧边栏收起触发器文字色 */
+      triggerColor: '#FFFFFF',
     },
     Menu: {
       /** 菜单项选中背景 */

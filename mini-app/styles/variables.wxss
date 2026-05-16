@@ -62,6 +62,13 @@
 
 /* ==================== 阴影系统 ==================== */
 
-@shadow-card: 0 2rpx 12rpx rgba(0, 0, 0, 0.08);
+@shadow-card: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
 @shadow-popup: 0 8rpx 24rpx rgba(0, 0, 0, 0.12);
 @shadow-float: 0 16rpx 48rpx rgba(0, 0, 0, 0.16);
+
+/* ==================== 动画系统 ==================== */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

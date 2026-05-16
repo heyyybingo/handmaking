@@ -1,0 +1,47 @@
+<view wx:if="{{visible}}" class="panel-mask" bindtap="onClose">
+  <view class="panel" catchtap="">
+    <view class="panel-header">
+      <text class="panel-title">我想要</text>
+      <view class="panel-close" bindtap="onClose">✕</view>
+    </view>
+
+    <view class="panel-body">
+      <!-- 意向类型选择 -->
+      <view class="type-list">
+        <view
+          wx:for="{{types}}"
+          wx:key="value"
+          class="type-item {{selectedType === item.value ? 'selected' : ''}}"
+          data-value="{{item.value}}"
+          bindtap="onTypeSelect"
+        >
+          <text class="type-label">{{item.label}}</text>
+          <text class="type-desc">{{item.desc}}</text>
+        </view>
+      </view>
+
+      <!-- 留言输入 -->
+      <view class="message-section">
+        <textarea
+          class="message-input"
+          placeholder="说点什么吧~（选填，最多200字）"
+          value="{{message}}"
+          bindinput="onMessageInput"
+          maxlength="200"
+        />
+        <text class="message-count">{{message.length}}/200</text>
+      </view>
+    </view>
+
+    <view class="panel-footer">
+      <button
+        class="btn-submit {{submitting ? 'loading' : ''}}"
+        type="primary"
+        disabled="{{!selectedType || submitting}}"
+        bindtap="onSubmit"
+      >
+        提交
+      </button>
+    </view>
+  </view>
+</view>

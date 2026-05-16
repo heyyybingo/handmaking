@@ -1,9 +1,10 @@
 /**
  * Axios 请求工具类
- * 封装统一的请求拦截、响应拦截、Token管理
+ * 封装统一的请求拦截、响应拦截、Token管理、错误重试
  */
 import axios from 'axios';
 import type { AxiosInstance, AxiosRequestConfig, InternalAxiosRequestConfig, AxiosResponse } from 'axios';
+import { message } from 'antd';
 
 /**
  * API 基础地址
@@ -42,23 +43,44 @@ request.interceptors.request.use(
 
 /**
  * 响应拦截器
- * 处理401未授权（跳转登录页）、403无权限提示、其他错误提示
+ * 处理401未授权（跳转登录页）、403无权限提示、500服务器错误、网络错误
+ * 支持 5xx 错误自动重试一次（延迟 1 秒）
  */
 request.interceptors.response.use(
   (response: AxiosResponse) => {
     return response.data;
   },
-  (error) => {
+  async (error) => {
+    const config = error.config as InternalAxiosRequestConfig & { _retryCount?: number };
+
     if (error.response) {
       const { status } = error.response;
+
       if (status === 401) {
         // Token 过期或无效，清除本地存储并跳转登录页
         localStorage.removeItem('admin_token');
+        message.error('登录已过期，请重新登录');
         window.location.href = '/login';
       } else if (status === 403) {
-        console.error('无权限访问');
+        message.error('无权限访问');
+        // 可选：跳转到 403 页面
+        // window.location.href = '/403';
+      } else if (status >= 500) {
+        // 5xx 错误：重试一次（延迟 1 秒）
+        if (!config._retryCount || config._retryCount < 1) {
+          config._retryCount = (config._retryCount || 0) + 1;
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+          return request(config);
+        }
+        message.error('服务器错误，请稍后重试');
       }
+    } else if (error.code === 'ECONNABORTED') {
+      message.error('请求超时，请稍后重试');
+    } else {
+      // 网络错误（无 response）
+      message.error('网络连接失败，请检查网络');
     }
+
     return Promise.reject(error);
   },
 );

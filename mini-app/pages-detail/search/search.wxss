@@ -1,0 +1,145 @@
+@import '../../styles/variables.wxss';
+
+.page {
+  min-height: 100vh;
+  background-color: @bg-page;
+}
+
+/* 搜索栏 */
+.search-bar {
+  display: flex;
+  align-items: center;
+  padding: @spacing-sm @spacing-md;
+  background-color: @bg-card;
+  gap: @spacing-sm;
+}
+
+.search-input-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background-color: @bg-page;
+  border-radius: @radius-lg;
+  padding: 0 @spacing-md;
+  height: 72rpx;
+}
+
+.search-icon {
+  font-size: 32rpx;
+  margin-right: @spacing-xs;
+}
+
+.search-input {
+  flex: 1;
+  font-size: @font-body;
+  color: @text-heading;
+}
+
+.clear-icon {
+  font-size: 28rpx;
+  color: @text-secondary;
+  padding: @spacing-xs;
+}
+
+.search-btn {
+  color: @primary;
+  font-size: @font-body;
+  font-weight: @weight-medium;
+  padding: 0 @spacing-sm;
+}
+
+/* 搜索历史 */
+.history-section {
+  background-color: @bg-card;
+  padding: @spacing-md;
+  margin-top: @spacing-sm;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: @spacing-md;
+}
+
+.section-title {
+  font-size: @font-h3;
+  font-weight: @weight-bold;
+  color: @text-heading;
+}
+
+.section-action {
+  font-size: @font-secondary;
+  color: @text-secondary;
+}
+
+.history-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: @spacing-sm;
+}
+
+.history-item {
+  padding: @spacing-xs @spacing-md;
+  background-color: @bg-page;
+  border-radius: @radius-md;
+  font-size: @font-secondary;
+  color: @text-body;
+}
+
+/* 搜索结果 */
+.result-section {
+  padding: @spacing-sm;
+}
+
+.loading-container,
+.empty-container {
+  padding: @spacing-xl;
+}
+
+.result-list {
+  display: flex;
+  flex-direction: column;
+  gap: @spacing-sm;
+}
+
+.result-content {
+  display: flex;
+  gap: @spacing-md;
+}
+
+.result-image {
+  width: 160rpx;
+  height: 120rpx;
+  border-radius: @radius-md;
+  flex-shrink: 0;
+}
+
+.result-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.result-title {
+  font-size: @font-body;
+  font-weight: @weight-medium;
+  color: @text-heading;
+  margin-bottom: @spacing-xs;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.result-meta {
+  display: flex;
+  align-items: center;
+  gap: @spacing-sm;
+}
+
+.result-likes {
+  font-size: @font-tag;
+  color: @text-secondary;
+}

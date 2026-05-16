@@ -1,0 +1,36 @@
+{
+  "name": "handcraft-platform",
+  "private": true,
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "workspaces": [
+    "server",
+    "web-admin"
+  ],
+  "scripts": {
+    "install:all": "npm install",
+    "dev": "concurrently -n server,web -c blue,green \"npm -w server run start:dev\" \"npm -w web-admin run dev\"",
+    "dev:server": "npm -w server run start:dev",
+    "dev:web": "npm -w web-admin run dev",
+    "build": "npm -w server run build && npm -w web-admin run build",
+    "test": "npm -w server run test && npm -w web-admin run test",
+    "test:server": "npm -w server run test",
+    "test:web": "npm -w web-admin run test",
+    "test:cov": "npm -w server run test:cov",
+    "lint": "npm -w server run lint && npm -w web-admin run lint",
+    "format": "npm -w server run format",
+    "docker:up": "docker compose -f deploy/docker-compose.dev.yml --env-file .env.dev up -d",
+    "docker:down": "docker compose -f deploy/docker-compose.dev.yml down",
+    "clean": "rm -rf node_modules server/node_modules web-admin/node_modules"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "dependencies": {
+    "@wangeditor/editor": "^5.1.23",
+    "@wangeditor/editor-for-react": "^1.0.6",
+    "react-draggable": "^4.5.0"
+  }
+}

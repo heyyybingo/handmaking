@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Table, Tag, Button, Space, Select, Card, Statistic, Row, Col, message } from 'antd';
+import { Table, Tag, Space, Select, Card, Statistic, Row, Col, message } from 'antd';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { getIntents, getIntentStats, updateIntentStatus } from '@/services/intent';
-import type { Intent, IntentListParams } from '@/services/intent';
+import type { Intent } from '@/services/intent';
 
 const TYPE_MAP: Record<string, { label: string; color: string }> = {
   want_collect: { label: '喜欢想收藏', color: 'red' },

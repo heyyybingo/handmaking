@@ -1,0 +1,4 @@
+<view class="load-more load-more-{{status}}" bindtap="onTap">
+  <view wx:if="{{status === 'loading'}}" class="load-more-spinner"></view>
+  <text class="load-more-text">{{text || defaultTexts[status]}}</text>
+</view>

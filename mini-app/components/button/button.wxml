@@ -1,0 +1,10 @@
+<view
+  class="btn btn-{{type}} btn-{{size}} {{isPressed ? 'btn-pressed' : ''}} {{disabled ? 'btn-disabled' : ''}}"
+  bindtap="onTap"
+  bindtouchstart="onTouchStart"
+  bindtouchend="onTouchEnd"
+>
+  <view wx:if="{{loading}}" class="btn-loading"></view>
+  <text wx:elif="{{icon}}" class="btn-icon">{{icon}}</text>
+  <slot />
+</view>

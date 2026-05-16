@@ -10,6 +10,7 @@ import {
   SettingOutlined,
   LogoutOutlined,
   UserOutlined,
+  RobotOutlined,
 } from '@ant-design/icons';
 import { getAdminInfo, changePassword } from '@/services/auth';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
@@ -23,6 +24,7 @@ const menuItems = [
   { key: '/categories', icon: <TagsOutlined />, label: '分类管理' },
   { key: '/comments', icon: <CommentOutlined />, label: '评论管理' },
   { key: '/intents', icon: <HeartOutlined />, label: '意向管理' },
+  { key: '/ai-config', icon: <RobotOutlined />, label: 'AI配置' },
   { key: '/config', icon: <SettingOutlined />, label: '系统配置' },
 ];
 

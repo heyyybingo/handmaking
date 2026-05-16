@@ -1,0 +1,243 @@
+@import '../../styles/variables.wxss';
+
+.page {
+  min-height: 100vh;
+  background-color: @bg-page;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* 页面标题 */
+.page-header {
+  background-color: @bg-card;
+  padding: @spacing-lg;
+  text-align: center;
+  border-bottom: 1rpx solid @divider;
+}
+
+.page-title {
+  font-size: @font-h2;
+  font-weight: @weight-bold;
+  color: @text-heading;
+}
+
+/* 未登录 */
+.login-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120rpx @spacing-xl;
+}
+
+.avatar-placeholder {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background-color: @bg-card;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60rpx;
+  margin-bottom: @spacing-md;
+}
+
+.login-tip {
+  font-size: @font-body;
+  color: @text-secondary;
+  margin-bottom: @spacing-lg;
+}
+
+.login-btn {
+  background-color: @primary;
+  color: #fff;
+  border-radius: @radius-lg;
+  padding: 0 60rpx;
+  font-size: @font-body;
+}
+
+/* 用户信息卡片 */
+.profile-section {
+  padding: @spacing-md;
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  background-color: @bg-card;
+  border-radius: @radius-lg;
+  padding: @spacing-lg;
+  margin-bottom: @spacing-md;
+  box-shadow: @shadow-card;
+}
+
+.user-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: @spacing-md;
+  flex-shrink: 0;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-nickname {
+  font-size: @font-h3;
+  font-weight: @weight-bold;
+  color: @text-heading;
+  display: block;
+  margin-bottom: 4rpx;
+}
+
+.user-desc {
+  font-size: @font-secondary;
+  color: @text-secondary;
+}
+
+/* 统计数据 */
+.stats-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: @bg-card;
+  border-radius: @radius-lg;
+  padding: @spacing-lg 0;
+  margin-bottom: @spacing-md;
+  box-shadow: @shadow-card;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.stat-num {
+  font-size: @font-h2;
+  font-weight: @weight-bold;
+  color: @primary;
+  display: block;
+  margin-bottom: 4rpx;
+}
+
+.stat-label {
+  font-size: @font-secondary;
+  color: @text-secondary;
+}
+
+.stat-divider {
+  width: 1rpx;
+  height: 48rpx;
+  background-color: @divider;
+}
+
+/* 功能列表 */
+.menu-section {
+  background-color: @bg-card;
+  border-radius: @radius-lg;
+  margin-bottom: @spacing-md;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: @spacing-md;
+  border-bottom: 1rpx solid @divider;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-icon {
+  font-size: 36rpx;
+  margin-right: @spacing-md;
+}
+
+.menu-text {
+  flex: 1;
+  font-size: @font-body;
+  color: @text-body;
+}
+
+.menu-arrow {
+  font-size: 32rpx;
+  color: @text-secondary;
+}
+
+/* 我的作品 */
+.section-header {
+  padding: @spacing-md 0;
+}
+
+.section-title {
+  font-size: @font-h3;
+  font-weight: @weight-bold;
+  color: @text-heading;
+}
+
+.empty-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: @spacing-xl 0;
+}
+
+.empty-icon {
+  font-size: 60rpx;
+  margin-bottom: @spacing-sm;
+}
+
+.empty-text {
+  font-size: @font-secondary;
+  color: @text-secondary;
+}
+
+.craft-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: @spacing-sm;
+}
+
+.craft-item {
+  width: calc(50% - @spacing-sm / 2);
+  background-color: @bg-card;
+  border-radius: @radius-md;
+  overflow: hidden;
+}
+
+.craft-image {
+  width: 100%;
+  height: 200rpx;
+}
+
+.craft-info {
+  padding: @spacing-sm;
+}
+
+.craft-title {
+  font-size: @font-secondary;
+  font-weight: @weight-medium;
+  color: @text-heading;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 4rpx;
+}
+
+.craft-likes {
+  font-size: @font-tag;
+  color: @text-secondary;
+}
+
+.loading-more {
+  text-align: center;
+  padding: @spacing-md;
+}
+
+.loading-text {
+  font-size: @font-secondary;
+  color: @text-secondary;
+}

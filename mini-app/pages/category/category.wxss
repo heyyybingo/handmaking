@@ -1,0 +1,93 @@
+@import '../../styles/variables.wxss';
+
+.page {
+  display: flex;
+  height: 100vh;
+  background-color: @bg-page;
+}
+
+/* 左侧分类栏 */
+.category-sidebar {
+  width: 200rpx;
+  background-color: @bg-card;
+  border-right: 1rpx solid @divider;
+  flex-shrink: 0;
+}
+
+.sidebar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: @spacing-md @spacing-sm;
+  border-left: 6rpx solid transparent;
+  transition: all 0.2s;
+}
+
+.sidebar-item.active {
+  background-color: @bg-page;
+  border-left-color: @primary;
+}
+
+.sidebar-icon {
+  font-size: 40rpx;
+  margin-bottom: 4rpx;
+}
+
+.sidebar-name {
+  font-size: @font-secondary;
+  color: @text-body;
+  margin-bottom: 2rpx;
+}
+
+.sidebar-item.active .sidebar-name {
+  color: @primary;
+  font-weight: @weight-medium;
+}
+
+.sidebar-count {
+  font-size: @font-tag;
+  color: @text-secondary;
+}
+
+/* 右侧作品列表 */
+.craft-list {
+  flex: 1;
+  padding: @spacing-sm;
+}
+
+.loading-container,
+.empty-container {
+  padding: @spacing-xl;
+}
+
+.craft-grid {
+  display: flex;
+  flex-direction: column;
+  gap: @spacing-sm;
+}
+
+.craft-image {
+  width: 100%;
+  height: 240rpx;
+  border-radius: @radius-md @radius-md 0 0;
+}
+
+.craft-info {
+  padding: @spacing-sm;
+}
+
+.craft-title {
+  font-size: @font-body;
+  font-weight: @weight-medium;
+  color: @text-heading;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 4rpx;
+}
+
+.craft-likes {
+  font-size: @font-tag;
+  color: @text-secondary;
+}

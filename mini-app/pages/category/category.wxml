@@ -1,3 +1,50 @@
-<view class="container">
-  <text class="text-heading">分类</text>
+<view class="page">
+  <!-- 分类列表 -->
+  <scroll-view class="category-sidebar" scroll-y>
+    <view
+      wx:for="{{categories}}"
+      wx:key="id"
+      class="sidebar-item {{selectedCategory?.id === item.id ? 'active' : ''}}"
+      data-index="{{index}}"
+      bindtap="onCategoryTap"
+    >
+      <text class="sidebar-icon">{{item.icon}}</text>
+      <text class="sidebar-name">{{item.name}}</text>
+      <text class="sidebar-count">{{item.craft_count}}</text>
+    </view>
+  </scroll-view>
+
+  <!-- 作品列表 -->
+  <scroll-view class="craft-list" scroll-y bindscrolltolower="onReachBottom">
+    <view wx:if="{{loading}}" class="loading-container">
+      <skeleton image rows="{{3}}" />
+    </view>
+
+    <view wx:elif="{{crafts.length === 0}}" class="empty-container">
+      <empty-state icon="📭" text="该分类暂无作品" />
+    </view>
+
+    <view wx:else class="craft-grid">
+      <view
+        wx:for="{{crafts}}"
+        wx:key="id"
+        class="craft-item"
+        data-id="{{item.id}}"
+        bindtap="onCraftTap"
+      >
+        <card hover>
+          <image class="craft-image" src="{{item.images[0].thumbnailUrl}}" mode="aspectFill" lazy-load />
+          <view class="craft-info">
+            <text class="craft-title">{{item.title}}</text>
+            <text class="craft-likes">❤️ {{item.like_count}}</text>
+          </view>
+        </card>
+      </view>
+    </view>
+
+    <load-more
+      wx:if="{{crafts.length > 0}}"
+      status="{{hasMore ? (loadingMore ? 'loading' : 'noMore') : 'noMore'}}"
+    />
+  </scroll-view>
 </view>

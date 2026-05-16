@@ -1,0 +1,43 @@
+<view wx:if="{{visible}}" class="poster-mask" bindtap="onClose">
+  <view class="poster-content" catchtap="">
+    <view class="poster-header">
+      <text class="poster-title">生成海报</text>
+      <text class="poster-close" bindtap="onClose">✕</text>
+    </view>
+
+    <view class="poster-preview">
+      <canvas
+        id="poster-canvas"
+        type="2d"
+        style="width: 600px; height: 800px; display: none;"
+      />
+      <image
+        wx:if="{{posterUrl}}"
+        class="poster-image"
+        src="{{posterUrl}}"
+        mode="aspectFit"
+      />
+      <view wx:else class="poster-placeholder">
+        <text class="placeholder-icon">🎨</text>
+        <text class="placeholder-text">点击下方按钮生成海报</text>
+      </view>
+    </view>
+
+    <view class="poster-actions">
+      <button
+        class="generate-btn"
+        bindtap="onGenerate"
+        disabled="{{generating}}"
+      >
+        {{generating ? '生成中...' : '生成海报'}}
+      </button>
+      <button
+        wx:if="{{posterUrl}}"
+        class="save-btn"
+        bindtap="onSave"
+      >
+        保存到相册
+      </button>
+    </view>
+  </view>
+</view>

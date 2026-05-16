@@ -1,3 +1,146 @@
-<view class="container">
-  <text class="text-heading">作品详情</text>
+<view class="page">
+  <!-- 加载状态 -->
+  <view wx:if="{{loading}}" class="loading-container">
+    <skeleton image rows="{{5}}" />
+  </view>
+
+  <view wx:elif="{{craft}}" class="detail">
+    <!-- 图片轮播 - 沉浸式 -->
+    <view class="swiper-wrapper" style="padding-top: {{statusBarHeight}}px;">
+      <swiper
+        class="image-swiper"
+        indicator-dots
+        indicator-color="rgba(255,255,255,0.5)"
+        indicator-active-color="#FFFFFF"
+        autoplay="{{false}}"
+        style="opacity: {{immersiveOpacity}};"
+      >
+        <swiper-item wx:for="{{craft.images}}" wx:key="url">
+          <image class="craft-image" src="{{item.url}}" mode="aspectFill" lazy-load />
+        </swiper-item>
+      </swiper>
+    </view>
+
+    <!-- 作品信息 -->
+    <view class="craft-info">
+      <text class="craft-title">{{craft.title}}</text>
+
+      <view class="craft-tags">
+        <tag type="primary">{{craft.category.name}}</tag>
+        <tag wx:for="{{craft.tags}}" wx:key="*this" type="secondary" size="small">{{item}}</tag>
+      </view>
+
+      <!-- 作者信息 -->
+      <view class="author-info" wx:if="{{craft.author}}">
+        <image class="author-avatar" src="{{craft.author.avatar_url}}" mode="aspectFill" />
+        <text class="author-name">{{craft.author.nickname}}</text>
+        <view class="follow-btn" bindtap="onFollowTap">
+          <text class="follow-text">+ 关注</text>
+        </view>
+      </view>
+
+      <view class="craft-desc" wx:if="{{craft.description}}">
+        <rich-text nodes="{{craft.description}}"></rich-text>
+      </view>
+
+      <view class="craft-time">
+        <text>{{craft.created_at}}</text>
+      </view>
+    </view>
+
+    <!-- 评论区 -->
+    <view class="comment-section">
+      <view class="section-header">
+        <text class="section-title">评论 ({{comments.length}})</text>
+      </view>
+
+      <view wx:if="{{comments.length === 0}}" class="empty-comments">
+        <text>暂无评论，快来抢沙发~</text>
+      </view>
+
+      <view wx:for="{{comments}}" wx:key="id" class="comment-item">
+        <avatar src="{{item.author_avatar}}" size="{{64}}" />
+        <view class="comment-content">
+          <view class="comment-header">
+            <text class="comment-author">{{item.author_name}}</text>
+            <tag wx:if="{{item.is_author_reply}}" type="success" size="small">作者</tag>
+          </view>
+          <text class="comment-text">{{item.content}}</text>
+          <view class="comment-footer">
+            <text class="comment-time">{{item.created_at}}</text>
+            <text
+              class="comment-reply-btn"
+              data-id="{{item.id}}"
+              data-nickname="{{item.author_name}}"
+              bindtap="onReplyComment"
+            >回复</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 底部操作栏 -->
+    <view class="action-bar" style="background-color: rgba(255,255,255,{{0.85 + infoOpacity * 0.15}});">
+      <view class="action-item {{liked ? 'liked' : ''}}" bindtap="onLikeTap">
+        <text class="action-icon">{{liked ? '❤️' : '🤍'}}</text>
+        <text class="action-text">{{craft.like_count}}</text>
+      </view>
+      <view class="action-item" bindtap="onCommentTap">
+        <text class="action-icon">💬</text>
+        <text class="action-text">{{craft.comment_count}}</text>
+      </view>
+      <button class="action-item share-btn" open-type="share">
+        <text class="action-icon">📤</text>
+        <text class="action-text">分享</text>
+      </button>
+      <view class="action-item" bindtap="onPosterTap">
+        <text class="action-icon">🖼️</text>
+        <text class="action-text">海报</text>
+      </view>
+      <view class="action-item intent-btn" bindtap="onIntentTap">
+        <text class="action-icon">💌</text>
+        <text class="action-text">我想要</text>
+      </view>
+    </view>
+
+    <!-- 评论输入框 -->
+    <view wx:if="{{showCommentInput}}" class="comment-input-mask" bindtap="onCommentCancel">
+      <view class="comment-input-box" catchtap="">
+        <text wx:if="{{replyTo}}" class="reply-hint">回复 @{{replyTo.nickname}}</text>
+        <input
+          class="comment-input"
+          placeholder="{{replyTo ? '写回复...' : '写评论...'}}"
+          value="{{commentText}}"
+          bindinput="onCommentInput"
+          focus
+          confirm-type="send"
+          bindconfirm="onCommentSubmit"
+        />
+        <view class="comment-submit" bindtap="onCommentSubmit">发送</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 完善信息面板 -->
+  <profile-panel
+    visible="{{showProfilePanel}}"
+    bind:close="onProfilePanelClose"
+    bind:success="onProfileSuccess"
+    bind:skip="onProfilePanelClose"
+  />
+
+  <!-- 意向面板 -->
+  <intent-panel
+    visible="{{showIntentPanel}}"
+    craftId="{{craftId}}"
+    bind:close="onIntentClose"
+    bind:success="onIntentClose"
+  />
+
+  <!-- 海报生成面板 -->
+  <poster
+    visible="{{showPoster}}"
+    craft="{{craft}}"
+    bind:close="onPosterClose"
+  />
 </view>

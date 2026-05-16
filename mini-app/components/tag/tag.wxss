@@ -1,0 +1,38 @@
+@import '../../styles/variables.wxss';
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  border-radius: @radius-sm;
+  font-weight: @weight-medium;
+  white-space: nowrap;
+}
+
+/* Types */
+.tag-primary {
+  background-color: rgba(196, 149, 106, 0.15);
+  color: @primary;
+}
+
+.tag-secondary {
+  background-color: rgba(232, 213, 192, 0.5);
+  color: @primary-dark;
+}
+
+.tag-success {
+  background-color: rgba(123, 169, 143, 0.15);
+  color: @secondary-celadon;
+}
+
+/* Sizes */
+.tag-small {
+  height: 40rpx;
+  padding: 0 16rpx;
+  font-size: @font-tag;
+}
+
+.tag-medium {
+  height: 48rpx;
+  padding: 0 20rpx;
+  font-size: @font-secondary;
+}

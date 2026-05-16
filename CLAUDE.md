@@ -6,34 +6,46 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Handcraft Showcase Platform (手作展示平台) — a platform for handcraft hobbyists to showcase and share their work. Three-tier architecture: WeChat Mini Program (native), Web Admin (React), and API Server (NestJS). Phase 1 focuses on showcase & interaction only, no transactions/payments. Single admin (the craft author); visitors browse and interact via WeChat.
 
+## Communication
+
+与用户沟通时始终使用中文。
+
 ## Commands
 
-### Server (server/)
-```bash
-npm run start:dev    # Dev mode with hot reload
-npm run build        # Compile
-npm run test         # Unit tests (Jest)
-npm run test:cov     # Tests with coverage (thresholds: 80% lines/functions, 70% branches)
-npm run test:e2e     # E2E tests
-npm run lint         # ESLint
-npm run format       # Prettier
-```
+This is an npm workspaces monorepo. Run all commands from the project root.
 
-### Web Admin (web-admin/)
 ```bash
-npm run dev              # Dev server with HMR (port 5173)
-npm run build            # Production build
-npm run test             # Vitest
-npm run test:coverage    # Coverage with V8 provider
-npm run lint             # ESLint
-npm run generate-api-types  # Generate TypeScript types from Swagger OpenAPI JSON
+# Install all dependencies (server + web-admin)
+npm install
+
+# Development — start server + web-admin in parallel
+npm run dev              # Both services concurrently
+npm run dev:server       # Server only (port 3000)
+npm run dev:web          # Web admin only (port 5173)
+
+# Testing
+npm run test             # All tests (server + web-admin)
+npm run test:server      # Server unit tests (Jest)
+npm run test:web         # Web admin tests (Vitest)
+npm run test:cov         # Server coverage (thresholds: 80% lines/functions, 70% branches)
+
+# Lint & Format
+npm run lint             # ESLint (server + web-admin)
+npm run format           # Prettier (server)
+
+# Build
+npm run build            # Production build (server + web-admin)
+
+# Individual package commands
+npm -w server run <cmd>  # Run any script in server package
+npm -w web-admin run <cmd>  # Run any script in web-admin package
 ```
 
 ### Infrastructure
 ```bash
-docker compose -f deploy/docker-compose.dev.yml --env-file .env.dev up -d   # Start PostgreSQL + Redis + MinIO
-docker compose -f deploy/docker-compose.dev.yml down                         # Stop (data preserved)
-docker compose -f deploy/docker-compose.dev.yml down -v                      # Stop and clear data
+npm run docker:up        # Start PostgreSQL + Redis + MinIO
+npm run docker:down      # Stop (data preserved)
+# To clear all data: docker compose -f deploy/docker-compose.dev.yml down -v
 ```
 
 ## Architecture

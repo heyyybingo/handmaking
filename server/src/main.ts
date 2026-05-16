@@ -4,6 +4,9 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { AllExceptionsFilter } from './common/filters/all-exceptions.filter';
 import { LoggingInterceptor } from './common/interceptors/logging.interceptor';
+import { RateLimitInterceptor } from './common/interceptors/rate-limit.interceptor';
+import { CacheInterceptor } from './common/interceptors/cache.interceptor';
+import { RedisService } from './common/redis/redis.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -18,8 +21,13 @@ async function bootstrap() {
     }),
   );
 
+  const redisService = app.get(RedisService);
   app.useGlobalFilters(new AllExceptionsFilter());
-  app.useGlobalInterceptors(new LoggingInterceptor());
+  app.useGlobalInterceptors(
+    new RateLimitInterceptor(redisService),
+    new CacheInterceptor(redisService),
+    new LoggingInterceptor(),
+  );
 
   app.enableCors();
 

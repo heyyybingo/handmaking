@@ -1,3 +1,13 @@
 {
-  "navigationBarTitleText": "作品详情"
+  "navigationBarTitleText": "作品详情",
+  "usingComponents": {
+    "tag": "../../components/tag/tag",
+    "avatar": "../../components/avatar/avatar",
+    "button": "../../components/button/button",
+    "empty-state": "../../components/empty-state/empty-state",
+    "skeleton": "../../components/skeleton/skeleton",
+    "profile-panel": "../../components/profile-panel/profile-panel",
+    "intent-panel": "../../components/intent-panel/intent-panel",
+    "poster": "../../components/poster/poster"
+  }
 }

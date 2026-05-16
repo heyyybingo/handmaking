@@ -1,0 +1,17 @@
+@import '../../styles/variables.wxss';
+
+.card {
+  background-color: @bg-card;
+  border-radius: @radius-md;
+  box-shadow: @shadow-card;
+  overflow: hidden;
+}
+
+.card-padding {
+  padding: @card-padding;
+}
+
+.card-hover:active {
+  transform: scale(0.98);
+  transition: transform 0.15s ease;
+}

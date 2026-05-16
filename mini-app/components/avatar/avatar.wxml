@@ -1,0 +1,12 @@
+<view class="avatar" style="width: {{size}}rpx; height: {{size}}rpx;">
+  <image
+    wx:if="{{src && !hasError}}"
+    class="avatar-image"
+    src="{{src}}"
+    mode="aspectFill"
+    binderror="onError"
+  />
+  <view wx:else class="avatar-default">
+    <text class="avatar-icon">{{defaultIcon}}</text>
+  </view>
+</view>

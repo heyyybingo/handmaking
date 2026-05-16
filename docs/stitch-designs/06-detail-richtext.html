@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><style>
+  .full-screen-mode {
+    margin-top: 0 !important;
+    min-height: 100vh !important;
+    border-radius: 0 !important;
+    padding-top: 64px !important;
+  }
+  .header-hidden {
+    height: 0 !important;
+    overflow: hidden !important;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .rotate-90 {
+    transform: rotate(90deg);
+  }
+  .rotate-270 {
+    transform: rotate(270deg);
+  }
+</style>
+<script>function toggleFullScreen() {
+    const header = document.querySelector('header');
+    const main = document.querySelector('main');
+    const icon = document.getElementById('toggle-icon');
+    const desc = document.getElementById('description-content');
+
+    header.classList.toggle('header-hidden');
+    main.classList.toggle('full-screen-mode');
+
+    if (main.classList.contains('full-screen-mode')) {
+      icon.innerText = 'unfold_less';
+      icon.classList.add('rotate-180');
+      desc.classList.remove('h-[300px]', 'overflow-y-auto', 'scrollbar-hide');
+    } else {
+      icon.innerText = 'unfold_more';
+      icon.classList.remove('rotate-180');
+      desc.classList.add('h-[300px]', 'overflow-y-auto', 'scrollbar-hide');
+    }
+  }</script><style>.scrollbar-hide::-webkit-scrollbar { display: none; } .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }</style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>作品详情 - 温暖匠心</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries">function toggleFullScreen() {
+    const header = document.querySelector('header');
+    const main = document.querySelector('main');
+    const icon = document.getElementById('toggle-icon');
+    const desc = document.getElementById('description-content');
+
+    header.classList.toggle('header-hidden');
+    main.classList.toggle('full-screen-mode');
+
+    if (main.classList.contains('full-screen-mode')) {
+      icon.innerText = 'unfold_less';
+      icon.classList.add('rotate-180');
+      desc.classList.remove('h-[300px]', 'overflow-y-auto', 'scrollbar-hide');
+    } else {
+      icon.innerText = 'unfold_more';
+      icon.classList.remove('rotate-180');
+      desc.classList.add('h-[300px]', 'overflow-y-auto', 'scrollbar-hide');
+    }
+  }</script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "inverse-on-surface": "#f9efe9",
+                "success": "#52C41A",
+                "secondary-container": "#fedab2",
+                "surface-container-highest": "#eae1db",
+                "tertiary": "#3c6377",
+                "surface-container-lowest": "#ffffff",
+                "primary-fixed-dim": "#f0bd8f",
+                "warning": "#FAAD14",
+                "primary-fixed": "#ffdcbf",
+                "outline-variant": "#d4c3b7",
+                "tertiary-container": "#7da4ba",
+                "on-primary": "#ffffff",
+                "secondary-fixed-dim": "#e3c19a",
+                "background": "#fff8f5",
+                "surface-container-low": "#fcf2ec",
+                "on-background": "#1f1b18",
+                "inverse-primary": "#f0bd8f",
+                "wood-deep": "#8B6F4E",
+                "surface-dim": "#e2d8d3",
+                "ink-black": "#2D2D2D",
+                "tertiary-fixed": "#c1e8ff",
+                "secondary-fixed": "#ffddb7",
+                "surface-tint": "#7d5630",
+                "error": "#FF4D4F",
+                "primary-container": "#c4956a",
+                "inverse-surface": "#342f2c",
+                "on-tertiary-fixed": "#001e2b",
+                "on-tertiary": "#ffffff",
+                "surface-container-high": "#f0e6e1",
+                "camel-light": "#E8D5C0",
+                "error-container": "#ffdad6",
+                "outline": "#82756a",
+                "surface-container": "#f6ece6",
+                "on-surface": "#1f1b18",
+                "on-error": "#ffffff",
+                "surface-variant": "#eae1db",
+                "celadon-green": "#7BA98F",
+                "canvas-bg": "#F5F5F5",
+                "slate-gray": "#666666",
+                "secondary": "#745a3a",
+                "on-secondary-container": "#785e3e",
+                "mist-gray": "#999999",
+                "copper-warm": "#C4956A",
+                "on-primary-container": "#4e2e0c",
+                "tertiary-fixed-dim": "#a4cce3",
+                "divider": "#E5E5E5",
+                "on-error-container": "#93000a",
+                "surface": "#fff8f5",
+                "on-surface-variant": "#50453b",
+                "on-tertiary-container": "#0d3a4d",
+                "on-secondary-fixed-variant": "#5a4225",
+                "on-primary-fixed-variant": "#623f1b",
+                "surface-bright": "#fff8f5",
+                "primary": "#7d5630",
+                "on-tertiary-fixed-variant": "#234b5e",
+                "on-secondary-fixed": "#2a1801",
+                "on-primary-fixed": "#2d1600",
+                "on-secondary": "#ffffff"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "xs": "8rpx",
+                "lg": "32rpx",
+                "card-padding": "24rpx",
+                "md": "24rpx",
+                "gutter": "16rpx",
+                "base": "8rpx",
+                "xl": "48rpx",
+                "page-margin": "32rpx",
+                "sm": "16rpx"
+        },
+        "fontFamily": {
+                "h3": [
+                        "beVietnamPro"
+                ],
+                "tag": [
+                        "inter"
+                ],
+                "helper": [
+                        "inter"
+                ],
+                "h2": [
+                        "beVietnamPro"
+                ],
+                "h1": [
+                        "beVietnamPro"
+                ],
+                "body": [
+                        "inter"
+                ]
+        },
+        "fontSize": {
+                "h3": [
+                        "28rpx",
+                        {
+                                "lineHeight": "1.4",
+                                "fontWeight": "600"
+                        }
+                ],
+                "tag": [
+                        "20rpx",
+                        {
+                                "lineHeight": "1.2",
+                                "letterSpacing": "0.02em",
+                                "fontWeight": "500"
+                        }
+                ],
+                "helper": [
+                        "24rpx",
+                        {
+                                "lineHeight": "1.4",
+                                "fontWeight": "400"
+                        }
+                ],
+                "h2": [
+                        "32rpx",
+                        {
+                                "lineHeight": "1.4",
+                                "fontWeight": "600"
+                        }
+                ],
+                "h1": [
+                        "36rpx",
+                        {
+                                "lineHeight": "1.4",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body": [
+                        "28rpx",
+                        {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-canvas-bg min-h-screen pb-24 antialiased text-on-surface">
+<!-- Immersive Carousel Header - Increased height -->
+<header class="relative w-full h-[75vh] bg-surface-variant transition-all duration-500 overflow-hidden transition-all duration-500 ease-in-out">
+<div class="absolute inset-0">
+<img alt="Vintage Leather Handbag Detail" class="w-full h-full object-cover" data-alt="A close-up, highly detailed photograph of a handcrafted vintage leather crossbody bag resting on a textured wooden workbench. The lighting is warm, natural, and slightly directional, highlighting the rich, organic grain and warm copper tones of the leather. Intricate artisan stitching and beautifully aged brass buckles catch soft highlights. The overall mood is intimate and evocative of a quiet, artisanal workshop, perfectly aligning with a modern tactile, light-mode aesthetic that celebrates craftsmanship." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCk5M2HJk8lDIhGzP7E7XoEooaqcwtotvFJ3BMmehkjXAkhThVskPG6GSB3lnaCxwy3oDhf4Kx_CILo3cafw43rDKuBC8PyDxEaVLqc0ObN95YlDqaZUSqyOReVP1FsSeyArMp4UlRU5esE22HqmeEERN0yeco0Vza3y3WBBORx_e9H45Na3gJieP7fLs85ac5f-t1j9fUIGgN5Ya9ZGDHUMPvdaCtLBEBPbtIKV-JKUl5JU997jnwTM0-h0U2YC_-SFtl-xdNrgw"/>
+</div>
+<!-- Subtle gradient overlay for text readability and transition -->
+<div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/60 to-transparent"></div>
+<!-- Floating Back Button -->
+<button class="absolute top-12 left-4 w-10 h-10 rounded-full bg-black/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/30 transition-colors z-20">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<!-- Carousel Indicators -->
+<div class="absolute bottom-10 left-0 w-full flex justify-center space-x-2 z-20">
+<div class="w-2 h-2 rounded-full bg-white transition-all"></div>
+<div class="w-2 h-2 rounded-full bg-white/50 transition-all"></div>
+<div class="w-2 h-2 rounded-full bg-white/50 transition-all"></div>
+<div class="w-2 h-2 rounded-full bg-white/50 transition-all"></div>
+</div>
+</header>
+<!-- Main Content Canvas (Slides up over the image) - Increased padding -->
+<main class="relative -mt-6 bg-surface-container-lowest rounded-t-[24px] z-10 shadow-[0_-4px_16px_rgba(0,0,0,0.08)] px-[32px] pt-10 pb-12 transition-all duration-500">
+<!-- Title & Category - Increased visual hierarchy -->
+<div class="relative flex flex-col gap-4 mb-8">
+<h1 class="font-h1 text-[36px] font-bold text-ink-black leading-tight tracking-tight">复古皮革手工挎包</h1>
+<div class="flex items-center">
+<span class="bg-surface-container text-secondary font-tag text-[12px] px-3 py-1 rounded-full whitespace-nowrap border border-divider">皮具手作</span>
+</div>
+<button class="absolute -top-2 -right-2 w-8 h-8 flex items-center justify-center text-outline hover:text-primary transition-colors" onclick="toggleFullScreen()">
+<span class="material-symbols-outlined" id="toggle-icon">unfold_more</span>
+</button></div>
+<!-- Maker Info Card -->
+<div class="flex items-center gap-3 mb-8 bg-surface-container-low p-3 rounded-xl border border-surface-variant/50">
+<img alt="Maker Avatar" class="w-12 h-12 rounded-full object-cover border-2 border-surface-container-lowest shadow-sm" data-alt="A warm, engaging portrait of a male artisan in a brightly lit workshop. He has a gentle smile, wearing a simple canvas apron over a neutral-toned shirt. The background softly blurs tools and raw materials. The image evokes a sense of approachability, expertise, and human-centric craftsmanship fitting for a modern tactile UI profile picture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPAfw5rSraH-vFG3tQTyUZ1bp4eme2t5HZ9yZLmwIRNNzDbsZLKcPeY8KlzH6E77B1zVSLq2iBStWRVfWd-Azl9q_Pd8KYE-ZAkD9muVlpeVbZlb2Y7F3gLwOZE8mmSY-MWgQwlGjGzIWK5vWW82cwX9aZKDf1IelbmdYZ2khvBsybnJEOFp-k7sVwo7knKkafMGxQZX67ajJu53l6ed4F-5rDd8b5CWwUNzBP9QJzEhFdjUJrdBO3qbsAarJfHpAhgJknGSJWng"/>
+<div class="flex-1">
+<div class="font-h3 text-h3 text-on-surface">匠人老李</div>
+<div class="font-helper text-helper text-mist-gray mt-0.5">2小时前发布 · 1.2k 浏览</div>
+</div>
+<button class="px-4 py-1.5 rounded-full border border-copper-warm text-copper-warm font-tag text-[12px] font-semibold hover:bg-copper-warm/10 transition-colors whitespace-nowrap">
+                + 关注
+            </button>
+</div>
+<!-- Description - Simplified -->
+<div class="relative">
+<article class="font-body text-[15px] text-on-surface-variant leading-relaxed overflow-y-auto transition-all duration-500 ease-in-out scrollbar-hide min-h-[300px]" id="description-content"><div class="space-y-base">
+<p class="font-body text-[15px] text-on-surface-variant leading-relaxed">
+    意大利进口植鞣头层牛皮，纯手工裁切、打孔、缝线。保留原始纹理，随时间呈现独特包浆。每一处纹路都是自然的馈赠，记录着光阴的故事。
+  </p>
+<div class="py-2">
+<img alt="手工皮具工具" class="w-full rounded-xl shadow-sm object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzcnGGyHx3ZOXGRA17JtdUV7iigrTtOGeLAK7BQUh_mHUVRrZVz4aawPZmFrXDXJD04UiwMWNDHPXJ2tXPF7eGDLRmmuH8d3QSBJBj0zX7VBgdKr593dde6BDcA6ToRsq2kQxGTXZ4LWKVBA7ARk0EMqJlmOU4kbf5FJI7OI0v8pPARjafqLUOtof983IYhsnfu0_lf0E-1BaVfkHCT1l8w9szyze-IY8r8f9PdY5JRe6uG2dPOlKoxLYX03K27Vkp3X9gC_xbdA"/>
+</div>
+<p class="font-body text-[15px] text-on-surface-variant leading-relaxed">
+    设计灵感源于60年代老式邮差包，简化冗余装饰，回归核心储物功能。我们选用了高强度蜡线进行手工缝合，确保包身经久耐用，陪伴你走过更多街道。
+  </p>
+<p class="font-body text-[15px] text-on-surface-variant leading-relaxed">
+    五金件采用纯铜材质并经过手工做旧处理，带有淡淡的复古光泽。内部设计了多功能夹层，方便收纳日常小物，让优雅与实用并存。
+  </p>
+<div class="py-2">
+<img alt="包袋细节" class="w-full rounded-xl shadow-sm object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCk5M2HJk8lDIhGzP7E7XoEooaqcwtotvFJ3BMmehkjXAkhThVskPG6GSB3lnaCxwy3oDhf4Kx_CILo3cafw43rDKuBC8PyDxEaVLqc0ObN95YlDqaZUSqyOReVP1FsSeyArMp4UlRU5esE22HqmeEERN0yeco0Vza3y3WBBORx_e9H45Na3gJieP7fLs85ac5f-t1j9fUIGgN5Ya9ZGDHUMPvdaCtLBEBPbtIKV-JKUl5JU997jnwTM0-h0U2YC_-SFtl-xdNrgw"/>
+</div>
+</div></article>
+</div>
+<!-- Elegant Divider -->
+<div class="my-10 flex items-center justify-center">
+<div class="h-px bg-divider w-1/4"></div>
+<div class="mx-4 text-outline-variant">
+<span class="material-symbols-outlined text-[16px]">hardware</span>
+</div>
+<div class="h-px bg-divider w-1/4"></div>
+</div>
+<!-- Comment Section -->
+<section>
+<h2 class="font-h2 text-h2 text-ink-black mb-6 flex items-center gap-2">
+                精选评论 <span class="font-body text-mist-gray text-[14px] font-normal">(12)</span>
+</h2>
+<!-- Comment Thread 1 -->
+<div class="mb-8">
+<div class="flex gap-3">
+<img class="w-8 h-8 rounded-full object-cover flex-shrink-0" data-alt="A soft, friendly profile picture of a young woman with a warm smile, set against a bright, minimalist background. The lighting is high-key and flattering, suitable for a clean, modern UI avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbpJvWIzPnCrJTM64vtUi6dX3zPTWFDojJG_vP12k-nBaMrkkNL5F0xSsFgcCRYGMe7GdlPhRTh8j7TQhjzAn484hgS8-fl2b2BJvWTBLH2xIoVlMIM7ibE6Gzq_W_niydvwnd7-BOc_MEipVnMBf54eQcU-PoPCXHBmF0OCkLsTp1DBD3BP0Oq80ggnxopjfwqSIWx18nh0Ev4wZUA-Bz0HdTaTzyPA1yq7XwITt9r225VtVlRnrBtnWldUHZTKVrotsb_QvDwQ"/>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="font-h3 text-[13px] text-on-surface-variant">木作小爱好者</span>
+<span class="font-helper text-[11px] text-mist-gray">1小时前</span>
+</div>
+<div class="font-body text-[14px] text-on-surface mt-1 mb-3">皮质看起来质感真的太棒了！请问边缘有做封边处理吗？平时需要怎么保养呢？</div>
+<!-- Highlighted Maker Reply -->
+<div class="bg-wood-deep text-on-primary rounded-lg p-3 relative shadow-md">
+<div class="absolute -top-2 left-4 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-b-[8px] border-b-wood-deep"></div>
+<div class="flex items-center gap-1.5 mb-1.5">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-h3 text-[12px] opacity-90">匠人老李 (作者)</span>
+</div>
+<div class="font-body text-[13px] leading-relaxed">感谢喜欢！边缘都做了手工打磨和天然蜂蜡封边。平时只需要用干净的软布轻轻擦拭即可，大概半年上一次保养油，随着使用会越来越亮。</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Comment Thread 2 -->
+<div class="mb-4">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-camel-light flex items-center justify-center flex-shrink-0 text-on-secondary-container font-h3">
+                        手
+                    </div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="font-h3 text-[13px] text-on-surface-variant">手工艺人_77</span>
+<span class="font-helper text-[11px] text-mist-gray">3小时前</span>
+</div>
+<div class="font-body text-[14px] text-on-surface mt-1">缝线非常工整，做旧的五金配件是点睛之笔，能看出来花了不少心思，赞一个！</div>
+</div>
+</div>
+</div>
+<button class="w-full py-3 mt-2 text-center text-copper-warm font-body text-[14px] hover:text-primary transition-colors">
+                查看全部评论
+            </button>
+</section>
+</main>
+<!-- Bottom Fixed Interaction Bar -->
+<div class="fixed bottom-0 left-0 w-full bg-surface-container-lowest border-t border-divider px-[32px] pt-3 pb-safe-bottom z-50 shadow-[0_-2px_12px_rgba(0,0,0,0.04)]" style="padding-bottom: env(safe-area-inset-bottom, 24px);">
+<div class="flex items-center justify-between gap-4">
+<!-- Social Actions -->
+<div class="flex items-center gap-6 text-on-surface-variant">
+<button class="flex flex-col items-center justify-center gap-0.5 hover:text-copper-warm transition-colors group active:animate-ping">
+<span class="material-symbols-outlined group-hover:scale-125 transition-transform duration-300" style="font-variation-settings: 'FILL' 0;">favorite</span>
+<span class="font-tag text-[11px] whitespace-nowrap">256</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-0.5 hover:text-copper-warm transition-colors group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 0;">chat_bubble</span>
+<span class="font-tag text-[11px] whitespace-nowrap">12</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-0.5 hover:text-copper-warm transition-colors group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 0;">share</span>
+<span class="font-tag text-[11px] whitespace-nowrap">分享</span>
+</button>
+</div>
+<!-- Primary Action - Centered properly in its half -->
+<div class="flex-1 flex justify-end">
+<button class="bg-copper-warm text-on-primary font-h2 text-[16px] px-8 py-3 rounded-full shadow-[0_4px_12px_rgba(196,149,106,0.35)] hover:bg-primary transition-all flex items-center justify-center gap-2 transform active:scale-95 duration-150 whitespace-nowrap min-w-[140px]">
+        我想要
+      </button>
+</div>
+</div>
+</div>
+</body></html>

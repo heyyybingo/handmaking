@@ -73,7 +73,32 @@
       "mcp__stitch__list_screens",
       "Bash(npm test *)",
       "Bash(npx vite *)",
-      "Skill(superpowers:using-superpowers)"
+      "Skill(superpowers:using-superpowers)",
+      "Bash(curl -L -o /tmp/login_screenshot.png \"https://lh3.googleusercontent.com/aida/ADBb0uii2SP5GBXCPLXmn-JekLSkmsRagIQWBRqdypcA_tu1AXznWW5Q50d-OvPaTi2wi8pcw2f_Imqz3wBsERCVszpE2Geo6qCOhV_9p-qDnlNLr6E3-SYhObPwr6FOupEP9e5qhTsUrawcUB7jNzKmCEwCIoYp4SqV4KQZnMiH40bM950LYqqYjeUi4V-qpS2o_MgdZgYOSfyabKEhc29vZKazybiC3Tf191YjOC_Wv3emCqLZw-SVsAZ2dQ\")",
+      "Bash(curl -L -o /tmp/login_html.html \"https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZmeBJ6Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpZCiVodG1sXzQ4Y2RlZDRmNTg1NjRiOTU4MjFiOTBjNmFhNzlmYTM4EgsSBxDjg-Su8BsYAZIBIgoKcHJvamVjdF9pZBIUQhI5Mjg2MDYyODIxNzk3NDEzNzI&filename=&opi=89354086\")",
+      "Bash(curl -sL \"https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ6Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpZCiVodG1sXzQ4Y2RlZDRmNTg1NjRiOTU4MjFiOTBjNmFhNzlmYTM4EgsSBxDjg-Su8BsYAZIBIgoKcHJvamVjdF9pZBIUQhI5Mjg2MDYyODIxNzk3NDEzNzI&filename=&opi=89354086\")",
+      "Bash(curl -sL -o /tmp/stitch-login-screenshot.png \"https://lh3.googleusercontent.com/aida/ADBb0uii2SP5GBXCPLXmn-JekLSkmsRagIQWBRqdypcA_tu1AXznWW5Q50d-OvPaTi2wi8pcw2f_Imqz3wBsERCVszpE2Geo6qCOhV_9p-qDnlNLr6E3-SYhObPwr6FOupEP9e5qhTsUrawcUB7jNzKmCEwCIoYp4SqV4KQZnMiH40bM950LYqqYjeUi4V-qpS2o_MgdZgYOSfyabKEhc29vZKazybiC3Tf191YjOC_Wv3emCqLZw-SVsAZ2dQ\")",
+      "Bash(npm config *)",
+      "Bash(npx msw *)",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:5173/)",
+      "Bash(curl -s http://localhost:5173/login)",
+      "Bash(curl -s -X POST http://localhost:5173/api/admin/auth/login -H \"Content-Type: application/json\" -d '{\"username\":\"admin\",\"password\":\"admin123\"}')",
+      "Bash(curl -v -X POST http://localhost:5173/api/admin/auth/login -H \"Content-Type: application/json\" -d '{\"username\":\"admin\",\"password\":\"admin123\"}')",
+      "Bash(awk '{print $NF}')",
+      "Bash(python3 -c ' *)",
+      "Bash(open -a Docker)",
+      "Bash(open -a \"Docker Desktop\")",
+      "Bash(docker info *)",
+      "Bash(break)",
+      "Bash(./node_modules/.bin/tsc --noEmit)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(f'Progress: {d[\\\\\"progress\\\\\"][\\\\\"complete\\\\\"]}/{d[\\\\\"progress\\\\\"][\\\\\"total\\\\\"]} \\({d[\\\\\"progress\\\\\"][\\\\\"complete\\\\\"]/d[\\\\\"progress\\\\\"][\\\\\"total\\\\\"]*100:.0f}%\\)'\\)\")",
+      "Bash(node -e \"const p=require\\('./server/package.json'\\); console.log\\('scripts:', Object.keys\\(p.scripts||{}\\).join\\(', '\\)\\); console.log\\('name:', p.name\\)\")",
+      "Bash(node -e \"const p=require\\('./web-admin/package.json'\\); console.log\\('scripts:', Object.keys\\(p.scripts||{}\\).join\\(', '\\)\\); console.log\\('name:', p.name\\)\")",
+      "Bash(node -e \"const p=require\\('./mini-app/package.json'\\); console.log\\('scripts:', Object.keys\\(p.scripts||{}\\).join\\(', '\\)\\); console.log\\('name:', p.name\\)\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\('server deps:', len\\(d.get\\('dependencies',{}\\)\\), 'devDeps:', len\\(d.get\\('devDependencies',{}\\)\\)\\)\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\('web-admin deps:', len\\(d.get\\('dependencies',{}\\)\\), 'devDeps:', len\\(d.get\\('devDependencies',{}\\)\\)\\)\")",
+      "Bash(node -e \"console.log\\('server:', require\\('./server/package.json'\\).name\\); console.log\\('web-admin:', require\\('./web-admin/package.json'\\).name\\)\")"
     ]
   }
 }
