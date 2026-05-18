@@ -269,9 +269,7 @@ describe('AuthService', () => {
       });
       global.fetch = mockFetch;
 
-      await expect(service.wxLogin(dto)).rejects.toThrow(
-        UnauthorizedException,
-      );
+      await expect(service.wxLogin(dto)).rejects.toThrow(UnauthorizedException);
     });
   });
 
@@ -296,9 +294,9 @@ describe('AuthService', () => {
         .spyOn(jwtService, 'verifyAsync')
         .mockRejectedValue(new Error('invalid'));
 
-      await expect(
-        service.refreshToken('invalid-token'),
-      ).rejects.toThrow(UnauthorizedException);
+      await expect(service.refreshToken('invalid-token')).rejects.toThrow(
+        UnauthorizedException,
+      );
     });
 
     it('should throw UnauthorizedException when user no longer exists', async () => {
@@ -349,9 +347,9 @@ describe('AuthService', () => {
     it('should throw BadRequestException when user not found', async () => {
       userRepository.findOne.mockResolvedValue(null);
 
-      await expect(
-        service.updateProfile('non-existent', dto),
-      ).rejects.toThrow(BadRequestException);
+      await expect(service.updateProfile('non-existent', dto)).rejects.toThrow(
+        BadRequestException,
+      );
     });
   });
 
@@ -378,27 +376,27 @@ describe('AuthService', () => {
     it('should throw BadRequestException when user not found', async () => {
       userRepository.findOne.mockResolvedValue(null);
 
-      await expect(
-        service.changePassword('non-existent', dto),
-      ).rejects.toThrow(BadRequestException);
+      await expect(service.changePassword('non-existent', dto)).rejects.toThrow(
+        BadRequestException,
+      );
     });
 
     it('should throw BadRequestException when old password is wrong', async () => {
       userRepository.findOne.mockResolvedValue(mockUser);
       mockedBcrypt.compare.mockResolvedValue(false as never);
 
-      await expect(
-        service.changePassword('user-uuid-1', dto),
-      ).rejects.toThrow(BadRequestException);
+      await expect(service.changePassword('user-uuid-1', dto)).rejects.toThrow(
+        BadRequestException,
+      );
     });
 
     it('should throw BadRequestException when user has no password', async () => {
       const noPassUser = { ...mockUser, password_hash: undefined };
       userRepository.findOne.mockResolvedValue(noPassUser);
 
-      await expect(
-        service.changePassword('user-uuid-1', dto),
-      ).rejects.toThrow(BadRequestException);
+      await expect(service.changePassword('user-uuid-1', dto)).rejects.toThrow(
+        BadRequestException,
+      );
     });
   });
 

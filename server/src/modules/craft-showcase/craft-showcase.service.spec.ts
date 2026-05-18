@@ -100,7 +100,9 @@ describe('CraftShowcaseService', () => {
       const crafts = Array.from({ length: 11 }, (_, i) =>
         mockCraft({
           id: `c${i}`,
-          created_at: new Date(`2025-01-${String(15 - i).padStart(2, '0')}T10:00:00Z`),
+          created_at: new Date(
+            `2025-01-${String(15 - i).padStart(2, '0')}T10:00:00Z`,
+          ),
         }),
       );
 
@@ -175,10 +177,9 @@ describe('CraftShowcaseService', () => {
 
       await service.findAll({ limit: 10, status: CraftStatus.DRAFT });
 
-      expect(qb.andWhere).toHaveBeenCalledWith(
-        'craft.status = :status',
-        { status: CraftStatus.DRAFT },
-      );
+      expect(qb.andWhere).toHaveBeenCalledWith('craft.status = :status', {
+        status: CraftStatus.DRAFT,
+      });
     });
 
     it('should default to PUBLISHED status when no status provided', async () => {
@@ -194,10 +195,9 @@ describe('CraftShowcaseService', () => {
 
       await service.findAll({ limit: 10 });
 
-      expect(qb.andWhere).toHaveBeenCalledWith(
-        'craft.status = :status',
-        { status: CraftStatus.PUBLISHED },
-      );
+      expect(qb.andWhere).toHaveBeenCalledWith('craft.status = :status', {
+        status: CraftStatus.PUBLISHED,
+      });
     });
 
     it('should return empty items for no results', async () => {
@@ -364,7 +364,9 @@ describe('CraftShowcaseService', () => {
       const crafts = Array.from({ length: 11 }, (_, i) =>
         mockCraft({
           id: `c${i}`,
-          created_at: new Date(`2025-01-${String(15 - i).padStart(2, '0')}T10:00:00Z`),
+          created_at: new Date(
+            `2025-01-${String(15 - i).padStart(2, '0')}T10:00:00Z`,
+          ),
         }),
       );
 

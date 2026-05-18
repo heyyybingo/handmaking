@@ -1,6 +1,7 @@
 import { IsString, MinLength, Matches } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
+/** 管理员修改密码请求——需提供旧密码和新密码，新密码需包含大小写字母和数字 */
 export class AdminChangePasswordDto {
   @ApiProperty({ description: '当前密码', example: 'OldPass123' })
   @IsString()

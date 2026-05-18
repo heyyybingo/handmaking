@@ -100,6 +100,30 @@ API-first approach for all frontend-backend modules:
 
 When adding a new business module to the server, register it in `app.module.ts` imports. When adding API types to web-admin, run `npm run generate-api-types` after the server is running.
 
+## 注释规约
+
+所有代码注释使用**简体中文**，采用三级注释体系：
+
+### 注释层级
+
+1. **类/模块注释**：每个 controller、service、entity、DTO、公共基础设施类（filters、interceptors、guards、decorators）在类声明上方使用 JSDoc 风格注释说明职责和主要功能
+2. **公共方法注释**：所有 public 方法（含 async）在方法声明上方使用 JSDoc 风格注释说明用途、关键参数含义和返回值。简单的 getter/setter 和生命周期钩子（ngOnInit、constructor）除外
+3. **关键逻辑注释**：复杂算法、非显而易见的业务规则、边界条件处理、临时解决方案（workaround）使用行内注释（`//`）说明原因
+
+### 格式要求
+
+- 后端（NestJS）：JSDoc 风格块注释 `/** ... */`
+- 前端（React）：JSDoc 风格或单行注释 `//`
+- 注释内容简洁明了，说明"为什么"而非"做什么"（代码本身说明"做什么"）
+
+### 适用范围
+
+- 所有 `server/src/modules/` 下的 controller、service、dto 文件
+- 所有 `server/src/common/` 下的公共基础设施文件
+- 所有 `server/src/storage/` 下的存储相关文件
+- 所有 `server/src/entities/` 下的实体定义文件
+- `web-admin/src/` 下的组件、hooks、工具函数文件
+
 ## Environment
 
 Env files loaded from project root: `.env.{NODE_ENV}` (falls back to `.env.example`). Copy `deploy/.env.example` to `.env.dev` to start. Required overrides: `WX_APPID`, `WX_SECRET`, `JWT_SECRET`.

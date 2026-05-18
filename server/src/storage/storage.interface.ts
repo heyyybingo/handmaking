@@ -11,7 +11,11 @@ export interface IStorageService {
    * @param expires - 过期时间（秒），默认3600
    * @returns 预签名URL字符串
    */
-  getPresignedUrl(key: string, action: 'upload' | 'download', expires?: number): Promise<string>;
+  getPresignedUrl(
+    key: string,
+    action: 'upload' | 'download',
+    expires?: number,
+  ): Promise<string>;
 
   /**
    * 确认上传完成

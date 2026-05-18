@@ -10,6 +10,10 @@ interface JwtPayload {
   hasProfile: boolean;
 }
 
+/**
+ * JWT 策略——从 Authorization Header 提取 Bearer Token 并验证
+ * 验证成功后返回用户基本信息（userId、openid、role、hasProfile）
+ */
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(configService: ConfigService) {

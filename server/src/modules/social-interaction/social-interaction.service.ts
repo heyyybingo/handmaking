@@ -14,6 +14,9 @@ import { CreateCommentDto } from './dto/create-comment.dto';
 import { ReplyCommentDto } from './dto/reply-comment.dto';
 import { CommentQueryDto } from './dto/comment-query.dto';
 
+/**
+ * 社交互动服务——处理点赞（Redis Set）、评论CRUD、作者回复
+ */
 @Injectable()
 export class SocialInteractionService {
   constructor(
@@ -105,8 +108,7 @@ export class SocialInteractionService {
       throw new NotFoundException('用户不存在');
     }
 
-    const authorType =
-      role === 'admin' ? AuthorType.ADMIN : AuthorType.VISITOR;
+    const authorType = role === 'admin' ? AuthorType.ADMIN : AuthorType.VISITOR;
 
     // 如果是回复，检查父评论是否存在且属于同一作品
     if (dto.parent_id) {
@@ -146,7 +148,11 @@ export class SocialInteractionService {
   async findComments(
     craftId: string,
     query: CommentQueryDto,
-  ): Promise<{ items: Comment[]; nextCursor: string | null; hasMore: boolean }> {
+  ): Promise<{
+    items: Comment[];
+    nextCursor: string | null;
+    hasMore: boolean;
+  }> {
     const limit = query.limit ?? 20;
 
     const qb = this.commentRepo
@@ -157,7 +163,7 @@ export class SocialInteractionService {
 
     if (query.cursor) {
       qb.andWhere('comment.created_at < :cursor', {
-        cursor: new Date(query.cursor!),
+        cursor: new Date(query.cursor),
       });
     }
 

@@ -13,6 +13,7 @@ import {
 import { Type } from 'class-transformer';
 import { CraftStatus } from '@/entities/craft.entity';
 
+/** 图片列表项——包含原图URL、缩略图URL和展示尺寸 */
 class ImageItemDto {
   @ApiProperty({ description: '图片URL' })
   @IsString()
@@ -39,6 +40,7 @@ class ImageItemDto {
   sort?: number;
 }
 
+/** 视频信息——包含视频URL、封面图和时长 */
 class VideoDto {
   @ApiProperty({ description: '视频URL' })
   @IsString()
@@ -55,6 +57,7 @@ class VideoDto {
   duration?: number;
 }
 
+/** 创建作品请求——包含标题、描述、图片、视频、分类、标签等信息 */
 export class CreateCraftDto {
   @ApiProperty({ description: '作品标题', maxLength: 50 })
   @IsString()
@@ -91,7 +94,11 @@ export class CreateCraftDto {
   @IsString({ each: true })
   tags?: string[];
 
-  @ApiPropertyOptional({ description: '状态', enum: CraftStatus, default: CraftStatus.DRAFT })
+  @ApiPropertyOptional({
+    description: '状态',
+    enum: CraftStatus,
+    default: CraftStatus.DRAFT,
+  })
   @IsOptional()
   @IsEnum(CraftStatus)
   status?: CraftStatus;
@@ -102,6 +109,7 @@ export class CreateCraftDto {
   sort_order?: number;
 }
 
+/** 更新作品请求——所有字段均为可选，仅更新传入的字段 */
 export class UpdateCraftDto {
   @ApiPropertyOptional({ description: '作品标题', maxLength: 50 })
   @IsOptional()

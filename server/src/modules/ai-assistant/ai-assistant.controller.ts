@@ -1,9 +1,32 @@
-import { Controller, Get, Put, Post, Body, Param, Sse, MessageEvent } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
+import {
+  Controller,
+  Get,
+  Put,
+  Post,
+  Body,
+  Param,
+  Sse,
+  MessageEvent,
+} from '@nestjs/common';
+import {
+  ApiTags,
+  ApiOperation,
+  ApiResponse,
+  ApiBearerAuth,
+} from '@nestjs/swagger';
 import { Observable, map } from 'rxjs';
 import { AiAssistantService } from './ai-assistant.service';
-import { UpdateAiConfigDto, GenerateDescriptionDto, SuggestTagsDto, ImageSuggestionDto } from './dto/ai-config.dto';
+import {
+  UpdateAiConfigDto,
+  GenerateDescriptionDto,
+  SuggestTagsDto,
+  ImageSuggestionDto,
+} from './dto/ai-config.dto';
 
+/**
+ * AI 助手控制器——管理 AI 配置和调用 AI 生成描述、标签建议、图片优化建议
+ * 描述生成使用 SSE 流式响应
+ */
 @ApiTags('AI助手')
 @Controller('admin/ai')
 export class AiAssistantController {
@@ -33,21 +56,26 @@ export class AiAssistantController {
   @ApiOperation({ summary: 'AI生成作品描述' })
   @ApiResponse({ status: 200, description: '生成成功' })
   @Sse('generate-description-stream')
-  generateDescriptionStream(@Body() dto: GenerateDescriptionDto): Observable<MessageEvent> {
+  generateDescriptionStream(
+    @Body() dto: GenerateDescriptionDto,
+  ): Observable<MessageEvent> {
     return new Observable((subscriber) => {
-      this.aiService.generateDescription(dto).then((result) => {
-        const chars = result.description.split('');
-        chars.forEach((char, index) => {
-          setTimeout(() => {
-            subscriber.next({ data: char } as MessageEvent);
-            if (index === chars.length - 1) {
-              subscriber.complete();
-            }
-          }, index * 50);
+      this.aiService
+        .generateDescription(dto)
+        .then((result) => {
+          const chars = result.description.split('');
+          chars.forEach((char, index) => {
+            setTimeout(() => {
+              subscriber.next({ data: char });
+              if (index === chars.length - 1) {
+                subscriber.complete();
+              }
+            }, index * 50);
+          });
+        })
+        .catch((error) => {
+          subscriber.error(error);
         });
-      }).catch((error) => {
-        subscriber.error(error);
-      });
     });
   }
 

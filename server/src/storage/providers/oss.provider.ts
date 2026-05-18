@@ -16,7 +16,10 @@ export class OssProvider implements IStorageService {
   private readonly logger = new Logger(OssProvider.name);
 
   constructor(private readonly configService: ConfigService) {
-    this.bucket = this.configService.get<string>('OSS_BUCKET', 'handcraft-prod');
+    this.bucket = this.configService.get<string>(
+      'OSS_BUCKET',
+      'handcraft-prod',
+    );
     this.cdnDomain = this.configService.get<string>('CDN_DOMAIN', '');
 
     this.client = new OSS({
@@ -28,7 +31,11 @@ export class OssProvider implements IStorageService {
     });
   }
 
-  async getPresignedUrl(key: string, action: 'upload' | 'download', expires: number = 3600): Promise<string> {
+  async getPresignedUrl(
+    key: string,
+    action: 'upload' | 'download',
+    expires: number = 3600,
+  ): Promise<string> {
     try {
       if (action === 'upload') {
         const result = this.client.signatureUrl(key, {
@@ -44,7 +51,10 @@ export class OssProvider implements IStorageService {
       });
       return result;
     } catch (error) {
-      this.logger.error(`获取预签名URL失败: key=${key}, action=${action}`, error);
+      this.logger.error(
+        `获取预签名URL失败: key=${key}, action=${action}`,
+        error,
+      );
       throw error;
     }
   }

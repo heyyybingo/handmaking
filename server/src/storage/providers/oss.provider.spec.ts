@@ -5,7 +5,9 @@ import { OssProvider } from './oss.provider';
 // Mock ali-oss module
 jest.mock('ali-oss', () => {
   return jest.fn().mockImplementation(() => ({
-    signatureUrl: jest.fn().mockReturnValue('https://mock-presigned-url.com/file'),
+    signatureUrl: jest
+      .fn()
+      .mockReturnValue('https://mock-presigned-url.com/file'),
     head: jest.fn().mockRejectedValue(new Error('Not Found')),
     delete: jest.fn().mockRejectedValue(new Error('Not Found')),
   }));
@@ -66,14 +68,18 @@ describe('OssProvider', () => {
     });
 
     it('should return OSS direct URL when CDN_DOMAIN is not set', async () => {
-      const noCdnConfig: Record<string, string> = { ...mockConfig, CDN_DOMAIN: '' };
+      const noCdnConfig: Record<string, string> = {
+        ...mockConfig,
+        CDN_DOMAIN: '',
+      };
       const module: TestingModule = await Test.createTestingModule({
         providers: [
           OssProvider,
           {
             provide: ConfigService,
             useValue: {
-              get: (key: string, defaultValue?: any) => noCdnConfig[key] ?? defaultValue,
+              get: (key: string, defaultValue?: any) =>
+                noCdnConfig[key] ?? defaultValue,
             },
           },
         ],
@@ -81,13 +87,17 @@ describe('OssProvider', () => {
 
       const noCdnProvider = module.get<OssProvider>(OssProvider);
       const url = noCdnProvider.getFileUrl('images/test.jpg');
-      expect(url).toBe('https://handcraft-prod.oss-cn-hangzhou.aliyuncs.com/images/test.jpg');
+      expect(url).toBe(
+        'https://handcraft-prod.oss-cn-hangzhou.aliyuncs.com/images/test.jpg',
+      );
     });
   });
 
   describe('generateThumbnails', () => {
     it('should log thumbnail request without error', async () => {
-      await expect(provider.generateThumbnails('images/test.jpg')).resolves.toBeUndefined();
+      await expect(
+        provider.generateThumbnails('images/test.jpg'),
+      ).resolves.toBeUndefined();
     });
   });
 

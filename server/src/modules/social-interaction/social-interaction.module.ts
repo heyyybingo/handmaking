@@ -12,10 +12,7 @@ import { SocialInteractionController } from './social-interaction.controller';
  * 负责微信分享、点赞、评论、作者回复等社交功能
  */
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([Comment, Craft, User]),
-    UserAuthModule,
-  ],
+  imports: [TypeOrmModule.forFeature([Comment, Craft, User]), UserAuthModule],
   controllers: [SocialInteractionController],
   providers: [SocialInteractionService],
   exports: [SocialInteractionService],

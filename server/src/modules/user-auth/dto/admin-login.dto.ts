@@ -1,6 +1,7 @@
 import { IsString, MinLength } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
+/** 管理员登录请求 */
 export class AdminLoginDto {
   @ApiProperty({ description: '管理员用户名', example: 'admin' })
   @IsString()

@@ -2,8 +2,17 @@ import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { AiConfig } from './entities/ai-config.entity';
-import { UpdateAiConfigDto, GenerateDescriptionDto, SuggestTagsDto, ImageSuggestionDto } from './dto/ai-config.dto';
+import {
+  UpdateAiConfigDto,
+  GenerateDescriptionDto,
+  SuggestTagsDto,
+  ImageSuggestionDto,
+} from './dto/ai-config.dto';
 
+/**
+ * AI 助手服务——管理 AI 功能配置，调用 AI API 生成描述、标签和建议
+ * 当前 AI 调用为 mock 实现，返回预设的示例文案
+ */
 @Injectable()
 export class AiAssistantService {
   private readonly logger = new Logger(AiAssistantService.name);
@@ -21,7 +30,10 @@ export class AiAssistantService {
     return config;
   }
 
-  async updateConfig(feature: string, dto: UpdateAiConfigDto): Promise<AiConfig> {
+  async updateConfig(
+    feature: string,
+    dto: UpdateAiConfigDto,
+  ): Promise<AiConfig> {
     let config = await this.configRepository.findOne({ where: { feature } });
 
     if (!config) {
@@ -33,14 +45,18 @@ export class AiAssistantService {
     return this.configRepository.save(config);
   }
 
-  async generateDescription(dto: GenerateDescriptionDto): Promise<{ description: string }> {
+  async generateDescription(
+    dto: GenerateDescriptionDto,
+  ): Promise<{ description: string }> {
     const config = await this.getConfig('description');
 
     if (!config.isEnabled) {
       throw new Error('AI描述生成功能已禁用');
     }
 
-    this.logger.log(`Generating description for ${dto.imageUrls.length} images`);
+    this.logger.log(
+      `Generating description for ${dto.imageUrls.length} images`,
+    );
 
     const description = await this.callAiApi(config, {
       prompt: this.buildDescriptionPrompt(config.promptTemplate, dto),
@@ -65,7 +81,9 @@ export class AiAssistantService {
     return { tags: JSON.parse(tags) };
   }
 
-  async suggestImageOptimization(dto: ImageSuggestionDto): Promise<{ suggestions: string }> {
+  async suggestImageOptimization(
+    dto: ImageSuggestionDto,
+  ): Promise<{ suggestions: string }> {
     const config = await this.getConfig('image');
 
     if (!config.isEnabled) {
@@ -81,7 +99,10 @@ export class AiAssistantService {
     return { suggestions };
   }
 
-  private buildDescriptionPrompt(template: string, dto: GenerateDescriptionDto): string {
+  private buildDescriptionPrompt(
+    template: string,
+    dto: GenerateDescriptionDto,
+  ): string {
     return template
       .replace('{{imageUrls}}', dto.imageUrls.join(', '))
       .replace('{{tags}}', dto.tags?.join(', ') || '')
@@ -98,8 +119,13 @@ export class AiAssistantService {
     return template.replace('{{imageUrl}}', dto.imageUrl);
   }
 
-  private async callAiApi(config: AiConfig, params: { prompt: string }): Promise<string> {
-    this.logger.log(`Calling AI API with model: ${config.model}, temperature: ${config.temperature}`);
+  private async callAiApi(
+    config: AiConfig,
+    params: { prompt: string },
+  ): Promise<string> {
+    this.logger.log(
+      `Calling AI API with model: ${config.model}, temperature: ${config.temperature}`,
+    );
 
     return `这是一件精美的手工作品，展现了独特的匠心和创意。作品细节处理精致，色彩搭配和谐，整体呈现出温暖而优雅的气质。`;
   }

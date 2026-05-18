@@ -20,13 +20,21 @@ const CACHE_CONFIGS: Record<string, CacheConfig> = {
   '/mini/crafts/search': { ttlSeconds: 60, keyPrefix: 'cache:search' },
 };
 
+/**
+ * 缓存拦截器——对 GET 请求进行 Redis 缓存，减少数据库查询
+ * 仅对配置了缓存规则的路由生效（如作品列表、分类列表、搜索）
+ * 非 GET 请求直接放行，不缓存
+ */
 @Injectable()
 export class CacheInterceptor implements NestInterceptor {
   private readonly logger = new Logger('Cache');
 
   constructor(private readonly redisService: RedisService) {}
 
-  async intercept(context: ExecutionContext, next: CallHandler): Promise<unknown> {
+  async intercept(
+    context: ExecutionContext,
+    next: CallHandler,
+  ): Promise<unknown> {
     const request = context.switchToHttp().getRequest();
 
     if (request.method !== 'GET') {
@@ -49,8 +57,14 @@ export class CacheInterceptor implements NestInterceptor {
     return next.handle().pipe(
       tap(async (data) => {
         if (data) {
-          await this.redisService.set(cacheKey, JSON.stringify(data), config.ttlSeconds);
-          this.logger.debug(`Cache set: ${cacheKey} (TTL: ${config.ttlSeconds}s)`);
+          await this.redisService.set(
+            cacheKey,
+            JSON.stringify(data),
+            config.ttlSeconds,
+          );
+          this.logger.debug(
+            `Cache set: ${cacheKey} (TTL: ${config.ttlSeconds}s)`,
+          );
         }
       }),
     );

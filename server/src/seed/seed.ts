@@ -25,7 +25,9 @@ export async function runSeed(dataSource: DataSource) {
   const configRepo = dataSource.getRepository(SystemConfig);
 
   // Seed default admin
-  const adminExists = await userRepo.findOne({ where: { role: UserRole.ADMIN } });
+  const adminExists = await userRepo.findOne({
+    where: { role: UserRole.ADMIN },
+  });
   if (!adminExists) {
     const passwordHash = await bcrypt.hash('admin123', 10);
     await userRepo.save({

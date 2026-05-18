@@ -16,6 +16,9 @@ import { AdminChangePasswordDto } from './dto/admin-change-password.dto';
 import { WxLoginDto } from './dto/wx-login.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 
+/**
+ * 认证服务——处理管理员登录（密码验证+锁定机制）、微信登录（code换openid）、JWT签发与刷新
+ */
 @Injectable()
 export class AuthService {
   private readonly logger = new Logger(AuthService.name);
@@ -77,9 +80,7 @@ export class AuthService {
       await this.userRepository.update(user.id, updates);
 
       if (failCount >= 5) {
-        throw new UnauthorizedException(
-          '登录失败次数过多，账户已锁定15分钟',
-        );
+        throw new UnauthorizedException('登录失败次数过多，账户已锁定15分钟');
       }
 
       throw new UnauthorizedException(

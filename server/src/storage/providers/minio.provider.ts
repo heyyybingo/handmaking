@@ -18,7 +18,10 @@ export class MinioProvider implements IStorageService {
   private readonly logger = new Logger(MinioProvider.name);
 
   constructor(private readonly configService: ConfigService) {
-    this.endpoint = this.configService.get<string>('MINIO_ENDPOINT', 'localhost');
+    this.endpoint = this.configService.get<string>(
+      'MINIO_ENDPOINT',
+      'localhost',
+    );
     this.port = this.configService.get<number>('MINIO_API_PORT', 9000);
     this.useSSL = this.configService.get<boolean>('MINIO_USE_SSL', false);
     this.bucket = this.configService.get<string>('MINIO_BUCKET', 'handcraft');
@@ -27,8 +30,14 @@ export class MinioProvider implements IStorageService {
       endPoint: this.endpoint,
       port: this.port,
       useSSL: this.useSSL,
-      accessKey: this.configService.get<string>('MINIO_ACCESS_KEY', 'handcraft-dev'),
-      secretKey: this.configService.get<string>('MINIO_SECRET_KEY', 'handcraft-dev-secret'),
+      accessKey: this.configService.get<string>(
+        'MINIO_ACCESS_KEY',
+        'handcraft-dev',
+      ),
+      secretKey: this.configService.get<string>(
+        'MINIO_SECRET_KEY',
+        'handcraft-dev-secret',
+      ),
     });
   }
 
@@ -39,14 +48,21 @@ export class MinioProvider implements IStorageService {
    * @param expires - 过期时间（秒），默认3600
    * @returns 预签名URL
    */
-  async getPresignedUrl(key: string, action: 'upload' | 'download', expires: number = 3600): Promise<string> {
+  async getPresignedUrl(
+    key: string,
+    action: 'upload' | 'download',
+    expires: number = 3600,
+  ): Promise<string> {
     try {
       if (action === 'upload') {
         return await this.client.presignedPutObject(this.bucket, key, expires);
       }
       return await this.client.presignedGetObject(this.bucket, key, expires);
     } catch (error) {
-      this.logger.error(`获取预签名URL失败: key=${key}, action=${action}`, error);
+      this.logger.error(
+        `获取预签名URL失败: key=${key}, action=${action}`,
+        error,
+      );
       throw error;
     }
   }

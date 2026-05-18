@@ -26,12 +26,15 @@ import { CreateCommentDto } from './dto/create-comment.dto';
 import { ReplyCommentDto } from './dto/reply-comment.dto';
 import { CommentQueryDto } from './dto/comment-query.dto';
 
+/**
+ * 社交互动控制器——处理点赞和评论功能
+ * Mini 路由：访客点赞切换、评论创建/查询/删除
+ * Admin 路由：作者回复评论、管理员删除评论
+ */
 @ApiTags('社交互动')
 @Controller()
 export class SocialInteractionController {
-  constructor(
-    private readonly socialService: SocialInteractionService,
-  ) {}
+  constructor(private readonly socialService: SocialInteractionService) {}
 
   // ========== Mini Routes ==========
 

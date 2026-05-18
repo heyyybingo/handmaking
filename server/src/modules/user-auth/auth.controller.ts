@@ -25,6 +25,9 @@ import { RolesGuard } from './roles.guard';
 import { Roles } from './decorators/roles.decorator';
 import { CurrentUser } from './decorators/current-user.decorator';
 
+/**
+ * 管理端认证控制器——管理员登录、密码修改、获取当前用户信息
+ */
 @ApiTags('管理端-认证')
 @Controller('admin/auth')
 export class AdminAuthController {
@@ -68,6 +71,9 @@ export class AdminAuthController {
   }
 }
 
+/**
+ * 小程序端认证控制器——微信登录、令牌刷新、用户资料更新
+ */
 @ApiTags('小程序端-认证')
 @Controller('mini/auth')
 export class MiniAuthController {

@@ -162,7 +162,9 @@ export class ContentManagementService {
 
     switch (action) {
       case BatchAction.PUBLISH:
-        await this.craftRepo.update(validIds, { status: CraftStatus.PUBLISHED });
+        await this.craftRepo.update(validIds, {
+          status: CraftStatus.PUBLISHED,
+        });
         break;
       case BatchAction.UNPUBLISH:
         await this.craftRepo.update(validIds, { status: CraftStatus.DRAFT });
@@ -265,9 +267,12 @@ export class ContentManagementService {
   /**
    * 获取预签名上传URL
    */
-  async getPresignedUrl(dto: PresignDto): Promise<{ url: string; key: string }> {
+  async getPresignedUrl(
+    dto: PresignDto,
+  ): Promise<{ url: string; key: string }> {
     const { filename, fileType } = dto;
-    const prefix = fileType === FileType.IMAGE ? 'crafts/images' : 'crafts/videos';
+    const prefix =
+      fileType === FileType.IMAGE ? 'crafts/images' : 'crafts/videos';
     const key = `${prefix}/${randomUUID()}/${filename}`;
 
     const url = await this.storageService.getPresignedUrl(key, 'upload');

@@ -24,6 +24,11 @@ import { CreateIntentDto } from './dto/create-intent.dto';
 import { IntentQueryDto } from './dto/intent-query.dto';
 import { UpdateIntentStatusDto } from './dto/update-intent-status.dto';
 
+/**
+ * "我想要"功能控制器
+ * Mini 路由：访客提交意向
+ * Admin 路由：查看意向列表、更新状态、获取统计
+ */
 @ApiTags('我想要')
 @Controller()
 export class IWantFeatureController {

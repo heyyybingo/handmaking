@@ -98,7 +98,8 @@
       "Bash(node -e \"const p=require\\('./mini-app/package.json'\\); console.log\\('scripts:', Object.keys\\(p.scripts||{}\\).join\\(', '\\)\\); console.log\\('name:', p.name\\)\")",
       "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\('server deps:', len\\(d.get\\('dependencies',{}\\)\\), 'devDeps:', len\\(d.get\\('devDependencies',{}\\)\\)\\)\")",
       "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\('web-admin deps:', len\\(d.get\\('dependencies',{}\\)\\), 'devDeps:', len\\(d.get\\('devDependencies',{}\\)\\)\\)\")",
-      "Bash(node -e \"console.log\\('server:', require\\('./server/package.json'\\).name\\); console.log\\('web-admin:', require\\('./web-admin/package.json'\\).name\\)\")"
+      "Bash(node -e \"console.log\\('server:', require\\('./server/package.json'\\).name\\); console.log\\('web-admin:', require\\('./web-admin/package.json'\\).name\\)\")",
+      "Bash(openspec new *)"
     ]
   }
 }

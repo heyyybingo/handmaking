@@ -23,10 +23,7 @@ import { StorageModule } from './storage/storage.module';
     // 全局配置模块，加载.env文件
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: [
-        `.env.${process.env.NODE_ENV || 'dev'}`,
-        '.env.example',
-      ],
+      envFilePath: [`.env.${process.env.NODE_ENV || 'dev'}`, '.env.example'],
     }),
 
     // TypeORM 数据库连接配置
@@ -38,7 +35,10 @@ import { StorageModule } from './storage/storage.module';
         host: configService.get<string>('DATABASE_HOST', 'localhost'),
         port: configService.get<number>('DATABASE_PORT', 5432),
         username: configService.get<string>('DATABASE_USER', 'handcraft'),
-        password: configService.get<string>('DATABASE_PASSWORD', 'handcraft-dev'),
+        password: configService.get<string>(
+          'DATABASE_PASSWORD',
+          'handcraft-dev',
+        ),
         database: configService.get<string>('DATABASE_NAME', 'handcraft'),
         autoLoadEntities: true,
         synchronize: configService.get<string>('NODE_ENV') === 'development',

@@ -58,18 +58,20 @@ describe('ImageProcessorService', () => {
 
       // Mock fetch globally
       const originalFetch = globalThis.fetch;
-      globalThis.fetch = jest.fn().mockImplementation((url: string, options?: any) => {
-        if (options?.method === 'PUT') {
-          return Promise.resolve(new Response(null, { status: 200 }));
-        }
-        // Download request
-        return Promise.resolve(
-          new Response(pixelPng, {
-            status: 200,
-            headers: { 'Content-Type': 'image/png' },
-          }),
-        );
-      }) as any;
+      globalThis.fetch = jest
+        .fn()
+        .mockImplementation((url: string, options?: any) => {
+          if (options?.method === 'PUT') {
+            return Promise.resolve(new Response(null, { status: 200 }));
+          }
+          // Download request
+          return Promise.resolve(
+            new Response(pixelPng, {
+              status: 200,
+              headers: { 'Content-Type': 'image/png' },
+            }),
+          );
+        }) as any;
 
       await service.processUploadedImage('images/test.png');
 
@@ -95,22 +97,28 @@ describe('ImageProcessorService', () => {
     });
 
     it('should throw when download URL fails', async () => {
-      mockStorageService.getPresignedUrl.mockRejectedValue(new Error('URL generation failed'));
-
-      await expect(service.processUploadedImage('images/test.jpg')).rejects.toThrow(
-        'URL generation failed',
+      mockStorageService.getPresignedUrl.mockRejectedValue(
+        new Error('URL generation failed'),
       );
+
+      await expect(
+        service.processUploadedImage('images/test.jpg'),
+      ).rejects.toThrow('URL generation failed');
     });
 
     it('should throw when image download fails', async () => {
-      mockStorageService.getPresignedUrl.mockResolvedValue('http://localhost:9000/download/test.jpg');
+      mockStorageService.getPresignedUrl.mockResolvedValue(
+        'http://localhost:9000/download/test.jpg',
+      );
 
       const originalFetch = globalThis.fetch;
-      globalThis.fetch = jest.fn().mockRejectedValue(new Error('Network error')) as any;
+      globalThis.fetch = jest
+        .fn()
+        .mockRejectedValue(new Error('Network error')) as any;
 
-      await expect(service.processUploadedImage('images/test.jpg')).rejects.toThrow(
-        'Network error',
-      );
+      await expect(
+        service.processUploadedImage('images/test.jpg'),
+      ).rejects.toThrow('Network error');
 
       globalThis.fetch = originalFetch;
     });

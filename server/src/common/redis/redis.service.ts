@@ -14,7 +14,10 @@ export class RedisService implements OnModuleDestroy {
     this.client = new Redis({
       host: this.configService.get<string>('REDIS_HOST', 'localhost'),
       port: this.configService.get<number>('REDIS_PORT', 6379),
-      password: this.configService.get<string>('REDIS_PASSWORD', 'handcraft-dev-redis'),
+      password: this.configService.get<string>(
+        'REDIS_PASSWORD',
+        'handcraft-dev-redis',
+      ),
       db: 0,
     });
   }

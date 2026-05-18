@@ -31,7 +31,14 @@ describe('ContentManagementService', () => {
       images: [],
       video: null,
       category_id: 'category-uuid-1',
-      category: { id: 'category-uuid-1', name: '编织', icon: 'icon', sort_order: 0, created_at: new Date(), crafts: [] },
+      category: {
+        id: 'category-uuid-1',
+        name: '编织',
+        icon: 'icon',
+        sort_order: 0,
+        created_at: new Date(),
+        crafts: [],
+      },
       tags: ['编织'],
       status: CraftStatus.DRAFT,
       like_count: 0,
@@ -44,16 +51,15 @@ describe('ContentManagementService', () => {
       ...overrides,
     }) as unknown as Craft;
 
-  const mockCategory = (overrides: Partial<Category> = {}): Category =>
-    ({
-      id: 'category-uuid-1',
-      name: '编织',
-      icon: 'icon-url',
-      sort_order: 0,
-      created_at: new Date('2025-01-01'),
-      crafts: [],
-      ...overrides,
-    }) as unknown as Category;
+  const mockCategory = (overrides: Partial<Category> = {}): Category => ({
+    id: 'category-uuid-1',
+    name: '编织',
+    icon: 'icon-url',
+    sort_order: 0,
+    created_at: new Date('2025-01-01'),
+    crafts: [],
+    ...overrides,
+  });
 
   beforeEach(async () => {
     jest.clearAllMocks();
@@ -206,7 +212,10 @@ describe('ContentManagementService', () => {
     });
 
     it('should only update provided fields', async () => {
-      const existingCraft = mockCraft({ title: '原标题', description: '原描述' });
+      const existingCraft = mockCraft({
+        title: '原标题',
+        description: '原描述',
+      });
       craftRepo.findOne.mockResolvedValue(existingCraft);
       craftRepo.save.mockResolvedValue(existingCraft);
 
@@ -221,7 +230,9 @@ describe('ContentManagementService', () => {
       craftRepo.findOne.mockResolvedValue(existingCraft);
       craftRepo.save.mockResolvedValue(existingCraft);
 
-      await service.updateCraft('craft-uuid-1', { tags: ['新标签1', '新标签2'] });
+      await service.updateCraft('craft-uuid-1', {
+        tags: ['新标签1', '新标签2'],
+      });
 
       expect(existingCraft.tags).toEqual(['新标签1', '新标签2']);
     });
@@ -258,7 +269,10 @@ describe('ContentManagementService', () => {
 
   describe('findAdminCrafts', () => {
     it('should return all crafts (including all statuses)', async () => {
-      const crafts = [mockCraft({ status: CraftStatus.DRAFT }), mockCraft({ id: 'c2', status: CraftStatus.PUBLISHED })];
+      const crafts = [
+        mockCraft({ status: CraftStatus.DRAFT }),
+        mockCraft({ id: 'c2', status: CraftStatus.PUBLISHED }),
+      ];
 
       const qb = {
         leftJoinAndSelect: jest.fn().mockReturnThis(),
@@ -308,8 +322,8 @@ describe('ContentManagementService', () => {
       await service.findAdminCrafts({ limit: 10 });
 
       // andWhere should not be called for status
-      const statusCalls = (qb.andWhere as jest.Mock).mock.calls.filter(
-        (call: any[]) => call[0]?.includes('status'),
+      const statusCalls = qb.andWhere.mock.calls.filter((call: any[]) =>
+        call[0]?.includes('status'),
       );
       expect(statusCalls).toHaveLength(0);
     });

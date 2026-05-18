@@ -36,20 +36,19 @@ describe('IWantFeatureService', () => {
       ...overrides,
     }) as unknown as User;
 
-  const mockIntent = (overrides: Partial<Intent> = {}): Intent =>
-    ({
-      id: 'intent-uuid-1',
-      craft_id: 'craft-uuid-1',
-      craft: mockCraft(),
-      type: IntentType.WANT_COLLECT,
-      message: '请问这个作品还在吗？',
-      visitor_name: '手作爱好者',
-      visitor_contact: 'wechat:abc123',
-      status: IntentStatus.PENDING,
-      visitor_id: 'user-uuid-1',
-      created_at: new Date('2025-01-15T10:00:00Z'),
-      ...overrides,
-    }) as unknown as Intent;
+  const mockIntent = (overrides: Partial<Intent> = {}): Intent => ({
+    id: 'intent-uuid-1',
+    craft_id: 'craft-uuid-1',
+    craft: mockCraft(),
+    type: IntentType.WANT_COLLECT,
+    message: '请问这个作品还在吗？',
+    visitor_name: '手作爱好者',
+    visitor_contact: 'wechat:abc123',
+    status: IntentStatus.PENDING,
+    visitor_id: 'user-uuid-1',
+    created_at: new Date('2025-01-15T10:00:00Z'),
+    ...overrides,
+  });
 
   beforeEach(async () => {
     jest.clearAllMocks();
@@ -133,9 +132,9 @@ describe('IWantFeatureService', () => {
     it('should throw NotFoundException when craft not found', async () => {
       craftRepo.findOne.mockResolvedValue(null);
 
-      await expect(
-        service.createIntent(craftId, userId, dto),
-      ).rejects.toThrow(NotFoundException);
+      await expect(service.createIntent(craftId, userId, dto)).rejects.toThrow(
+        NotFoundException,
+      );
     });
 
     it('should throw BadRequestException on duplicate intent', async () => {
@@ -143,9 +142,9 @@ describe('IWantFeatureService', () => {
       intentRepo.findOne.mockResolvedValue(mockIntent());
       userRepo.findOne.mockResolvedValue(mockUser());
 
-      await expect(
-        service.createIntent(craftId, userId, dto),
-      ).rejects.toThrow(BadRequestException);
+      await expect(service.createIntent(craftId, userId, dto)).rejects.toThrow(
+        BadRequestException,
+      );
     });
 
     it('should throw NotFoundException when user not found', async () => {
@@ -153,9 +152,9 @@ describe('IWantFeatureService', () => {
       intentRepo.findOne.mockResolvedValue(null);
       userRepo.findOne.mockResolvedValue(null);
 
-      await expect(
-        service.createIntent(craftId, userId, dto),
-      ).rejects.toThrow(NotFoundException);
+      await expect(service.createIntent(craftId, userId, dto)).rejects.toThrow(
+        NotFoundException,
+      );
     });
 
     it('should create intent with optional message undefined', async () => {
@@ -298,17 +297,18 @@ describe('IWantFeatureService', () => {
       };
       await service.findIntents(query);
 
-      expect(qb.andWhere).toHaveBeenCalledWith(
-        'intent.created_at < :cursor',
-        { cursor: new Date('2025-01-15T10:00:00.000Z') },
-      );
+      expect(qb.andWhere).toHaveBeenCalledWith('intent.created_at < :cursor', {
+        cursor: new Date('2025-01-15T10:00:00.000Z'),
+      });
     });
 
     it('should return hasMore=true when results exceed limit', async () => {
       const intents = Array.from({ length: 21 }, (_, i) =>
         mockIntent({
           id: `i${i}`,
-          created_at: new Date(`2025-01-${String(15 - Math.floor(i / 2)).padStart(2, '0')}T10:00:00Z`),
+          created_at: new Date(
+            `2025-01-${String(15 - Math.floor(i / 2)).padStart(2, '0')}T10:00:00Z`,
+          ),
         }),
       );
 
@@ -378,9 +378,9 @@ describe('IWantFeatureService', () => {
       intentRepo.findOne.mockResolvedValue(null);
 
       const dto: UpdateIntentStatusDto = { status: IntentStatus.VIEWED };
-      await expect(
-        service.updateStatus('non-existent', dto),
-      ).rejects.toThrow(NotFoundException);
+      await expect(service.updateStatus('non-existent', dto)).rejects.toThrow(
+        NotFoundException,
+      );
     });
   });
 
@@ -416,9 +416,7 @@ describe('IWantFeatureService', () => {
     });
 
     it('should default type counts to 0 for missing types', async () => {
-      intentRepo.count
-        .mockResolvedValueOnce(0)
-        .mockResolvedValueOnce(0);
+      intentRepo.count.mockResolvedValueOnce(0).mockResolvedValueOnce(0);
 
       const qb = {
         select: jest.fn().mockReturnThis(),
@@ -438,13 +436,9 @@ describe('IWantFeatureService', () => {
     });
 
     it('should handle partial byType results', async () => {
-      intentRepo.count
-        .mockResolvedValueOnce(10)
-        .mockResolvedValueOnce(5);
+      intentRepo.count.mockResolvedValueOnce(10).mockResolvedValueOnce(5);
 
-      const byTypeResults = [
-        { type: IntentType.WANT_COLLECT, count: '10' },
-      ];
+      const byTypeResults = [{ type: IntentType.WANT_COLLECT, count: '10' }];
       const qb = {
         select: jest.fn().mockReturnThis(),
         addSelect: jest.fn().mockReturnThis(),
@@ -463,9 +457,7 @@ describe('IWantFeatureService', () => {
     });
 
     it('should calculate todayNew correctly', async () => {
-      intentRepo.count
-        .mockResolvedValueOnce(50)
-        .mockResolvedValueOnce(10);
+      intentRepo.count.mockResolvedValueOnce(50).mockResolvedValueOnce(10);
 
       const qb = {
         select: jest.fn().mockReturnThis(),

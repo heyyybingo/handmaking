@@ -28,6 +28,9 @@ export interface DashboardStats {
   };
 }
 
+/**
+ * 管理后台仪表盘服务——聚合各实体数据提供统计概览和 7 天趋势分析
+ */
 @Injectable()
 export class AdminDashboardService {
   constructor(
@@ -76,11 +79,7 @@ export class AdminDashboardService {
       dateRange,
     );
 
-    const likesTrend = await this.buildLikesTrend(
-      sevenDaysAgo,
-      now,
-      dateRange,
-    );
+    const likesTrend = await this.buildLikesTrend(sevenDaysAgo, now, dateRange);
 
     const commentsTrend = await this.buildCountTrend(
       this.commentRepo,
@@ -128,12 +127,13 @@ export class AdminDashboardService {
     return result;
   }
 
-  async updateConfigs(dto: UpdateSystemConfigDto): Promise<Record<string, string>> {
+  async updateConfigs(
+    dto: UpdateSystemConfigDto,
+  ): Promise<Record<string, string>> {
     for (const item of dto.configs) {
-      await this.configRepo.upsert(
-        { key: item.key, value: item.value },
-        ['key'],
-      );
+      await this.configRepo.upsert({ key: item.key, value: item.value }, [
+        'key',
+      ]);
     }
     return this.getAllConfigs();
   }

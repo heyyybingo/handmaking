@@ -193,9 +193,7 @@ describe('AdminDashboardService', () => {
       const result = await service.getStats();
 
       // Days without data should have value 0
-      const zeroDays = result.trends.totalCrafts.filter(
-        (p) => p.value === 0,
-      );
+      const zeroDays = result.trends.totalCrafts.filter((p) => p.value === 0);
       expect(zeroDays.length).toBeGreaterThan(0);
     });
 

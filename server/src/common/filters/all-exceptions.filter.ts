@@ -8,6 +8,11 @@ import {
 } from '@nestjs/common';
 import { Response } from 'express';
 
+/**
+ * 全局异常过滤器——统一处理所有未捕获异常
+ * 将异常转换为统一的错误响应格式 { code, message, timestamp }
+ * 区分 HttpException（已知业务异常）和未知异常（500 Internal Server Error）
+ */
 @Catch()
 export class AllExceptionsFilter implements ExceptionFilter {
   private readonly logger = new Logger(AllExceptionsFilter.name);

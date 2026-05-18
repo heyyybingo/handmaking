@@ -46,26 +46,45 @@ describe('AiAssistantService', () => {
     it('should throw NotFoundException when not found', async () => {
       mockRepository.findOne.mockResolvedValue(null);
 
-      await expect(service.getConfig('nonexistent')).rejects.toThrow(NotFoundException);
+      await expect(service.getConfig('nonexistent')).rejects.toThrow(
+        NotFoundException,
+      );
     });
   });
 
   describe('updateConfig', () => {
     it('should create new config when not exists', async () => {
       mockRepository.findOne.mockResolvedValue(null);
-      mockRepository.create.mockReturnValue({ feature: 'description', promptTemplate: 'test' });
-      mockRepository.save.mockResolvedValue({ feature: 'description', promptTemplate: 'test' });
+      mockRepository.create.mockReturnValue({
+        feature: 'description',
+        promptTemplate: 'test',
+      });
+      mockRepository.save.mockResolvedValue({
+        feature: 'description',
+        promptTemplate: 'test',
+      });
 
-      const result = await service.updateConfig('description', { promptTemplate: 'test' });
+      const result = await service.updateConfig('description', {
+        promptTemplate: 'test',
+      });
       expect(result.feature).toBe('description');
     });
 
     it('should update existing config', async () => {
-      const existing = { id: '1', feature: 'description', promptTemplate: 'old' };
+      const existing = {
+        id: '1',
+        feature: 'description',
+        promptTemplate: 'old',
+      };
       mockRepository.findOne.mockResolvedValue(existing);
-      mockRepository.save.mockResolvedValue({ ...existing, promptTemplate: 'new' });
+      mockRepository.save.mockResolvedValue({
+        ...existing,
+        promptTemplate: 'new',
+      });
 
-      const result = await service.updateConfig('description', { promptTemplate: 'new' });
+      const result = await service.updateConfig('description', {
+        promptTemplate: 'new',
+      });
       expect(result.promptTemplate).toBe('new');
     });
   });
@@ -94,7 +113,9 @@ describe('AiAssistantService', () => {
       });
 
       await expect(
-        service.generateDescription({ imageUrls: ['http://example.com/image.jpg'] }),
+        service.generateDescription({
+          imageUrls: ['http://example.com/image.jpg'],
+        }),
       ).rejects.toThrow('AI描述生成功能已禁用');
     });
   });

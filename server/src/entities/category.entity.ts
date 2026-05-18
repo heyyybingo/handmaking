@@ -7,6 +7,7 @@ import {
 } from 'typeorm';
 import { Craft } from './craft.entity';
 
+/** 作品分类——用于组织手工作品的分类体系，如"编织""陶艺""木工"等 */
 @Entity('categories')
 export class Category {
   @PrimaryGeneratedColumn('uuid')

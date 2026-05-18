@@ -12,10 +12,7 @@ import { IWantFeatureController } from './i-want-feature.controller';
  * 负责意向表达、意向收集、通知提醒等模拟下单功能
  */
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([Intent, Craft, User]),
-    UserAuthModule,
-  ],
+  imports: [TypeOrmModule.forFeature([Intent, Craft, User]), UserAuthModule],
   controllers: [IWantFeatureController],
   providers: [IWantFeatureService],
   exports: [IWantFeatureService],

@@ -408,17 +408,18 @@ describe('SocialInteractionService', () => {
       };
       await service.findComments('craft-uuid-1', query);
 
-      expect(qb.andWhere).toHaveBeenCalledWith(
-        'comment.created_at < :cursor',
-        { cursor: new Date('2025-01-15T10:00:00.000Z') },
-      );
+      expect(qb.andWhere).toHaveBeenCalledWith('comment.created_at < :cursor', {
+        cursor: new Date('2025-01-15T10:00:00.000Z'),
+      });
     });
 
     it('should return hasMore=true when results exceed limit', async () => {
       const comments = Array.from({ length: 21 }, (_, i) =>
         mockComment({
           id: `c${i}`,
-          created_at: new Date(`2025-01-${String(15 - Math.floor(i / 2)).padStart(2, '0')}T10:00:00Z`),
+          created_at: new Date(
+            `2025-01-${String(15 - Math.floor(i / 2)).padStart(2, '0')}T10:00:00Z`,
+          ),
         }),
       );
 

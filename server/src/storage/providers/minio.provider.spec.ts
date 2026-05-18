@@ -66,13 +66,17 @@ describe('MinioProvider', () => {
 
       const sslProvider = module.get<MinioProvider>(MinioProvider);
       const url = sslProvider.getFileUrl('images/test.jpg');
-      expect(url).toBe('https://minio.example.com:443/handcraft/images/test.jpg');
+      expect(url).toBe(
+        'https://minio.example.com:443/handcraft/images/test.jpg',
+      );
     });
   });
 
   describe('generateThumbnails', () => {
     it('should log thumbnail request without error', async () => {
-      await expect(provider.generateThumbnails('images/test.jpg')).resolves.toBeUndefined();
+      await expect(
+        provider.generateThumbnails('images/test.jpg'),
+      ).resolves.toBeUndefined();
     });
   });
 

@@ -1,4 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity('ai_configs')
 export class AiConfig {
@@ -14,7 +20,13 @@ export class AiConfig {
   @Column({ name: 'model', type: 'varchar', length: 100, default: 'gpt-4' })
   model: string;
 
-  @Column({ name: 'temperature', type: 'decimal', precision: 3, scale: 2, default: 0.7 })
+  @Column({
+    name: 'temperature',
+    type: 'decimal',
+    precision: 3,
+    scale: 2,
+    default: 0.7,
+  })
   temperature: number;
 
   @Column({ name: 'is_enabled', type: 'boolean', default: true })

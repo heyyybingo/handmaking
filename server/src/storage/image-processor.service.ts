@@ -26,7 +26,10 @@ export class ImageProcessorService {
       this.logger.log(`开始处理图片: ${key}`);
 
       // 获取原始图片的预签名下载URL
-      const downloadUrl = await this.storageService.getPresignedUrl(key, 'download');
+      const downloadUrl = await this.storageService.getPresignedUrl(
+        key,
+        'download',
+      );
 
       // 下载原始图片到Buffer
       const response = await fetch(downloadUrl);
@@ -48,7 +51,10 @@ export class ImageProcessorService {
         const thumbnailKey = `${baseKey}_${size.suffix}.${ext}`;
 
         // 获取上传预签名URL并上传
-        const uploadUrl = await this.storageService.getPresignedUrl(thumbnailKey, 'upload');
+        const uploadUrl = await this.storageService.getPresignedUrl(
+          thumbnailKey,
+          'upload',
+        );
         await fetch(uploadUrl, {
           method: 'PUT',
           body: new Uint8Array(thumbnailBuffer),
@@ -64,7 +70,10 @@ export class ImageProcessorService {
         .toBuffer();
 
       const originalWebpKey = key.replace(/\.[^.]+$/, '.webp');
-      const originalUploadUrl = await this.storageService.getPresignedUrl(originalWebpKey, 'upload');
+      const originalUploadUrl = await this.storageService.getPresignedUrl(
+        originalWebpKey,
+        'upload',
+      );
       await fetch(originalUploadUrl, {
         method: 'PUT',
         body: new Uint8Array(originalWebpBuffer),

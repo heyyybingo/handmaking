@@ -8,6 +8,10 @@ import {
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
+/**
+ * 请求日志拦截器——记录每个 HTTP 请求的方法、路径和耗时
+ * 成功请求记录为 log，失败请求记录为 error（含错误信息）
+ */
 @Injectable()
 export class LoggingInterceptor implements NestInterceptor {
   private readonly logger = new Logger('HTTP');

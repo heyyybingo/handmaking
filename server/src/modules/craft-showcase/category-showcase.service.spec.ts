@@ -71,9 +71,7 @@ describe('CategoryShowcaseController', () => {
 
   describe('findAll', () => {
     it('should return categories with craft counts', async () => {
-      jest
-        .spyOn(service, 'findCategories')
-        .mockResolvedValue(mockCategories);
+      jest.spyOn(service, 'findCategories').mockResolvedValue(mockCategories);
 
       const result = await controller.findAll();
 
@@ -83,9 +81,7 @@ describe('CategoryShowcaseController', () => {
     });
 
     it('should return categories sorted by sort_order', async () => {
-      jest
-        .spyOn(service, 'findCategories')
-        .mockResolvedValue(mockCategories);
+      jest.spyOn(service, 'findCategories').mockResolvedValue(mockCategories);
 
       const result = await controller.findAll();
 
@@ -103,9 +99,7 @@ describe('CategoryShowcaseController', () => {
     });
 
     it('should return craft_count as number for each category', async () => {
-      jest
-        .spyOn(service, 'findCategories')
-        .mockResolvedValue(mockCategories);
+      jest.spyOn(service, 'findCategories').mockResolvedValue(mockCategories);
 
       const result = await controller.findAll();
 

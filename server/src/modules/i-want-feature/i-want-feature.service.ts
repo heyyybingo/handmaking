@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  BadRequestException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Intent, IntentType, IntentStatus } from '@/entities/intent.entity';
@@ -8,6 +12,10 @@ import { CreateIntentDto } from './dto/create-intent.dto';
 import { IntentQueryDto } from './dto/intent-query.dto';
 import { UpdateIntentStatusDto } from './dto/update-intent-status.dto';
 
+/**
+ * "我想要"功能服务——处理意向的创建、查询、状态更新和统计分析
+ * 同一访客对同一作品不可重复提交意向
+ */
 @Injectable()
 export class IWantFeatureService {
   constructor(
@@ -83,7 +91,7 @@ export class IWantFeatureService {
 
     if (query.cursor) {
       qb.andWhere('intent.created_at < :cursor', {
-        cursor: new Date(query.cursor!),
+        cursor: new Date(query.cursor),
       });
     }
 
@@ -109,10 +117,7 @@ export class IWantFeatureService {
   /**
    * 更新意向状态
    */
-  async updateStatus(
-    id: string,
-    dto: UpdateIntentStatusDto,
-  ): Promise<Intent> {
+  async updateStatus(id: string, dto: UpdateIntentStatusDto): Promise<Intent> {
     const intent = await this.intentRepo.findOne({ where: { id } });
     if (!intent) {
       throw new NotFoundException('意向不存在');

@@ -6,12 +6,14 @@ import {
   Index,
 } from 'typeorm';
 
+/** AI 功能类型——每类功能有独立的提示词模板和模型配置 */
 export enum AIFeature {
   DESCRIPTION = 'description',
   TAGS = 'tags',
   IMAGE_SUGGESTION = 'image_suggestion',
 }
 
+/** AI 配置——按功能维度存储 AI 调用参数（提示词模板、模型、温度等） */
 @Entity('ai_configs')
 export class AIConfig {
   @PrimaryGeneratedColumn('uuid')

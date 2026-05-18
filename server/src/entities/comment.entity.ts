@@ -9,11 +9,13 @@ import {
 } from 'typeorm';
 import { Craft } from './craft.entity';
 
+/** 评论作者类型——区分管理员（作者）回复和访客评论 */
 export enum AuthorType {
   ADMIN = 'admin',
   VISITOR = 'visitor',
 }
 
+/** 评论——支持一级评论和回复（通过 parent_id 自关联实现嵌套） */
 @Entity('comments')
 export class Comment {
   @PrimaryGeneratedColumn('uuid')
@@ -27,6 +29,7 @@ export class Comment {
   @JoinColumn({ name: 'craft_id' })
   craft: Craft;
 
+  /** 父评论 ID——为空表示一级评论，非空表示对某条评论的回复 */
   @Column({ type: 'uuid', nullable: true })
   parent_id: string;
 
@@ -46,6 +49,7 @@ export class Comment {
   @Column({ nullable: true })
   author_avatar: string;
 
+  /** 是否为作者回复——标记管理员对评论的回复，前端可据此显示特殊样式 */
   @Column({ default: false })
   is_author_reply: boolean;
 

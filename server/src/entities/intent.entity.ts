@@ -9,18 +9,21 @@ import {
 } from 'typeorm';
 import { Craft } from './craft.entity';
 
+/** 意向类型——"我想要"功能的三种意向 */
 export enum IntentType {
   WANT_COLLECT = 'want_collect',
   WANT_CUSTOM = 'want_custom',
   WANT_KNOW_MORE = 'want_know_more',
 }
 
+/** 意向处理状态 */
 export enum IntentStatus {
   PENDING = 'pending',
   VIEWED = 'viewed',
   REPLIED = 'replied',
 }
 
+/** "我想要"意向——访客对作品表达兴趣的记录，管理员可在后台查看并处理 */
 @Entity('intents')
 export class Intent {
   @PrimaryGeneratedColumn('uuid')
